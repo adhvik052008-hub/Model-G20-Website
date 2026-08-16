@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#F9F2E8"/>
+      <stop offset="1" stop-color="#EFDDC6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.86" cy="0.1" r="0.7">
+      <stop offset="0" stop-color="#600808" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#600808" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ground)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Crest -->
+  <g transform="translate(96 96)" fill="none" stroke="#600808">
+    <circle cx="46" cy="46" r="44" stroke-width="1.6"/>
+    <circle cx="46" cy="46" r="39.6" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.001 12.44"/>
+    <circle cx="46" cy="46" r="22.6" stroke-width="1.6"/>
+    <ellipse cx="46" cy="46" rx="9.4" ry="22.6" stroke-width="1.1" opacity=".7"/>
+    <path d="M23.4 46h45.2" stroke-width="1.1" opacity=".7"/>
+    <path d="M26.8 34.6h38.4M26.8 57.4h38.4" stroke-width="1" opacity=".45"/>
+  </g>
+
+  <text x="96" y="330" font-family="Cormorant Garamond, Garamond, Times New Roman, serif"
+        font-size="132" font-weight="300" fill="#120C0A" letter-spacing="-4">Model G20</text>
+  <text x="96" y="440" font-family="Cormorant Garamond, Garamond, Times New Roman, serif"
+        font-size="132" font-weight="300" font-style="italic" fill="#600808" letter-spacing="-4">2026</text>
+
+  <rect x="96" y="482" width="120" height="2" fill="#600808" opacity=".5"/>
+
+  <text x="96" y="530" font-family="Inter, Helvetica, Arial, sans-serif" font-size="25"
+        font-weight="500" fill="#4A3830" letter-spacing="1.2">Common Ground — Rebuilding Trust in a Fragmented World</text>
+  <text x="96" y="572" font-family="Inter, Helvetica, Arial, sans-serif" font-size="21"
+        font-weight="600" fill="#600808" letter-spacing="4">13–15 NOVEMBER 2026 · FLAME UNIVERSITY, PUNE</text>
+
+  <!-- Meridian motif, cropped right -->
+  <g transform="translate(1010 315)" fill="none" stroke="#600808" opacity=".16">
+    <circle r="250" stroke-width="1.4"/>
+    <circle r="190" stroke-width="1"/>
+    <ellipse rx="78" ry="250" stroke-width="1"/>
+    <ellipse rx="164" ry="250" stroke-width="1"/>
+    <path d="M-250 0h500M0 -250v500M-232 -95h464M-232 95h464"/>
+  </g>
+</svg>

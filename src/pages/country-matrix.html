@@ -1,0 +1,145 @@
+<!--meta
+title: Country Matrix
+nav: matrix
+description: Search and filter the full delegation allotment for Model G20 2026 — forty-six delegations across ten committees, with live seat availability.
+scripts: matrix.js
+-->
+
+<section class="page-head">
+  <div class="shell shell--wide">
+    <div class="page-head__grid">
+      <div class="stack-5">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html">Summit</a><span>/</span><span aria-current="page">Country Matrix</span>
+        </nav>
+        <h1 class="page-head__title">
+          <span class="reveal-mask"><span>The country</span></span>
+          <span class="reveal-mask"><span><em class="t-quiet-italic t-accent">matrix</em></span></span>
+        </h1>
+      </div>
+      <div class="stack-4" data-reveal style="--i:2">
+        <p class="t-lead">
+          Every delegation, every committee, and what is still open. Search by
+          country, filter by committee, or narrow to the seats you can still take.
+        </p>
+        <div class="wm-legend">
+          <span><i style="background:var(--maroon-600)"></i> Available</span>
+          <span><i style="background:var(--maroon-400)"></i> Limited</span>
+          <span><i style="background:var(--ink-300)"></i> Allotted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MATRIX -->
+<section class="section section--flush-top">
+  <div class="shell shell--wide" data-matrix>
+    <div class="matrix-toolbar" data-reveal="fade">
+      <div class="search">
+        <svg class="search__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="9" cy="9" r="6.2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13.5 13.5 18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <label class="visually-hidden" for="matrix-search">Search delegations</label>
+        <input class="input" id="matrix-search" type="search" placeholder="Search a delegation, code or region…" data-matrix-search autocomplete="off">
+        <button class="search__clear" type="button" aria-label="Clear search">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none" aria-hidden="true">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="matrix-filters" data-matrix-groups></div>
+    </div>
+
+    <div class="row row--between" style="margin-block:1.6rem 1rem;align-items:flex-start;gap:1rem">
+      <div class="matrix-filters" data-matrix-committees style="justify-content:flex-start"></div>
+      <button class="chip" type="button" data-matrix-open aria-pressed="false">Open seats only</button>
+    </div>
+
+    <div class="matrix-summary" data-matrix-summary style="margin-bottom:1.2rem"></div>
+
+    <div data-matrix-out></div>
+
+    <p class="t-xs t-faint" style="margin-top:1.4rem;max-width:76ch">
+      Availability is refreshed as the Secretariat processes registrations.
+      A delegation shown as available at the moment of reading is not reserved
+      until an allotment is issued in writing by the Office of Delegate Affairs.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ HOW ALLOTMENT WORKS -->
+<section class="section on-paper">
+  <div class="shell">
+    <div class="split">
+      <div class="split__sticky stack-3">
+        <span class="eyebrow" data-reveal>How allotment works</span>
+        <h2 class="t-h1" data-reveal style="--i:1">Four things we weigh</h2>
+      </div>
+
+      <div class="grid" data-reveal-group>
+        <article class="card">
+          <span class="card__meta">01 — Preference order</span>
+          <h3 class="card__title">What you asked for</h3>
+          <p class="t-sm t-muted">
+            You rank three committees and three countries. We start at the top of
+            both lists and work down. The overwhelming majority of applicants
+            receive one of their first two committee choices.
+          </p>
+        </article>
+        <article class="card">
+          <span class="card__meta">02 — Experience</span>
+          <h3 class="card__title">Whether the seat fits</h3>
+          <p class="t-sm t-muted">
+            Advanced committees weigh stated experience. This is not a filter on
+            who may attend — it is a check that a first-time delegate is not
+            placed in FMCBG on day one without support.
+          </p>
+        </article>
+        <article class="card">
+          <span class="card__meta">03 — Delegation balance</span>
+          <h3 class="card__title">Spreading a delegation</h3>
+          <p class="t-sm t-muted">
+            Institutional delegations are distributed across committees rather
+            than concentrated in one. A delegation of eight will not receive eight
+            seats in the same room.
+          </p>
+        </article>
+        <article class="card">
+          <span class="card__meta">04 — Date completed</span>
+          <h3 class="card__title">When you finished</h3>
+          <p class="t-sm t-muted">
+            Ties break on the date the registration was <em>completed</em>, not
+            started. A half-finished form does not hold a seat.
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA -->
+<section class="section section--tight">
+  <div class="shell shell--wide">
+    <div class="cta-band" data-reveal="scale">
+      <div class="row row--between" style="gap:2rem">
+        <div class="stack-4" style="max-width:52ch">
+          <span class="eyebrow" style="color:var(--parchment-300)">Found your seat?</span>
+          <h2 class="t-h1" style="color:var(--parchment-100)">Claim it before the matrix moves</h2>
+          <p class="t-body" style="color:rgba(244,233,218,.82)">
+            Allotments are issued on a rolling basis. The matrix updates as
+            registrations are processed.
+          </p>
+        </div>
+        <a class="btn btn--invert btn--lg" href="register.html">
+          Register now
+          <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

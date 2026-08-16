@@ -1,0 +1,677 @@
+<!--meta
+title: Design System
+nav: design-system
+description: The Model G20 2026 design system — brand palette, type scale, spacing, elevation, motion, component library, accessibility standards and identity usage rules.
+-->
+
+<section class="page-head">
+  <div class="shell shell--wide">
+    <div class="watermark" style="right:-3%;top:-14%" aria-hidden="true">DS</div>
+    <div class="page-head__grid">
+      <div class="stack-5">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html">Summit</a><span>/</span><span aria-current="page">Design System</span>
+        </nav>
+        <h1 class="page-head__title">
+          <span class="reveal-mask"><span>The design</span></span>
+          <span class="reveal-mask"><span><em class="t-quiet-italic t-accent">system</em></span></span>
+        </h1>
+      </div>
+      <div class="stack-4" data-reveal style="--i:2">
+        <p class="t-lead">
+          Every token, component and rule that produces the Model G20 identity.
+          This page is generated from the same stylesheets the site runs on — if
+          it renders here, it is live.
+        </p>
+        <div class="row row--tight">
+          <span class="badge">v1.0</span>
+          <span class="badge badge--quiet">4 files · 0 dependencies</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CONTENTS -->
+<section class="section section--tight section--flush-top">
+  <div class="shell shell--wide">
+    <hr class="divider" style="margin-bottom:2rem">
+    <div class="matrix-filters" style="justify-content:flex-start" data-reveal>
+      <a class="chip" href="#principles">Principles</a>
+      <a class="chip" href="#colour">Colour</a>
+      <a class="chip" href="#type">Typography</a>
+      <a class="chip" href="#space">Space &amp; radius</a>
+      <a class="chip" href="#elevation">Elevation &amp; glass</a>
+      <a class="chip" href="#motion">Motion</a>
+      <a class="chip" href="#components">Components</a>
+      <a class="chip" href="#identity">Identity</a>
+      <a class="chip" href="#a11y">Accessibility</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRINCIPLES -->
+<section class="section" id="principles">
+  <div class="shell">
+    <div class="split">
+      <div class="split__sticky stack-3">
+        <span class="eyebrow" data-reveal>01</span>
+        <h2 class="t-h1" data-reveal style="--i:1">Principles</h2>
+      </div>
+
+      <div class="grid" data-reveal-group>
+        <article class="card">
+          <h3 class="card__title">Paper, not screen</h3>
+          <p class="t-sm t-muted">
+            The ground is parchment with a real grain, not a flat hex fill. Rules
+            are hairlines. Shadows are warm, never neutral grey. The reference is
+            a printed communiqué, not a dashboard.
+          </p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Maroon is a signature, not a surface</h3>
+          <p class="t-sm t-muted">
+            #600808 marks decisions: the primary action, the active state, the
+            rule under a live link. Whole sections go maroon only to mark a change
+            in register — the theme statement, a call to act, the footer.
+          </p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Typography carries the hierarchy</h3>
+          <p class="t-sm t-muted">
+            Two families, three jobs. A high-contrast serif for anything with
+            gravitas, a neo-grotesque for anything with data, and small caps at
+            wide tracking for the labels between them. Weight does less work than
+            scale.
+          </p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Motion explains, never entertains</h3>
+          <p class="t-sm t-muted">
+            Reveals establish reading order. Sweeps confirm a target. Arcs on the
+            map show convergence. Everything obeys
+            <span class="t-mono t-xs">prefers-reduced-motion</span> without
+            degrading meaning.
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ COLOUR -->
+<section class="section on-paper" id="colour">
+  <div class="shell shell--wide">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>02</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Colour</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Two brand hues, plus white and black. Every other value on this site is a
+        tonal derivation of one of them — there is no third hue anywhere in the
+        system.
+      </p>
+    </div>
+
+    <h3 class="t-h3" style="margin-bottom:1.2rem">Brand core</h3>
+    <div class="grid grid-4" data-reveal-group>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#EFDDC6"><span>#EFDDC6</span></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Parchment</span>
+          <span class="swatch__use">The page ground. Every layout begins on this and returns to it.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#600808"><span style="background:rgba(255,255,255,.9)">#600808</span></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Sovereign Maroon</span>
+          <span class="swatch__use">Primary action, active state, accent rules, inverted sections.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#FFFFFF"><span>#FFFFFF</span></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Ivory</span>
+          <span class="swatch__use">Card surfaces, glass tint, type on maroon at reduced opacity.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#000000"><span style="background:rgba(255,255,255,.9)">#000000</span></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Ink</span>
+          <span class="swatch__use">Type, warmed toward the ground so it never reads cold on beige.</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="t-h3" style="margin:clamp(2rem,4vw,3rem) 0 1.2rem">Parchment ramp</h3>
+    <div class="grid grid-auto-sm" data-reveal>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#FDFAF5"><span>50</span></div><span class="swatch__use">Lightest wash</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#F9F2E8"><span>100</span></div><span class="swatch__use">Alternate band</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#F4E9DA"><span>200</span></div><span class="swatch__use">Muted surface</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#EFDDC6"><span>300 ◆</span></div><span class="swatch__use">Brand ground</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#E3CBAE"><span>400</span></div><span class="swatch__use">Sunken</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#D5B896"><span>500</span></div><span class="swatch__use">Flag plate</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#BFA07C"><span>600</span></div><span class="swatch__use">Deep tint</span></div>
+    </div>
+
+    <h3 class="t-h3" style="margin:clamp(2rem,4vw,3rem) 0 1.2rem">Maroon ramp</h3>
+    <div class="grid grid-auto-sm" data-reveal>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#F2DEDE"><span>100</span></div><span class="swatch__use">Faintest tint</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#B96B6B"><span style="background:rgba(255,255,255,.9)">300</span></div><span class="swatch__use">Disabled accent</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#96302B"><span style="background:rgba(255,255,255,.9)">400</span></div><span class="swatch__use">Invited-state pin</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#7A1010"><span style="background:rgba(255,255,255,.9)">500</span></div><span class="swatch__use">Hover</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#600808"><span style="background:rgba(255,255,255,.9)">600 ◆</span></div><span class="swatch__use">Brand accent</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#380404"><span style="background:rgba(255,255,255,.9)">800</span></div><span class="swatch__use">Inverted ground</span></div>
+      <div class="swatch"><div class="swatch__chip" style="height:76px;background:#170202"><span style="background:rgba(255,255,255,.9)">950</span></div><span class="swatch__use">Deepest</span></div>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:clamp(2rem,4vw,3rem)" data-reveal>
+      <div class="dodont dodont--do">
+        <span class="dodont__k">Do</span>
+        <ul>
+          <li>Use maroon for exactly one primary action per view</li>
+          <li>Invert whole sections to maroon to mark a change of register</li>
+          <li>Derive every new tint from the two brand hues</li>
+          <li>Keep body copy on warm ink, not pure black</li>
+        </ul>
+      </div>
+      <div class="dodont dodont--dont">
+        <span class="dodont__k">Don't</span>
+        <ul>
+          <li>Introduce a third hue for status, charts or highlights</li>
+          <li>Place maroon type on maroon-tinted surfaces below 4.5:1</li>
+          <li>Use pure #000 for large areas of text on parchment</li>
+          <li>Fill large surfaces with #600808 outside a marked inversion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TYPE -->
+<section class="section" id="type">
+  <div class="shell">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>03</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Typography</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Cormorant Garamond for display, Inter for text and interface, IBM Plex
+        Mono for data. All three degrade to local stacks if webfonts fail.
+      </p>
+    </div>
+
+    <div class="ds-block" data-reveal>
+      <span class="ds-label">Scale — fluid, clamp-based</span>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-hero</span><span class="hero-type" style="font-size:clamp(2.4rem,7vw,4.6rem)">Model G20</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-display</span><span class="t-display" style="font-size:clamp(2rem,5vw,3.4rem)">Common Ground</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-h1</span><span class="t-h1">Ten committees</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-h2</span><span class="t-h2">The Secretariat</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-h3</span><span class="t-h3">Country matrix</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-h4</span><span class="t-h4">Position papers</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-lead</span><span class="t-lead">Rebuilding trust in a fragmented world.</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-body · 17px</span><span class="t-body">The standard reading size across the site.</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-sm · 15px</span><span class="t-sm">Supporting copy, captions and card text.</span></div>
+      <div class="ds-scale-row"><span class="ds-scale-row__k">--fs-xs · 13px</span><span class="t-xs">Metadata, chips, table cells and hints.</span></div>
+      <div class="ds-scale-row" style="border:0"><span class="ds-scale-row__k">--fs-micro · 11px</span><span class="eyebrow eyebrow--bare">Eyebrow · 0.22em tracking</span></div>
+    </div>
+
+    <div class="grid grid-3" style="margin-top:clamp(1.5rem,3vw,2.5rem)" data-reveal-group>
+      <div class="card card--flat">
+        <span class="card__meta">Display</span>
+        <p class="t-serif" style="font-size:2.4rem;line-height:1.1">Aa Gg Qq</p>
+        <p class="t-xs t-muted">Cormorant Garamond · 300 / 400 / 500 / 600 + italic. Used above 20px only; never for UI labels.</p>
+      </div>
+      <div class="card card--flat">
+        <span class="card__meta">Text &amp; interface</span>
+        <p style="font-size:2.4rem;line-height:1.1;font-weight:300">Aa Gg Qq</p>
+        <p class="t-xs t-muted">Inter · 300 / 400 / 500 / 600 / 700. Everything under 20px, every control, every table.</p>
+      </div>
+      <div class="card card--flat">
+        <span class="card__meta">Data</span>
+        <p class="t-mono" style="font-size:2rem;line-height:1.1">08:45</p>
+        <p class="t-xs t-muted">IBM Plex Mono · 400 / 500. Times, indices, codes, anything that must align in a column.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SPACE -->
+<section class="section on-paper" id="space">
+  <div class="shell">
+    <div class="split">
+      <div class="split__sticky stack-3">
+        <span class="eyebrow" data-reveal>04</span>
+        <h2 class="t-h1" data-reveal style="--i:1">Space &amp; radius</h2>
+        <p class="t-sm t-muted" data-reveal style="--i:2">
+          A 4px base grid. Section rhythm is fluid, so vertical cadence scales
+          with the viewport rather than snapping at breakpoints.
+        </p>
+      </div>
+
+      <div class="stack-5">
+        <div class="ds-block" data-reveal>
+          <span class="ds-label">Space scale</span>
+          <div class="stack-2">
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-1 · 4px</span><span class="ds-space-bar" style="width:4px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-2 · 8px</span><span class="ds-space-bar" style="width:8px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-4 · 16px</span><span class="ds-space-bar" style="width:16px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-5 · 24px</span><span class="ds-space-bar" style="width:24px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-6 · 32px</span><span class="ds-space-bar" style="width:32px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-8 · 48px</span><span class="ds-space-bar" style="width:48px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem"><span class="ds-scale-row__k">--sp-10 · 80px</span><span class="ds-space-bar" style="width:80px"></span></div>
+            <div class="ds-scale-row" style="padding-block:.45rem;border:0"><span class="ds-scale-row__k">--sp-12 · 128px</span><span class="ds-space-bar" style="width:128px"></span></div>
+          </div>
+        </div>
+
+        <div class="ds-block" data-reveal style="--i:1">
+          <span class="ds-label">Radius</span>
+          <div class="row">
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:4px" data-tip="--r-xs · 4px"></div>
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:8px" data-tip="--r-sm · 8px"></div>
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:14px" data-tip="--r-md · 14px"></div>
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:22px" data-tip="--r-lg · 22px"></div>
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:34px" data-tip="--r-xl · 34px"></div>
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:48px" data-tip="--r-2xl · 48px"></div>
+            <div style="width:74px;height:74px;background:var(--a-maroon-16);border-radius:999px" data-tip="--r-pill"></div>
+          </div>
+        </div>
+
+        <div class="ds-block" data-reveal style="--i:2">
+          <span class="ds-label">Layout</span>
+          <div class="stack-2 t-sm">
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--container</span><span>1200px · standard reading width</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--container-wide</span><span>1420px · grids, matrices, the map</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--container-text</span><span>74ch · long-form prose</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem;border:0"><span class="ds-scale-row__k">--gutter</span><span>clamp(20px, 3.2vw, 56px)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ELEVATION -->
+<section class="section" id="elevation">
+  <div class="shell">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>05</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Elevation &amp; glass</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Shadows are tinted with maroon, never neutral. Glass is used for anything
+        that floats over content: the navigation bar, the hero panel, the map's
+        information card and the matrix toolbar.
+      </p>
+    </div>
+
+    <div class="grid grid-auto" data-reveal-group>
+      <div class="card" style="box-shadow:var(--sh-xs)"><span class="card__meta">--sh-xs</span><p class="t-sm t-muted">Hairline lift. Chips and inline plates.</p></div>
+      <div class="card" style="box-shadow:var(--sh-sm)"><span class="card__meta">--sh-sm</span><p class="t-sm t-muted">Resting state for cards and tables.</p></div>
+      <div class="card" style="box-shadow:var(--sh-md)"><span class="card__meta">--sh-md</span><p class="t-sm t-muted">Hover on secondary surfaces.</p></div>
+      <div class="card" style="box-shadow:var(--sh-lg)"><span class="card__meta">--sh-lg</span><p class="t-sm t-muted">Hover on interactive cards, dropdowns.</p></div>
+      <div class="card" style="box-shadow:var(--sh-xl)"><span class="card__meta">--sh-xl</span><p class="t-sm t-muted">Modals and the lightbox only.</p></div>
+    </div>
+
+    <div style="position:relative;margin-top:clamp(2rem,4vw,3rem);border-radius:var(--r-lg);overflow:hidden;padding:clamp(1.5rem,4vw,3rem);background:radial-gradient(80% 120% at 20% 0%,#600808,transparent 60%),linear-gradient(140deg,#380404,#170202)" data-reveal>
+      <div class="grid grid-2">
+        <div class="glass glass--pad stack-2">
+          <span class="eyebrow eyebrow--bare" style="color:var(--maroon-600)">Glass — default</span>
+          <p class="t-sm" style="color:var(--ink-700)">
+            45% ivory, 22px blur, 165% saturation, hairline inset highlight.
+            The navigation bar and hero panel.
+          </p>
+        </div>
+        <div class="glass glass--strong glass--pad stack-2">
+          <span class="eyebrow eyebrow--bare" style="color:var(--maroon-600)">Glass — strong</span>
+          <p class="t-sm" style="color:var(--ink-700)">
+            80% ivory. Used where text must stay legible over busy content —
+            the map information card, dropdown panels.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MOTION -->
+<section class="section on-paper" id="motion">
+  <div class="shell">
+    <div class="split">
+      <div class="split__sticky stack-3">
+        <span class="eyebrow" data-reveal>06</span>
+        <h2 class="t-h1" data-reveal style="--i:1">Motion</h2>
+        <p class="t-sm t-muted" data-reveal style="--i:2">
+          Four easings, six durations. Anything that moves does so to explain
+          where something came from or where it is going.
+        </p>
+      </div>
+
+      <div class="stack-5">
+        <div class="ds-block" data-reveal>
+          <span class="ds-label">Easing</span>
+          <div class="stack-2 t-sm">
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--e-out</span><span>cubic-bezier(.22, 1, .36, 1) — default for state change</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--e-out-expo</span><span>cubic-bezier(.16, 1, .30, 1) — reveals, sweeps, drawers</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--e-in-out</span><span>cubic-bezier(.65, 0, .35, 1) — looping ambience</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem;border:0"><span class="ds-scale-row__k">--e-spring</span><span>cubic-bezier(.34, 1.56, .64, 1) — checkboxes, pins, lift</span></div>
+          </div>
+        </div>
+
+        <div class="ds-block" data-reveal style="--i:1">
+          <span class="ds-label">Duration</span>
+          <div class="stack-2 t-sm">
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--d-instant · 90ms</span><span>Colour-only changes</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--d-fast · 180ms</span><span>Hover, focus, small toggles</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--d-base · 320ms</span><span>Panels, dropdowns, modal fade</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--d-slow · 600ms</span><span>Card lift, accordions, button sweep</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem"><span class="ds-scale-row__k">--d-slower · 980ms</span><span>Scroll reveal</span></div>
+            <div class="ds-scale-row" style="padding-block:.5rem;border:0"><span class="ds-scale-row__k">--d-cine · 1400ms</span><span>Masked heading reveal, curtain lift</span></div>
+          </div>
+        </div>
+
+        <div class="form-note" data-reveal style="--i:2">
+          <svg class="form-note__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6v5M10 13.6v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span>
+            Under <span class="t-mono">prefers-reduced-motion: reduce</span> every
+            transition collapses to 0.001ms, reveals resolve to their final state,
+            the paper grain is removed, the custom cursor is not mounted and the
+            map draws its arcs statically. No content is lost.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ COMPONENTS -->
+<section class="section" id="components">
+  <div class="shell shell--wide">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>07</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Component library</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Twenty-five components, all context-aware. Dropping any of them inside a
+        <span class="t-mono t-sm">.on-dark</span> section re-skins it without a
+        single override.
+      </p>
+    </div>
+
+    <div class="stack-6">
+      <div class="ds-block" data-reveal>
+        <span class="ds-label">Buttons</span>
+        <div class="row">
+          <button class="btn" type="button">Primary</button>
+          <button class="btn btn--ghost" type="button">Ghost</button>
+          <button class="btn btn--quiet" type="button">Quiet</button>
+          <button class="btn btn--sm" type="button">Small</button>
+          <button class="btn btn--lg" type="button">Large</button>
+          <button class="btn" type="button" disabled>Disabled</button>
+          <button class="btn-text" type="button">Text action<span class="btn-text__line"></span></button>
+        </div>
+      </div>
+
+      <div class="ds-block" data-reveal style="--i:1">
+        <span class="ds-label">Badges, chips &amp; availability</span>
+        <div class="row">
+          <span class="badge">Default</span>
+          <span class="badge badge--solid">Solid</span>
+          <span class="badge badge--quiet">Quiet</span>
+          <span class="badge badge--dot badge--live">Live</span>
+          <button class="chip" type="button">Chip</button>
+          <button class="chip is-active" type="button">Chip active <span class="chip__count">12</span></button>
+          <span class="flag" aria-hidden="true">IN</span>
+          <span class="flag flag--org" aria-hidden="true">UN</span>
+          <span class="avail avail--open">Available</span>
+          <span class="avail avail--few">Limited</span>
+          <span class="avail avail--closed">Allotted</span>
+        </div>
+      </div>
+
+      <div class="ds-block" data-reveal style="--i:2">
+        <span class="ds-label">Form controls</span>
+        <div class="stack-4" style="max-width:640px">
+          <div class="field">
+            <label class="field__label" for="ds-input">Text input</label>
+            <input class="input" id="ds-input" type="text" placeholder="Placeholder text">
+          </div>
+          <div class="field">
+            <label class="field__label" for="ds-select">Select</label>
+            <select class="select" id="ds-select"><option>Choose an option</option><option>Another option</option></select>
+          </div>
+          <div class="field has-error">
+            <label class="field__label" for="ds-error">Input — error state</label>
+            <input class="input" id="ds-error" type="text" value="not-an-email">
+            <span class="field__error">Enter a valid email address.</span>
+          </div>
+          <label class="choice">
+            <input type="checkbox" checked>
+            <span class="choice__box" aria-hidden="true"></span>
+            <span class="choice__text"><span class="choice__title">Checkbox</span><span class="choice__desc">With a supporting description.</span></span>
+          </label>
+          <label class="choice choice--radio">
+            <input type="radio" name="ds-radio" checked>
+            <span class="choice__box" aria-hidden="true"></span>
+            <span class="choice__text"><span class="choice__title">Radio</span><span class="choice__desc">Same anatomy, round box.</span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ds-block" data-reveal style="--i:3">
+        <span class="ds-label">Progress stepper</span>
+        <div class="stepper">
+          <div class="step is-done"><span class="step__dot">1</span><span class="step__name">Type</span><span class="step__bar"></span></div>
+          <div class="step is-done"><span class="step__dot">2</span><span class="step__name">Delegate</span><span class="step__bar"></span></div>
+          <div class="step is-active"><span class="step__dot">3</span><span class="step__name">Preferences</span><span class="step__bar"></span></div>
+          <div class="step"><span class="step__dot">4</span><span class="step__name">Logistics</span><span class="step__bar"></span></div>
+          <div class="step"><span class="step__dot">5</span><span class="step__name">Review</span></div>
+        </div>
+      </div>
+
+      <div class="ds-block" data-reveal style="--i:4">
+        <span class="ds-label">Cards</span>
+        <div class="grid grid-3">
+          <article class="card card--interactive">
+            <span class="tile-num">01</span>
+            <h3 class="card__title">Interactive card</h3>
+            <p class="t-sm t-muted">Lifts on hover and wipes a maroon meniscus across its top edge.</p>
+          </article>
+          <article class="card card--muted">
+            <span class="card__meta">Muted</span>
+            <h3 class="card__title">Muted card</h3>
+            <p class="t-sm t-muted">Sits on the parchment tint rather than ivory.</p>
+          </article>
+          <article class="card card--flat">
+            <span class="card__meta">Flat</span>
+            <h3 class="card__title">Flat card</h3>
+            <p class="t-sm t-muted">No surface, no shadow — structure only.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="ds-block" data-reveal style="--i:5">
+        <span class="ds-label">Countdown &amp; statistics</span>
+        <div class="grid grid-2">
+          <div class="countdown" data-countdown aria-label="Countdown component sample"></div>
+          <div class="stat-strip" data-stats></div>
+        </div>
+      </div>
+
+      <div class="ds-block" data-reveal style="--i:6">
+        <span class="ds-label">Accordion</span>
+        <div class="accordion" data-single="true">
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ds-acc-1"><span>An accordion trigger</span><span class="acc-icon" aria-hidden="true"></span></button></h3>
+            <div class="acc-panel" id="ds-acc-1"><div><div class="acc-panel__inner">Panels animate on <span class="t-mono t-xs">grid-template-rows</span>, so they open to their true content height with no measurement in JavaScript.</div></div></div>
+          </div>
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ds-acc-2"><span>A second trigger</span><span class="acc-icon" aria-hidden="true"></span></button></h3>
+            <div class="acc-panel" id="ds-acc-2"><div><div class="acc-panel__inner">Groups marked <span class="t-mono t-xs">data-single="true"</span> close their siblings on open.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ IDENTITY -->
+<section class="section on-dark" id="identity">
+  <div class="shell">
+    <div class="split split--even" style="align-items:center">
+      <div class="stack-5">
+        <span class="eyebrow" data-reveal>08</span>
+        <h2 class="t-h1" data-reveal style="--i:1">Identity</h2>
+        <p class="t-lead" data-reveal style="--i:2">
+          A circular seal: twenty dots on the outer ring — one for each member of
+          the table — around a meridian globe. The dots are the point of the mark,
+          and the reason it is never simplified further.
+        </p>
+        <div class="stack-3" data-reveal style="--i:3">
+          <div class="dodont dodont--do" style="border-color:rgba(239,221,198,.3);background:rgba(239,221,198,.06)">
+            <span class="dodont__k" style="color:var(--parchment-300)">Do</span>
+            <ul style="color:rgba(244,233,218,.8)">
+              <li>Reproduce in a single colour — maroon on parchment, or parchment on maroon</li>
+              <li>Keep clear space of at least the outer ring's radius on all sides</li>
+              <li>Minimum size 28px; below that use the globe alone without the dot ring</li>
+            </ul>
+          </div>
+          <div class="dodont dodont--dont" style="border-color:rgba(239,221,198,.22)">
+            <span class="dodont__k" style="color:rgba(244,233,218,.6)">Don't</span>
+            <ul style="color:rgba(244,233,218,.7)">
+              <li>Re-colour, gradient-fill or add a drop shadow to the seal</li>
+              <li>Change the count of ring dots or their spacing</li>
+              <li>Stretch, rotate or place the mark on a photograph without a scrim</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2" data-reveal>
+        <div class="card card--flat u-center" style="background:var(--parchment-300);border:0;padding:2.5rem">
+          <svg viewBox="0 0 64 64" fill="none" style="width:110px;margin-inline:auto;color:#600808" aria-label="Seal, maroon on parchment">
+            <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0.001 8.60708"/>
+            <circle cx="32" cy="32" r="23.2" stroke="currentColor" stroke-width="0.65" opacity=".5"/>
+            <circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.1"/>
+            <ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="0.8" opacity=".7"/>
+            <path d="M16.4 32h31.2" stroke="currentColor" stroke-width="0.8" opacity=".7"/>
+            <path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width="0.75" opacity=".45"/>
+          </svg>
+          <p class="t-xs" style="color:var(--ink-600);margin-top:1rem">Positive · maroon on parchment</p>
+        </div>
+        <div class="card card--flat u-center" style="background:#380404;border:1px solid rgba(239,221,198,.2);padding:2.5rem">
+          <svg viewBox="0 0 64 64" fill="none" style="width:110px;margin-inline:auto;color:#EFDDC6" aria-label="Seal, parchment on maroon">
+            <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0.001 8.60708"/>
+            <circle cx="32" cy="32" r="23.2" stroke="currentColor" stroke-width="0.65" opacity=".5"/>
+            <circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.1"/>
+            <ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="0.8" opacity=".7"/>
+            <path d="M16.4 32h31.2" stroke="currentColor" stroke-width="0.8" opacity=".7"/>
+            <path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width="0.75" opacity=".45"/>
+          </svg>
+          <p class="t-xs" style="color:rgba(244,233,218,.7);margin-top:1rem">Reversed · parchment on maroon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ A11Y -->
+<section class="section" id="a11y">
+  <div class="shell">
+    <div class="split">
+      <div class="split__sticky stack-3">
+        <span class="eyebrow" data-reveal>09</span>
+        <h2 class="t-h1" data-reveal style="--i:1">Accessibility</h2>
+        <p class="t-sm t-muted" data-reveal style="--i:2">
+          The standard the build is held to, and how each item is met.
+        </p>
+      </div>
+
+      <div class="stack-4" data-reveal-group>
+        <div class="card">
+          <h3 class="card__title">Contrast</h3>
+          <p class="t-sm t-muted">
+            Maroon #600808 on parchment #EFDDC6 measures approximately 9.4:1 —
+            comfortably past AAA for body text. Reversed, parchment on maroon-800
+            measures approximately 11:1. No text-bearing pair in the system falls
+            below 4.5:1.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Keyboard</h3>
+          <p class="t-sm t-muted">
+            Every interactive element is reachable and operable by keyboard,
+            including the map's delegation pins, which are focusable buttons with
+            labels. Modals trap focus and restore it to the opener on close. A
+            skip link precedes the navigation.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Announcement</h3>
+          <p class="t-sm t-muted">
+            The countdown announces politely on the day boundary rather than every
+            second. The map's information card is a live region. Tabs, accordions
+            and the drawer carry the expected ARIA state and respond to arrow keys.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Without JavaScript</h3>
+          <p class="t-sm t-muted">
+            Reveal animations are applied only under <span class="t-mono t-xs">html.js</span>,
+            so a visitor without JavaScript sees fully rendered content rather
+            than an empty page. Navigation, layout and every static page section
+            work unchanged.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TOKENS CODE -->
+<section class="section on-paper">
+  <div class="shell">
+    <div class="section-head" style="margin-bottom:2rem">
+      <span class="eyebrow" data-reveal>Implementation</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Consuming the system</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Components read semantic tokens, never raw values. That is what makes
+        section inversion a one-class change.
+      </p>
+    </div>
+
+    <div class="grid grid-2" data-reveal>
+      <div>
+        <span class="ds-label">Correct</span>
+        <pre class="code"><i>/* reads the context it is dropped into */</i>
+.my-panel {
+  background: <b>var(--surface)</b>;
+  color: <b>var(--text-body)</b>;
+  border: 1px solid <b>var(--line)</b>;
+  border-radius: <b>var(--r-lg)</b>;
+  box-shadow: <b>var(--sh-sm)</b>;
+  padding: <b>var(--sp-6)</b>;
+}</pre>
+      </div>
+      <div>
+        <span class="ds-label">Incorrect</span>
+        <pre class="code"><i>/* breaks the moment it enters .on-dark */</i>
+.my-panel {
+  background: <b>#FFFFFF</b>;
+  color: <b>#333333</b>;
+  border: 1px solid <b>#e5e5e5</b>;
+  border-radius: <b>20px</b>;
+  box-shadow: 0 2px 6px <b>rgba(0,0,0,.08)</b>;
+  padding: <b>30px</b>;
+}</pre>
+      </div>
+    </div>
+
+    <div class="row row--center" style="margin-top:clamp(2rem,4vw,3rem)" data-reveal>
+      <a class="btn btn--ghost" href="wireframes.html">See the wireframes &amp; user journey</a>
+    </div>
+  </div>
+</section>

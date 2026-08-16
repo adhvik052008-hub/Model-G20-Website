@@ -1,0 +1,14 @@
+{
+  "name": "Model G20 2026 — The School of Raya",
+  "short_name": "Model G20 2026",
+  "description": "An international summit simulation convened by The School of Raya at FLAME University, Pune. 13–15 November 2026.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EFDDC6",
+  "theme_color": "#600808",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

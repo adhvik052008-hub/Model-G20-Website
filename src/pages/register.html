@@ -1,0 +1,453 @@
+<!--meta
+title: Registration
+nav: register
+description: Register for Model G20 2026 as an individual delegate, an institutional delegation, press corps or observer. Fees, deadlines and the five-step form.
+-->
+
+<section class="page-head">
+  <div class="shell shell--wide">
+    <div class="page-head__grid">
+      <div class="stack-5">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html">Summit</a><span>/</span><span aria-current="page">Registration</span>
+        </nav>
+        <h1 class="page-head__title">
+          <span class="reveal-mask"><span>Take a seat</span></span>
+          <span class="reveal-mask"><span><em class="t-quiet-italic t-accent">at the table</em></span></span>
+        </h1>
+      </div>
+      <div class="stack-4" data-reveal style="--i:2">
+        <p class="t-lead">
+          Five steps, about six minutes. Allotments are released on a rolling
+          basis — the earlier a registration is completed, the earlier the choice.
+        </p>
+        <div class="countdown countdown--compact" data-countdown aria-label="Time remaining until the summit opens"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FEES -->
+<section class="section section--tight section--flush-top">
+  <div class="shell shell--wide">
+    <hr class="divider" style="margin-bottom:clamp(2rem,4vw,3rem)">
+
+    <div class="section-head" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+      <span class="eyebrow" data-reveal>Fees</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Four ways to attend</h2>
+    </div>
+
+    <div class="grid grid-4" data-fees></div>
+
+    <div class="row row--between" style="margin-top:1.5rem;gap:1rem" data-reveal>
+      <p class="t-xs t-faint" style="max-width:60ch">
+        Fees are indicative for this build and are confirmed by the Office of
+        Finance before registration opens. On-campus accommodation is quoted
+        separately at ₹4,200 for three nights, twin sharing, 12–15 November.
+      </p>
+      <a class="btn-text" href="faqs.html">What the fee includes<span class="btn-text__line"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FORM -->
+<section class="section" data-wizard-scope>
+  <div class="shell shell--wide">
+    <div class="reg-layout">
+
+      <div class="stack-6">
+        <div class="stepper" aria-hidden="true">
+          <div class="step is-active"><span class="step__dot">1</span><span class="step__name">Type</span><span class="step__bar"></span></div>
+          <div class="step"><span class="step__dot">2</span><span class="step__name">Delegate</span><span class="step__bar"></span></div>
+          <div class="step"><span class="step__dot">3</span><span class="step__name">Preferences</span><span class="step__bar"></span></div>
+          <div class="step"><span class="step__dot">4</span><span class="step__name">Logistics</span><span class="step__bar"></span></div>
+          <div class="step"><span class="step__dot">5</span><span class="step__name">Review</span></div>
+        </div>
+
+        <form class="stack-6" data-wizard data-validate novalidate>
+
+          <p class="form-note" data-draft-note hidden>
+            <svg class="form-note__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 6v5M10 13.6v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span>We restored your unfinished registration from this browser. Continue where you left off.</span>
+          </p>
+
+          <!-- ---------------------------------------------- STEP 1 -->
+          <section class="reg-step stack-5">
+            <div class="reg-step__head stack-2">
+              <span class="eyebrow">Step one of five</span>
+              <h2 class="t-h2">How are you attending?</h2>
+            </div>
+
+            <div class="grid grid-2">
+              <label class="choice choice--radio">
+                <input type="radio" name="type" value="individual" required
+                       data-summary="Attending as" data-summary-value="Individual delegate" checked>
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">Individual delegate — ₹3,500</span>
+                  <span class="choice__desc">Applying on your own, from any institution.</span>
+                </span>
+              </label>
+
+              <label class="choice choice--radio">
+                <input type="radio" name="type" value="delegation"
+                       data-summary="Attending as" data-summary-value="Institutional delegation">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">Institutional delegation — ₹3,100 each</span>
+                  <span class="choice__desc">Five or more delegates registered by one faculty advisor.</span>
+                </span>
+              </label>
+
+              <label class="choice choice--radio">
+                <input type="radio" name="type" value="press"
+                       data-summary="Attending as" data-summary-value="International Press Corps">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">International Press Corps — ₹2,900</span>
+                  <span class="choice__desc">Correspondent, photojournalist or editor.</span>
+                </span>
+              </label>
+
+              <label class="choice choice--radio">
+                <input type="radio" name="type" value="observer"
+                       data-summary="Attending as" data-summary-value="Observer or faculty">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">Observer &amp; faculty — ₹1,400</span>
+                  <span class="choice__desc">Gallery access, ceremonies and the advisor programme.</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="r-institution">Institution <span class="req">*</span></label>
+                <input class="input" id="r-institution" name="institution" type="text" required
+                       autocomplete="organization" placeholder="School, college or university"
+                       data-summary="Institution">
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-size">Delegation size</label>
+                <select class="select" id="r-size" name="size" data-summary="Delegation size">
+                  <option value="1">Just me</option>
+                  <option value="2-4">2 – 4 delegates</option>
+                  <option value="5-9">5 – 9 delegates</option>
+                  <option value="10-19">10 – 19 delegates</option>
+                  <option value="20+">20 or more</option>
+                </select>
+                <span class="field__hint">Delegations of five or more qualify for the reduced rate.</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------------------------------------------- STEP 2 -->
+          <section class="reg-step stack-5" hidden>
+            <div class="reg-step__head stack-2">
+              <span class="eyebrow">Step two of five</span>
+              <h2 class="t-h2">Who is attending?</h2>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="r-first">First name <span class="req">*</span></label>
+                <input class="input" id="r-first" name="first" type="text" required autocomplete="given-name" data-summary="First name">
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-last">Surname <span class="req">*</span></label>
+                <input class="input" id="r-last" name="last" type="text" required autocomplete="family-name" data-summary="Surname">
+                <span class="field__error"></span>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="r-email">Email <span class="req">*</span></label>
+                <input class="input" id="r-email" name="email" type="email" required autocomplete="email"
+                       placeholder="you@institution.edu" data-summary="Email">
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-phone">Telephone <span class="req">*</span></label>
+                <input class="input" id="r-phone" name="phone" type="tel" required autocomplete="tel"
+                       placeholder="+91 00000 00000" data-summary="Telephone">
+                <span class="field__error"></span>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="r-age">Age group <span class="req">*</span></label>
+                <select class="select" id="r-age" name="age" required data-summary="Age group">
+                  <option value="">Select…</option>
+                  <option>14 – 16</option>
+                  <option>17 – 18</option>
+                  <option>19 – 22</option>
+                  <option>23 and over</option>
+                </select>
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-experience">Prior experience <span class="req">*</span></label>
+                <select class="select" id="r-experience" name="experience" required data-summary="Experience">
+                  <option value="">Select…</option>
+                  <option>This is my first conference</option>
+                  <option>1 – 2 conferences</option>
+                  <option>3 – 5 conferences</option>
+                  <option>6 or more conferences</option>
+                  <option>I have chaired before</option>
+                </select>
+                <span class="field__hint">Used to place you well, never to exclude you.</span>
+                <span class="field__error"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="r-advisor">Faculty advisor — name and email</label>
+              <input class="input" id="r-advisor" name="advisor" type="text"
+                     placeholder="Required for delegates under 18" data-summary="Faculty advisor">
+              <span class="field__hint">Mandatory for any delegate under eighteen at the time of summit.</span>
+            </div>
+          </section>
+
+          <!-- ---------------------------------------------- STEP 3 -->
+          <section class="reg-step stack-5" hidden>
+            <div class="reg-step__head stack-2">
+              <span class="eyebrow">Step three of five</span>
+              <h2 class="t-h2">Committee &amp; country preferences</h2>
+              <p class="t-sm t-muted">
+                Rank three of each. Most applicants receive one of their first two
+                committee choices. Check the
+                <a class="link-underline" href="country-matrix.html">country matrix</a>
+                before you rank.
+              </p>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="r-c1">Committee — first choice <span class="req">*</span></label>
+                <select class="select" id="r-c1" name="committee1" required data-committee-options data-summary="Committee 1">
+                  <option value="">Select a committee…</option>
+                </select>
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-c2">Committee — second choice <span class="req">*</span></label>
+                <select class="select" id="r-c2" name="committee2" required data-committee-options data-summary="Committee 2">
+                  <option value="">Select a committee…</option>
+                </select>
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-c3">Committee — third choice</label>
+                <select class="select" id="r-c3" name="committee3" data-committee-options data-summary="Committee 3">
+                  <option value="">Select a committee…</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="r-n1">Delegation — first choice <span class="req">*</span></label>
+                <select class="select" id="r-n1" name="country1" required data-country-options data-summary="Delegation 1">
+                  <option value="">Select a delegation…</option>
+                </select>
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-n2">Delegation — second choice <span class="req">*</span></label>
+                <select class="select" id="r-n2" name="country2" required data-country-options data-summary="Delegation 2">
+                  <option value="">Select a delegation…</option>
+                </select>
+                <span class="field__error"></span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="r-n3">Delegation — third choice</label>
+                <select class="select" id="r-n3" name="country3" data-country-options data-summary="Delegation 3">
+                  <option value="">Select a delegation…</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="r-note">Anything the Secretariat should know</label>
+              <textarea class="textarea" id="r-note" name="note" style="min-height:110px"
+                        placeholder="Bloc requests, delegates you would like placed together, or a reason a particular seat matters to you."></textarea>
+            </div>
+          </section>
+
+          <!-- ---------------------------------------------- STEP 4 -->
+          <section class="reg-step stack-5" hidden>
+            <div class="reg-step__head stack-2">
+              <span class="eyebrow">Step four of five</span>
+              <h2 class="t-h2">Logistics &amp; access</h2>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="r-diet">Dietary requirements</label>
+              <select class="select" id="r-diet" name="diet" data-summary="Dietary">
+                <option>No specific requirement</option>
+                <option>Vegetarian</option>
+                <option>Vegan</option>
+                <option>Jain</option>
+                <option>Halal</option>
+                <option>Allergy — detailed below</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="r-access">Accessibility &amp; medical</label>
+              <textarea class="textarea" id="r-access" name="access" style="min-height:110px"
+                        placeholder="Tell us what you need — mobility, hearing, sight, medical, or anything else. The Logistics office confirms arrangements in writing before you travel."></textarea>
+              <span class="field__hint">Shared only with the Logistics office and catering. Never published.</span>
+            </div>
+
+            <div class="stack-3">
+              <label class="choice">
+                <input type="checkbox" name="accommodation" data-summary="Accommodation">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">Request on-campus accommodation — ₹4,200</span>
+                  <span class="choice__desc">Three nights, twin sharing, 12–15 November. Allocated in order of confirmed payment.</span>
+                </span>
+              </label>
+
+              <label class="choice">
+                <input type="checkbox" name="shuttle" data-summary="Airport shuttle">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">Request a shuttle transfer</span>
+                  <span class="choice__desc">From Pune Airport or Pune Junction on 12 or 13 November.</span>
+                </span>
+              </label>
+
+              <label class="choice">
+                <input type="checkbox" name="updates" data-summary="Summit updates">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span class="choice__text">
+                  <span class="choice__title">Send me summit updates</span>
+                  <span class="choice__desc">Allotment releases, guide publications and deadline reminders only.</span>
+                </span>
+              </label>
+            </div>
+          </section>
+
+          <!-- ---------------------------------------------- STEP 5 -->
+          <section class="reg-step stack-5" hidden>
+            <div class="reg-step__head stack-2">
+              <span class="eyebrow">Step five of five</span>
+              <h2 class="t-h2">Review &amp; submit</h2>
+              <p class="t-sm t-muted">Check everything below. You can go back and change any of it.</p>
+            </div>
+
+            <div class="card card--muted card--pad-lg">
+              <dl class="reg-summary" data-wizard-summary></dl>
+            </div>
+
+            <label class="choice">
+              <input type="checkbox" name="terms" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span class="choice__text">
+                <span class="choice__title">I accept the conference code of conduct <span class="req">*</span></span>
+                <span class="choice__desc">
+                  Including the position paper deadline of 5 November 2026 and the
+                  refund policy set out in the <a class="link-underline" href="faqs.html">FAQs</a>.
+                </span>
+              </span>
+            </label>
+
+            <p class="form-note">
+              <svg class="form-note__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 6v5M10 13.6v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span>
+                Submitting reserves your place in the queue, not your seat. The
+                Office of Delegate Affairs issues allotments in writing, and a seat
+                is confirmed only when payment is settled.
+              </span>
+            </p>
+          </section>
+
+          <!-- ---------------------------------------------- CONTROLS -->
+          <div class="row row--between" style="border-top:1px solid var(--line);padding-top:1.5rem">
+            <button class="btn btn--quiet" type="button" data-wizard-back hidden>Back</button>
+            <div class="row row--tight u-mt-auto" style="margin-left:auto">
+              <button class="btn btn--lg" type="button" data-wizard-next>
+                Continue
+                <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="btn btn--lg" type="submit" data-wizard-submit hidden>
+                Submit registration
+                <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="card card--pad-lg" data-form-done hidden>
+          <span class="eyebrow">Registration received</span>
+          <h2 class="t-h2">You are in the queue</h2>
+          <p class="t-body t-muted">
+            The Office of Delegate Affairs will confirm your allotment by email.
+            Allotments are released on a rolling basis; you will hear from us
+            whether or not your first preference was available.
+          </p>
+          <dl class="reg-summary" data-deadlines></dl>
+          <p class="form-note">
+            <svg class="form-note__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 6v5M10 13.6v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span>
+              This build has no server attached, so nothing was transmitted. Connect
+              the form to your handler of choice — see the deployment notes in the
+              repository README.
+            </span>
+          </p>
+          <div class="row">
+            <a class="btn btn--ghost" href="resources.html">Download the handbook</a>
+            <a class="btn btn--ghost" href="committees.html">Read your committee's guide</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------ ASIDE -->
+      <aside class="reg-aside">
+        <div class="glass glass--pad stack-4">
+          <span class="eyebrow eyebrow--bare">Key dates</span>
+          <dl class="reg-summary" data-deadlines></dl>
+          <div class="countdown countdown--compact" data-countdown aria-label="Time remaining until the summit opens"></div>
+        </div>
+
+        <div class="card card--muted stack-3">
+          <span class="card__meta">Good to know</span>
+          <ul class="fee-card__list">
+            <li>Your progress is saved in this browser as you type</li>
+            <li>Nothing is charged at this stage</li>
+            <li>Substitutions within a delegation are free until 10 November</li>
+            <li>Full refund on cancellations before 20 October</li>
+          </ul>
+        </div>
+
+        <div class="card card--muted stack-3">
+          <span class="card__meta">Need help?</span>
+          <p class="t-sm t-muted">
+            The Chargé d'Affaires answers delegate questions within two working days.
+          </p>
+          <a class="btn btn--ghost btn--sm" href="contact.html" style="width:fit-content">Contact the desk</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>

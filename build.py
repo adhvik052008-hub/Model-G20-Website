@@ -1,0 +1,161 @@
+#!/usr/bin/env python3
+"""
+Model G20 2026 — static site assembler.
+
+Composes every page in src/pages/ against the shared shell in src/partials/
+and writes plain HTML to the repository root, ready to serve from GitHub
+Pages or any static host with no runtime dependency.
+
+    python3 build.py            # build all pages
+    python3 build.py --check    # build to memory and report, writing nothing
+
+Front matter lives in an HTML comment at the top of each page file:
+
+    <!--meta
+    title: Committees
+    nav: committees
+    description: One-line summary used for <title>, OG tags and search.
+    scripts: matrix.js
+    -->
+"""
+
+from __future__ import annotations
+
+import argparse
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).parent.resolve()
+PAGES = ROOT / "src" / "pages"
+PARTIALS = ROOT / "src" / "partials"
+
+# Order matters only for the build log.
+PAGE_ORDER = [
+    "index", "about", "committees", "country-matrix", "secretariat",
+    "schedule", "resources", "gallery", "faqs", "contact", "register",
+    "design-system", "wireframes", "404",
+]
+
+# nav key -> the placeholder that receives aria-current="page"
+NAV_KEYS = [
+    "home", "about", "committees", "matrix", "secretariat", "schedule",
+    "resources", "gallery", "faqs", "contact", "register",
+]
+
+BASE_URL = "https://adhvik052008-hub.github.io/model-g20-website/"
+
+SHELL = """<!doctype html>
+<html lang="en">
+<head>
+{head}
+</head>
+<body{body_attr}>
+{header}
+<main id="main">
+{content}
+</main>
+{footer}
+{scripts}
+</body>
+</html>
+"""
+
+META_RE = re.compile(r"^\s*<!--meta\s*(.*?)-->\s*", re.DOTALL)
+
+
+def read(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def parse_page(text: str) -> tuple[dict, str]:
+    """Split a page file into its front matter and its body."""
+    meta: dict[str, str] = {}
+    match = META_RE.match(text)
+    if match:
+        for line in match.group(1).splitlines():
+            line = line.strip()
+            if not line or ":" not in line:
+                continue
+            key, _, value = line.partition(":")
+            meta[key.strip()] = value.strip()
+        text = text[match.end():]
+    return meta, text.strip("\n")
+
+
+def build_head(meta: dict, head_tpl: str, slug: str) -> str:
+    canonical = BASE_URL + ("" if slug == "index" else f"{slug}.html")
+    return (
+        head_tpl
+        .replace("{{title}}", meta.get("title", "Model G20 2026"))
+        .replace("{{description}}", meta.get("description", ""))
+        .replace("{{canonical}}", canonical)
+    )
+
+
+def build_nav(html: str, active: str, crest: str) -> str:
+    """Fill crest slots and mark the active navigation item."""
+    crest_lg = crest.replace('class="crest__mark"', 'class="curtain__mark"')
+    html = html.replace("{{crest_lg}}", crest_lg).replace("{{crest}}", crest)
+    for key in NAV_KEYS:
+        token = "{{a_%s}}" % key
+        html = html.replace(token, ' aria-current="page"' if key == active else "")
+    # Any nav key not in NAV_KEYS (design-system, wireframes) leaves no marker.
+    return re.sub(r"\{\{a_[a-z_]+\}\}", "", html)
+
+
+def build_scripts(meta: dict) -> str:
+    # world.js and data.js are pure data; render.js and map.js populate the DOM;
+    # app.js wires interaction last so its observers see the finished markup.
+    core = ["world.js", "data.js", "render.js", "map.js"]
+    extra = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
+    ordered = core + extra + ["app.js"]
+    return "\n".join(f'<script src="assets/js/{name}" defer></script>' for name in ordered)
+
+
+def build_page(slug: str, head_tpl: str, header_tpl: str, footer_tpl: str, crest: str) -> str:
+    meta, content = parse_page(read(PAGES / f"{slug}.html"))
+    body_class = meta.get("body_class", "").strip()
+    return SHELL.format(
+        head=build_head(meta, head_tpl, slug),
+        body_attr=f' class="{body_class}"' if body_class else "",
+        header=build_nav(header_tpl, meta.get("nav", ""), crest),
+        content=content,
+        footer=footer_tpl.replace("{{crest}}", crest),
+        scripts=build_scripts(meta),
+    )
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Build the Model G20 2026 site.")
+    parser.add_argument("--check", action="store_true", help="build without writing files")
+    args = parser.parse_args()
+
+    head_tpl = read(PARTIALS / "head.html")
+    header_tpl = read(PARTIALS / "header.html")
+    footer_tpl = read(PARTIALS / "footer.html")
+    crest = read(PARTIALS / "crest.svg").strip()
+
+    found = sorted(p.stem for p in PAGES.glob("*.html"))
+    unknown = [s for s in found if s not in PAGE_ORDER]
+    slugs = [s for s in PAGE_ORDER if s in found] + unknown
+    if not slugs:
+        print("No pages found in src/pages/", file=sys.stderr)
+        return 1
+
+    total = 0
+    for slug in slugs:
+        html = build_page(slug, head_tpl, header_tpl, footer_tpl, crest)
+        total += len(html)
+        if not args.check:
+            (ROOT / f"{slug}.html").write_text(html, encoding="utf-8")
+        print(f"  {'checked' if args.check else 'built'}  {slug}.html  ({len(html):,} bytes)")
+
+    print(f"\n{len(slugs)} pages · {total:,} bytes total")
+    if unknown:
+        print(f"note: {', '.join(unknown)} not listed in PAGE_ORDER")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
