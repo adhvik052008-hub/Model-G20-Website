@@ -32,6 +32,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
+<!-- Set before first paint so the curtain and the un-revealed state of
+     [data-reveal] apply only where JavaScript can undo them. Without this a
+     no-JS visitor would sit behind a curtain that never lifts. -->
+<script>document.documentElement.classList.add("js");</script>
+
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
@@ -68,6 +73,15 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="scroll-progress" aria-hidden="true"></div>
+
+<noscript>
+  <div class="noscript-note">
+    <strong>JavaScript is turned off.</strong> The pages read normally, but the
+    live countdown, the delegation map, the country matrix and the committee
+    listings are generated in the browser and will not appear. Enable JavaScript,
+    or write to the Secretariat and we will send the same information by email.
+  </div>
+</noscript>
 
 <div class="curtain" aria-hidden="true">
   <div class="curtain__inner">
@@ -319,7 +333,9 @@
       </p>
     </div>
 
-    <div class="grid grid-auto" data-reveal-group>
+    <!-- Five cards read better as 3 + 2 than as 4 + 1, so the track minimum
+         is set to break at three columns. -->
+    <div class="grid grid-auto-lg" data-reveal-group>
       <article class="card card--interactive">
         <span class="tile-num">01</span>
         <h3 class="card__title">Diplomacy</h3>

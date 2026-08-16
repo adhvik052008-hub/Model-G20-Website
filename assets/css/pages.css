@@ -530,7 +530,10 @@
 @media (max-width: 560px) {
   .gal-item, .gal-item--wide, .gal-item--full, .gal-item--tall { grid-column: span 12; }
 }
-.gal-item .plate { height: 100%; }
+/* Both dimensions are pinned so the plate fills its cell. Height alone would
+   let aspect-ratio derive a width from a tall row and burst the grid. */
+.gal-item { min-width: 0; }
+.gal-item .plate { height: 100%; width: 100%; }
 .gal-item__zoom {
   position: absolute;
   top: 0.9rem; right: 0.9rem;

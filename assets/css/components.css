@@ -70,7 +70,7 @@
 
 /* Frosted state, engaged after the hero. */
 .site-nav.is-stuck {
-  background-color: var(--a-ivory-62);
+  background-color: var(--a-ivory-80);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
   border-bottom-color: var(--a-ink-08);
@@ -191,8 +191,17 @@
 .burger[aria-expanded="true"] .burger__box i:last-child { width: 100%; transform: translateY(-5.5px) rotate(-45deg); }
 
 @media (max-width: 1120px) {
-  .nav-links, .nav-cta-desktop { display: none; }
+  /* Scoped so it outranks .btn's own display, which is declared later. */
+  .site-nav .nav-links,
+  .site-nav .nav-cta-desktop { display: none; }
   .burger { display: grid; }
+}
+/* The wordmark is a lock-up: it never breaks across lines. */
+.crest__name, .crest__sub { white-space: nowrap; }
+@media (max-width: 420px) {
+  .crest { gap: 0.6rem; }
+  .crest__mark { width: 36px; height: 36px; }
+  .crest__name { font-size: 1.08rem; }
 }
 
 /* Mobile drawer */
@@ -607,8 +616,12 @@
 .on-dark .cd-unit { background: var(--a-parch-12); border-color: var(--line); }
 .on-dark .cd-unit__value { color: var(--parchment-200); }
 .on-dark .cd-unit__label { color: rgba(244,233,218,.6); }
-.countdown--compact .cd-unit { padding: 0.6rem 0.4rem; }
+/* Compact lives in ~200px columns (footer, drawer, registration aside), so
+   the label has to give up its tracking before the unit clips it. */
+.countdown--compact { gap: 0.35rem; }
+.countdown--compact .cd-unit { padding: 0.55rem 0.25rem; }
 .countdown--compact .cd-unit__value { font-size: clamp(1.3rem, 2.6vw, 1.8rem); }
+.countdown--compact .cd-unit__label { font-size: 8px; letter-spacing: 0.08em; }
 
 /* ==========================================================================
    8. MARQUEE — nations ticker
@@ -1237,7 +1250,24 @@ body.is-locked { overflow: hidden; }
 }
 @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
 
-.curtain {
+.noscript-note {
+  position: relative;
+  z-index: var(--z-nav);
+  margin: calc(var(--nav-h) + 1rem) var(--gutter) 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line-accent);
+  border-radius: var(--r-sm);
+  background: var(--a-maroon-06);
+  color: var(--text-body);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+.noscript-note strong { color: var(--accent); }
+
+/* Only mounted where JavaScript can lift it again — see the inline class
+   toggle in <head>. */
+.curtain { display: none; }
+.js .curtain {
   position: fixed;
   inset: 0;
   z-index: var(--z-curtain);

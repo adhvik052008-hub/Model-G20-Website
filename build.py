@@ -126,6 +126,28 @@ def build_page(slug: str, head_tpl: str, header_tpl: str, footer_tpl: str, crest
     )
 
 
+def write_sitemap(slugs: list[str]) -> None:
+    """Emit sitemap.xml and robots.txt so the two can never drift from PAGE_ORDER."""
+    # 404 is reachable but should never be indexed.
+    indexable = [s for s in slugs if s != "404"]
+    urls = "\n".join(
+        "  <url>\n"
+        f"    <loc>{BASE_URL}{'' if s == 'index' else s + '.html'}</loc>\n"
+        f"    <priority>{'1.0' if s == 'index' else '0.8' if s in ('committees', 'register', 'country-matrix') else '0.6'}</priority>\n"
+        "  </url>"
+        for s in indexable
+    )
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{urls}\n</urlset>\n",
+        encoding="utf-8",
+    )
+    (ROOT / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}sitemap.xml\n", encoding="utf-8"
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build the Model G20 2026 site.")
     parser.add_argument("--check", action="store_true", help="build without writing files")
@@ -150,6 +172,10 @@ def main() -> int:
         if not args.check:
             (ROOT / f"{slug}.html").write_text(html, encoding="utf-8")
         print(f"  {'checked' if args.check else 'built'}  {slug}.html  ({len(html):,} bytes)")
+
+    if not args.check:
+        write_sitemap(slugs)
+        print("  built  sitemap.xml, robots.txt")
 
     print(f"\n{len(slugs)} pages · {total:,} bytes total")
     if unknown:

@@ -126,7 +126,7 @@
         "to negotiate the Leaders' Declaration — the only document the summit " +
         "adopts by consensus, and the one every other committee feeds into.",
       role: "Head of State or Government",
-      seats: 21, pool: "g20", difficulty: 4, level: "Advanced",
+      pool: "g20", difficulty: 4, level: "Advanced",
       outputs: ["Leaders' Declaration", "Chair's Summary"],
       focus: [
         "Reform of the UN Security Council and the Bretton Woods institutions",
@@ -143,7 +143,7 @@
         "not talking points: debt sustainability analyses, exchange-rate exposure " +
         "and the political cost of every basis point.",
       role: "Finance Minister / Central Bank Governor",
-      seats: 21, pool: "g20", difficulty: 5, level: "Advanced",
+      pool: "g20", difficulty: 5, level: "Advanced",
       outputs: ["FMCBG Communiqué", "Common Framework Annex"],
       focus: [
         "A workable successor to the Common Framework for debt treatment",
@@ -160,7 +160,7 @@
         "adaptation finance targets with the fiscal space of the countries that " +
         "need them most.",
       role: "Environment Minister / Climate Envoy",
-      seats: 32, pool: "extended", difficulty: 3, level: "Intermediate",
+      pool: "extended", difficulty: 3, level: "Intermediate",
       outputs: ["Ministerial Outcome Document", "Adaptation Finance Annex"],
       focus: [
         "Capitalising and governing the loss-and-damage facility",
@@ -177,7 +177,7 @@
         "attempt at interoperable AI governance while defending national compute " +
         "and data positions.",
       role: "Minister for Technology / Digital Affairs",
-      seats: 32, pool: "extended", difficulty: 3, level: "Intermediate",
+      pool: "extended", difficulty: 3, level: "Intermediate",
       outputs: ["Digital Ministers' Declaration", "Interoperability Principles"],
       focus: [
         "Compute thresholds, model evaluations and incident reporting",
@@ -194,7 +194,7 @@
         "negotiates the gap between what states are doing and what they have " +
         "agreed they may do.",
       role: "Trade Minister / Chief Negotiator",
-      seats: 30, pool: "extended", difficulty: 4, level: "Advanced",
+      pool: "extended", difficulty: 4, level: "Advanced",
       outputs: ["Trade Ministers' Statement", "Appellate Reform Roadmap"],
       focus: [
         "Restoring binding dispute settlement",
@@ -210,7 +210,7 @@
         "The conference's most accessible committee and its broadest mandate. " +
         "Ideal for delegates taking their first seat at an international table.",
       role: "Development Minister / Sherpa",
-      seats: 34, pool: "full", difficulty: 2, level: "Foundational",
+      pool: "full", difficulty: 2, level: "Foundational",
       outputs: ["Development Action Plan", "SDG Acceleration Annex"],
       focus: [
         "Financing the SDG gap through MDB balance-sheet reform",
@@ -227,7 +227,7 @@
         "Delegates must find the sequencing that both survives an election and " +
         "meets a target.",
       role: "Energy Minister",
-      seats: 30, pool: "extended", difficulty: 3, level: "Intermediate",
+      pool: "extended", difficulty: 3, level: "Intermediate",
       outputs: ["Energy Ministers' Communiqué", "Minerals Security Framework"],
       focus: [
         "Refining capacity concentration and supply resilience",
@@ -244,7 +244,7 @@
         "formally transmitted to the Leaders' Summit and may be cited in floor " +
         "debate — the only engagement group with that privilege.",
       role: "Youth Delegate",
-      seats: 36, pool: "full", difficulty: 1, level: "Foundational",
+      pool: "full", difficulty: 1, level: "Foundational",
       outputs: ["Y20 Communiqué to Leaders"],
       focus: [
         "Automation, displacement and the shape of the social contract",
@@ -261,7 +261,7 @@
         "committee in real time. The IPC publishes a daily edition, runs the " +
         "leaders' press conferences and holds the floor to account.",
       role: "Correspondent / Photojournalist / Editor",
-      seats: 24, pool: "press", difficulty: 2, level: "Foundational",
+      pool: "press", difficulty: 2, level: "Foundational",
       outputs: ["The Raya Dispatch — daily edition", "Closing press conference"],
       focus: [
         "Live filing from committee under embargo rules",
@@ -278,7 +278,7 @@
         "powers. Directives are live, the situation moves every twenty minutes " +
         "and no background guide can prepare you for the third update.",
       role: "Sherpa with plenipotentiary authority",
-      seats: 20, pool: "select", difficulty: 5, level: "Advanced",
+      pool: "select", difficulty: 5, level: "Advanced",
       outputs: ["Emergency Directives", "Chair's Situation Report"],
       focus: [
         "Real-time directive drafting under compressed deadlines",
@@ -294,11 +294,15 @@
      build so the matrix demonstrates realistic density. Replace `statusFor`
      with a lookup against the Secretariat's live allotment sheet.
      ====================================================================== */
+  /* The crisis committee seats twenty of the twenty-one members. */
+  var CRISIS_SEATS = ["US", "CN", "RU", "IN", "GB", "FR", "DE", "JP", "BR", "ZA",
+                      "SA", "TR", "KR", "EU", "AU2", "CA", "MX", "ID", "IT", "AR"];
+
   var POOLS = {
     g20:      function (c) { return c.group === "member"; },
     extended: function (c) { return c.group === "member" || c.group === "invited"; },
-    full:     function (c) { return true; },
-    select:   function (c) { return c.group === "member" && "US CN RU IN GB FR DE JP BR ZA SA TR KR EU AU2 CA MX ID IT AR".indexOf(c.code) > -1; },
+    full:     function () { return true; },
+    select:   function (c) { return CRISIS_SEATS.indexOf(c.code) > -1; },
     press:    function (c) { return c.group === "org" || c.group === "member"; }
   };
 

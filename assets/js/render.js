@@ -54,8 +54,18 @@
   /* ======================================================================
      COMMITTEES
      ====================================================================== */
+  /* One definition of "open", used by the card and the dossier alike:
+     a delegation whose seat has not yet been allotted. */
+  function seatCount(c) {
+    var pool = D.seatsFor(c);
+    return {
+      total: pool.length,
+      open: pool.filter(function (x) { return D.statusFor(c.id, x.code) !== "closed"; }).length
+    };
+  }
+
   function committeeCard(c) {
-    var open = D.seatsFor(c).filter(function (x) { return D.statusFor(c.id, x.code) !== "closed"; }).length;
+    var n = seatCount(c);
     return '<article class="cmt-card" data-reveal>' +
       '<div class="cmt-card__seal">' + ICON.seal + "</div>" +
       '<div class="row row--between row--tight">' +
@@ -66,8 +76,8 @@
       '<p class="cmt-card__agenda">' + esc(c.agenda) + "</p>" +
       '<p class="t-sm t-muted">' + esc(c.brief) + "</p>" +
       '<dl class="cmt-card__facts">' +
-        '<div class="cmt-fact"><dt>Seats</dt><dd>' + c.seats + "</dd></div>" +
-        '<div class="cmt-fact"><dt>Open</dt><dd>' + open + "</dd></div>" +
+        '<div class="cmt-fact"><dt>Seats</dt><dd>' + n.total + "</dd></div>" +
+        '<div class="cmt-fact"><dt>Open</dt><dd>' + n.open + "</dd></div>" +
         '<div class="cmt-fact"><dt>Level</dt><dd>' + esc(c.level) + "</dd></div>" +
       "</dl>" +
       '<div class="row row--between">' +
@@ -108,8 +118,7 @@
       if (!btn) return;
       var c = D.byId(btn.dataset.committeeOpen);
       if (!c) return;
-      var seats = D.seatsFor(c);
-      var open = seats.filter(function (x) { return D.statusFor(c.id, x.code) === "open"; });
+      var n = seatCount(c);
       $("[data-dossier]", modal).innerHTML =
         '<span class="eyebrow">' + esc(c.abbr) + " · " + esc(c.track) + "</span>" +
         '<h2 id="dossier-title" class="t-h2" style="margin-top:.9rem">' + esc(c.name) + "</h2>" +
@@ -125,8 +134,8 @@
             '<div class="card card--muted">' +
               '<dl class="reg-summary">' +
                 '<div class="reg-summary__row"><dt>Delegate role</dt><dd>' + esc(c.role) + "</dd></div>" +
-                '<div class="reg-summary__row"><dt>Seats</dt><dd>' + c.seats + "</dd></div>" +
-                '<div class="reg-summary__row"><dt>Currently open</dt><dd>' + open.length + "</dd></div>" +
+                '<div class="reg-summary__row"><dt>Seats</dt><dd>' + n.total + "</dd></div>" +
+                '<div class="reg-summary__row"><dt>Currently open</dt><dd>' + n.open + "</dd></div>" +
                 '<div class="reg-summary__row"><dt>Level</dt><dd>' + esc(c.level) + "</dd></div>" +
                 '<div class="reg-summary__row" style="border:0"><dt>Outputs</dt><dd>' + c.outputs.map(esc).join("<br>") + "</dd></div>" +
               "</dl>" +
@@ -316,12 +325,18 @@
   /* ======================================================================
      GALLERY — generative plates stand in for photography
      ====================================================================== */
+  var plateUid = 0;
   function plateArt(seed) {
+    /* The same plate is rendered twice — once in the grid, once in the
+       lightbox — so the gradient needs a document-unique id each time. */
+    var gid = "pg" + seed + "-" + (++plateUid);
     function rnd(n) {
       var x = Math.sin(seed * 9301 + n * 49297) * 233280;
       return x - Math.floor(x);
     }
-    var kind = Math.floor(rnd(1) * 3);
+    /* Straight off the seed rather than the noise function — the seeds are
+       chosen to cycle the three compositions so no two neighbours match. */
+    var kind = seed % 3;
     var parts = [];
     var i;
 
@@ -355,8 +370,8 @@
         '" r="' + (0.5 + rnd(i + 120) * 0.9).toFixed(2) + '" fill="rgba(239,221,198,' + (0.08 + rnd(i + 160) * 0.22).toFixed(2) + ')"/>');
     }
     return '<svg class="plate__art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
-      '<rect width="100" height="100" fill="url(#pg' + seed + ')"/>' +
-      '<defs><linearGradient id="pg' + seed + '" x1="0" y1="0" x2="1" y2="1">' +
+      '<rect width="100" height="100" fill="url(#' + gid + ')"/>' +
+      '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="1" y2="1">' +
         '<stop offset="0" stop-color="#' + (kind === 1 ? "4C0606" : "600808") + '"/>' +
         '<stop offset="1" stop-color="#' + (kind === 2 ? "240303" : "380404") + '"/>' +
       "</linearGradient></defs>" + parts.join("") + "</svg>";

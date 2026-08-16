@@ -29,6 +29,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
+<!-- Set before first paint so the curtain and the un-revealed state of
+     [data-reveal] apply only where JavaScript can undo them. Without this a
+     no-JS visitor would sit behind a curtain that never lifts. -->
+<script>document.documentElement.classList.add("js");</script>
+
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">

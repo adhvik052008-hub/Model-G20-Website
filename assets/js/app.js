@@ -504,6 +504,7 @@
     var steps = $$(".reg-step", form);
     var dots = $$(".step", form.closest("[data-wizard-scope]") || doc);
     var current = 0;
+    var firstPaint = true;
 
     function paint() {
       steps.forEach(function (s, i) { s.hidden = i !== current; });
@@ -518,6 +519,9 @@
       if (next) next.hidden = current === steps.length - 1;
       if (submit) submit.hidden = current !== steps.length - 1;
       if (current === steps.length - 1) summarise();
+      /* On load the wizard just renders — it must not steal focus or scroll
+         the visitor past the fee cards they arrived to read. */
+      if (firstPaint) { firstPaint = false; return; }
       var head = $(".reg-step__head", steps[current]);
       if (head) { head.setAttribute("tabindex", "-1"); head.focus({ preventScroll: true }); }
       form.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
@@ -539,11 +543,15 @@
         if (!i.name || i.type === "submit" || i.type === "button") return;
         var label = i.dataset.summary;
         if (!label) return;
+        if (i.type === "radio" && !i.checked) return;
+        /* An unset select still has a selected option — its placeholder. Skip
+           on the value, not the label, or "Select a committee…" gets reviewed. */
+        if (!i.value && i.type !== "checkbox") return;
+
         var val = i.value;
         if (i.type === "checkbox") val = i.checked ? "Yes" : "No";
-        if (i.type === "radio") { if (!i.checked) return; val = i.dataset.summaryValue || i.value; }
-        if (i.tagName === "SELECT" && i.selectedIndex > -1) val = i.options[i.selectedIndex].text;
-        if (!val) return;
+        else if (i.type === "radio") val = i.dataset.summaryValue || i.value;
+        else if (i.tagName === "SELECT" && i.selectedIndex > -1) val = i.options[i.selectedIndex].text;
         rows.push('<div class="reg-summary__row"><dt>' + label + "</dt><dd>" + escapeHTML(val) + "</dd></div>");
       });
       box.innerHTML = rows.length
