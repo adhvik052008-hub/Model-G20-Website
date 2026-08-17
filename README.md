@@ -8,6 +8,9 @@ A zero-dependency static site: no framework, no bundler, no `node_modules`.
 Fourteen pages, four stylesheets, five scripts. Deploys to GitHub Pages, Netlify,
 Cloudflare Pages or any static host by copying the repository root.
 
+**Editing the site → read [EDITING.md](EDITING.md).** It is written for someone
+who has never opened this project before and assumes no prior knowledge.
+
 ---
 
 ## Quick start
@@ -43,6 +46,19 @@ build.py                    The assembler
 index.html, about.html, …   Generated — do not hand-edit
 ```
 
+### The cover page is different
+
+`src/pages/index.html` carries `standalone: true` in its front matter, which
+means the build copies it through byte for byte. It is a complete HTML document
+with its own styling, its own reduced navigation and its own animated canvas
+background, and it does not use the shared shell at all. Edit it like any
+ordinary HTML file; its eight likely edit points are numbered `EDIT 1` … `EDIT 8`
+in the file itself.
+
+If you edit a *generated* page in the repository root by mistake, the build
+notices and refuses to overwrite it, telling you how to keep or discard the
+change. `python3 build.py --force` overwrites regardless.
+
 **Edit `src/pages/`, never the generated root HTML.** Anything written directly
 into a root `.html` file is overwritten on the next build.
 
@@ -64,6 +80,7 @@ scripts: matrix.js
 | `description` | Meta description and social card copy                                |
 | `scripts`     | Extra scripts for this page only, comma-separated                    |
 | `body_class`  | Optional class on `<body>`                                           |
+| `standalone`  | `true` copies the file through untouched, bypassing the shell        |
 
 `python3 build.py --check` builds to memory and reports without writing.
 
@@ -107,6 +124,11 @@ assets/img/og.svg           Social card — see "Before launch" below
 ```
 
 ### The design system
+
+The interior pages share one design system. The cover page deliberately does
+not — it runs a display serif (Bodoni Moda) and its own layout, so it reads as
+a title page rather than as another interior page. Both use the same four brand
+colours.
 
 Two pages document the system and are part of the deliverable:
 
@@ -157,8 +179,10 @@ text-bearing pair falls below 4.5:1.
 This is a complete front end. Six things need real values before it goes live:
 
 1. **Contact details** — `EVENT.email`, `EVENT.emailDelegates`, `EVENT.emailPress`
-   and `EVENT.phone` in `assets/js/data.js`, plus the four addresses shown on
-   `src/pages/contact.html`, are all `…@modelg20.example` placeholders.
+   and `EVENT.phone` in `assets/js/data.js`, plus the four addresses on
+   `src/pages/contact.html` and the Contact block on the cover page, are all
+   `…@modelg20.example` placeholders. Social links and the partner's website
+   link point at `#`.
 2. **Secretariat appointments** — offices in `SECRETARIAT` render
    "Appointment announced ahead of summit". Add a `name` key to any office to
    render the name instead.

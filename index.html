@@ -1,628 +1,840 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  MODEL G20 2026 — COVER PAGE
+  ════════════════════════════════════════════════════════════════════════════
+
+  This is the front page and it is a COMPLETE, SELF-CONTAINED file. Everything
+  it needs — layout, styling, the animated background, the countdown — is in
+  this one document. Open it in any editor, change what you like, save, refresh.
+  Nothing else in the project has to be touched, and nothing has to be "built".
+
+  The things you are most likely to want to change are numbered EDIT 1 … EDIT 8
+  below. Search for "EDIT" to jump between them.
+
+    EDIT 1  Brand colours
+    EDIT 2  The name in the top bar
+    EDIT 3  The navigation links
+    EDIT 4  The Register button
+    EDIT 5  The headline, dates and venue
+    EDIT 6  Our Partners
+    EDIT 7  Contact details
+    EDIT 8  The countdown date
+
+  A note on the rest of the site: the interior pages (Committees, Secretariat,
+  About, and so on) share one navigation bar and footer, so they are assembled
+  by build.py from src/. See EDITING.md — it explains both workflows in plain
+  English. THIS page is not affected by any of that.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Summit — Model G20 2026</title>
-<meta name="description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 13–15 November 2026. Ten committees, forty-six delegations, one table.">
-<meta name="theme-color" content="#EFDDC6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#600808" media="(prefers-color-scheme: dark)">
+<title>Model G20 2026 — The School of Raya</title>
+<meta name="description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 13–15 November 2026.">
+<meta name="theme-color" content="#EFDDC6">
 <meta name="color-scheme" content="light">
-<link rel="canonical" href="https://adhvik052008-hub.github.io/model-g20-website/">
 
-<!-- Social -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Model G20 2026">
-<meta property="og:title" content="The Summit — Model G20 2026">
-<meta property="og:description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 13–15 November 2026. Ten committees, forty-six delegations, one table.">
+<meta property="og:title" content="Model G20 2026 — The School of Raya">
+<meta property="og:description" content="An international summit simulation. 13–15 November 2026, FLAME University, Pune.">
 <meta property="og:image" content="assets/img/og.svg">
-<meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Summit — Model G20 2026">
-<meta name="twitter:description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 13–15 November 2026. Ten committees, forty-six delegations, one table.">
 
-<!-- Identity -->
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/favicon.svg">
 <link rel="manifest" href="site.webmanifest">
 
-<!-- Type: Cormorant Garamond for display, Inter for text. Both degrade to
-     the local stacks declared in tokens.css if the request is blocked. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
 
-<!-- Set before first paint so the curtain and the un-revealed state of
-     [data-reveal] apply only where JavaScript can undo them. Without this a
-     no-JS visitor would sit behind a curtain that never lifts. -->
-<script>document.documentElement.classList.add("js");</script>
+<style>
+  /* ══════════════════════════════════════════════════════════════════════
+     EDIT 1 — BRAND COLOURS
+     Change a value here and it updates everywhere on this page at once.
+     ══════════════════════════════════════════════════════════════════════ */
+  :root{
+    --paper:#EFDDC6;      /* the beige ground                    */
+    --paper-light:#F7EDE0;/* a lighter beige, used for panels    */
+    --ink:#140A08;        /* near-black text                     */
+    --oxblood:#600808;    /* the maroon accent                   */
+    --oxblood-deep:#3A0404;
 
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/pages.css">
+    --serif:"Cormorant Garamond",Didot,"Bodoni MT",Garamond,Georgia,serif;
+    --display:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Model G20 2026",
-  "description": "An international Model G20 summit simulation hosted by The School of Raya at FLAME University, Pune.",
-  "startDate": "2026-11-13T09:00:00+05:30",
-  "endDate": "2026-11-15T17:30:00+05:30",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "FLAME University",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Lavale, Off Pune–Bangalore Highway",
-      "addressLocality": "Pune",
-      "addressRegion": "Maharashtra",
-      "postalCode": "412115",
-      "addressCountry": "IN"
-    }
-  },
-  "organizer": { "@type": "Organization", "name": "The School of Raya" }
-}
-</script>
+    --bar-h:74px;         /* height of the top navigation bar    */
+    --gutter:clamp(1.25rem,5vw,4rem);
+  }
 
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--bar-h) + 1rem)}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:clamp(1rem,1.05vw,1.12rem);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* The animated line-field. Fixed behind everything, all the way down. */
+  #waves{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  ::selection{background:var(--oxblood);color:var(--paper)}
+
+  :focus-visible{outline:2px solid var(--oxblood);outline-offset:3px;border-radius:2px}
+
+  .skip{
+    position:absolute;top:0;left:50%;transform:translate(-50%,-130%);
+    z-index:99;background:var(--oxblood);color:var(--paper);
+    padding:.8rem 1.5rem;font-family:var(--display);font-size:.8rem;
+    letter-spacing:.16em;text-transform:uppercase;transition:transform .3s;
+  }
+  .skip:focus{transform:translate(-50%,0)}
+
+  .wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
+
+  /* Small caps label used above every section heading */
+  .kicker{
+    font-family:var(--display);
+    font-size:clamp(.62rem,1vw,.72rem);
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    text-indent:.34em;
+    color:var(--oxblood);
+  }
+
+  h2{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(1.9rem,4.6vw,3.4rem);
+    line-height:1.06;
+    letter-spacing:.02em;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════════════════════════════════════ */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    padding:.85rem 1.7rem;border:1px solid var(--oxblood);
+    background:var(--oxblood);color:var(--paper);
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(.68rem,1vw,.78rem);
+    letter-spacing:.2em;text-transform:uppercase;text-indent:.2em;
+    line-height:1;cursor:pointer;white-space:nowrap;
+    transition:background .28s ease,color .28s ease,transform .28s ease,box-shadow .28s ease;
+  }
+  .btn:hover{background:var(--paper);color:var(--oxblood);transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(58,4,4,.65)}
+  .btn--line{background:transparent;color:var(--oxblood)}
+  .btn--line:hover{background:var(--oxblood);color:var(--paper)}
+  .btn--lg{padding:1.05rem 2.2rem;font-size:clamp(.72rem,1.05vw,.84rem)}
+  .btn--pale{border-color:var(--paper);background:transparent;color:var(--paper)}
+  .btn--pale:hover{background:var(--paper);color:var(--oxblood)}
+
+  /* ══════════════════════════════════════════════════════════════════════
+     TOP NAVIGATION BAR
+     ══════════════════════════════════════════════════════════════════════ */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:20;
+    height:var(--bar-h);
+    display:flex;align-items:center;
+    transition:background-color .35s ease,box-shadow .35s ease,border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  /* Frosts over once you scroll past the cover */
+  .topbar.is-stuck{
+    background:rgba(247,237,224,.82);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    backdrop-filter:blur(18px) saturate(160%);
+    border-bottom-color:rgba(20,10,8,.1);
+    box-shadow:0 10px 30px -24px rgba(58,4,4,.6);
+  }
+  .topbar__inner{
+    width:100%;max-width:1400px;margin-inline:auto;padding-inline:var(--gutter);
+    display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  }
+
+  /* — Logo / home link — EDIT 2 is inside the markup below — */
+  .brand{display:flex;align-items:center;gap:.7rem;flex:none}
+  .brand svg{width:34px;height:34px;color:var(--oxblood);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+  .brand:hover svg{transform:rotate(-10deg) scale(1.06)}
+  .brand__name{
+    font-family:var(--display);font-size:1.02rem;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;line-height:1;
+  }
+  .brand__name em{font-style:italic;font-weight:400;color:var(--oxblood);letter-spacing:.04em}
+
+  .topnav{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2.2rem)}
+  .topnav a{
+    position:relative;
+    font-family:var(--display);
+    font-size:clamp(.66rem,.85vw,.76rem);
+    letter-spacing:.2em;text-transform:uppercase;text-indent:.2em;
+    padding:.5rem 0;white-space:nowrap;
+    transition:color .25s ease;
+  }
+  .topnav a::after{
+    content:"";position:absolute;left:0;bottom:.15rem;width:100%;height:1px;
+    background:var(--oxblood);transform:scaleX(0);transform-origin:right;
+    transition:transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .topnav a:hover{color:var(--oxblood)}
+  .topnav a:hover::after{transform:scaleX(1);transform-origin:left}
+  .topnav a[aria-current="page"]{color:var(--oxblood)}
+  .topnav a[aria-current="page"]::after{transform:scaleX(1)}
+
+  .topbar__actions{display:flex;align-items:center;gap:.8rem;flex:none}
+  .topbar__actions .btn{padding:.7rem 1.3rem}
+
+  /* Burger — only shown on small screens */
+  /* Flex, not grid: grid rows stretch to fill the button, which would space
+     the bars further apart than the 5.5px the X rotation below assumes. */
+  .burger{
+    display:none;width:42px;height:42px;
+    flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    border:1px solid rgba(20,10,8,.22);background:rgba(247,237,224,.6);
+    cursor:pointer;transition:border-color .25s,background .25s;
+  }
+  .burger:hover{border-color:var(--oxblood)}
+  .burger i{display:block;width:17px;height:1.5px;background:var(--ink);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .2s}
+  .burger[aria-expanded="true"] i:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+  @media (max-width:900px){
+    .topnav{display:none}
+    .burger{display:flex}
+    .topbar__actions .btn{display:none}
+  }
+
+  /* Full-screen menu for small screens */
+  .sheet{
+    position:fixed;inset:0;z-index:19;
+    background:var(--oxblood-deep);
+    display:grid;align-content:center;gap:.2rem;
+    padding:var(--bar-h) var(--gutter) var(--gutter);
+    transform:translateY(-100%);transition:transform .55s cubic-bezier(.16,1,.3,1);
+    overflow-y:auto;
+  }
+  .sheet.is-open{transform:none}
+  /* The bar sits above the open menu, so its ink-on-paper styling has to
+     invert or the logo and the close icon vanish into the maroon. */
+  body.menu-open .topbar{background:transparent;box-shadow:none;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+  body.menu-open .brand__name{color:var(--paper)}
+  body.menu-open .brand__name em{color:rgba(239,221,198,.7)}
+  body.menu-open .brand svg{color:var(--paper)}
+  body.menu-open .burger{background:transparent;border-color:rgba(239,221,198,.4)}
+  body.menu-open .burger i{background:var(--paper)}
+  .sheet a{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.7rem,7vw,2.6rem);
+    color:var(--paper);padding:.55rem 0;
+    border-bottom:1px solid rgba(239,221,198,.16);
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  }
+  .sheet a span{font-size:.72rem;letter-spacing:.24em;opacity:.5}
+  .sheet .btn{margin-top:1.6rem;justify-self:start}
+
+  /* ══════════════════════════════════════════════════════════════════════
+     COVER
+     ══════════════════════════════════════════════════════════════════════ */
+  /* Sized so the whole cover — headline through to the buttons — lands inside
+     one screen on a 1280×720 laptop. If you enlarge the headline, shrink the
+     gap to match or the buttons will fall below the fold. */
+  .cover{
+    position:relative;z-index:1;
+    min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:clamp(.85rem,2.2vh,1.7rem);
+    padding:calc(var(--bar-h) + 3vh) var(--gutter) 7vh;
+    text-align:center;
+  }
+  /* A soft wash of paper behind the type, so the line field stays vivid at
+     the edges of the screen but never fights the headline. Raise the 0.68 for
+     more contrast, lower it to let more of the pattern through. */
+  .cover::before{
+    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:radial-gradient(62% 56% at 50% 50%,rgba(239,221,198,.68),rgba(239,221,198,0) 72%);
+  }
+  .eyebrow{
+    display:inline-block;
+    padding:clamp(.4rem,.9vw,.55rem) clamp(.9rem,2.2vw,1.4rem);
+    background:var(--oxblood);color:var(--paper);
+    font-family:var(--display);
+    font-size:clamp(.66rem,1.15vw,.84rem);
+    letter-spacing:.42em;text-transform:uppercase;text-indent:.42em;
+  }
+  h1{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.4rem,7.8vw,7rem);
+    line-height:.94;letter-spacing:.06em;text-indent:.06em;
+  }
+  h1 .year{display:block;font-style:italic;letter-spacing:.02em;color:var(--oxblood)}
+  .rule{width:min(42ch,68vw);height:1px;background:var(--ink);opacity:.45}
+  .theme{
+    font-style:italic;font-weight:300;
+    font-size:clamp(1rem,1.75vw,1.32rem);
+    max-width:40ch;line-height:1.4;opacity:.86;
+  }
+  .clock{
+    display:flex;align-items:flex-start;
+    gap:clamp(1rem,4vw,2.8rem);
+    background:var(--oxblood);
+    padding:clamp(.8rem,1.9vw,1.15rem) clamp(1.1rem,3vw,2rem);
+  }
+  .unit{text-align:center}
+  .unit b{
+    display:block;min-width:clamp(2.4rem,6vw,3.6rem);
+    color:var(--paper);font-family:var(--display);font-weight:500;
+    font-variant-numeric:tabular-nums;
+    font-size:clamp(1.7rem,4.3vw,2.7rem);line-height:1;
+  }
+  .unit span{
+    display:block;margin-top:.5rem;
+    font-size:clamp(.5rem,.85vw,.62rem);
+    letter-spacing:.32em;text-transform:uppercase;text-indent:.32em;
+    color:var(--paper);opacity:.72;
+  }
+  .whenwhere{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(.68rem,1.1vw,.82rem);
+    letter-spacing:.24em;text-transform:uppercase;text-indent:.24em;
+    color:var(--oxblood);
+  }
+  .cover__cta{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
+  /* On a phone the wide tracking strands the last word on its own line. */
+  @media (max-width:560px){
+    .whenwhere{letter-spacing:.14em;text-indent:.14em;text-wrap:balance}
+    .cover__cta{width:100%;flex-direction:column;align-items:stretch}
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     OUR PARTNERS
+     ══════════════════════════════════════════════════════════════════════ */
+  .partners{
+    position:relative;z-index:1;
+    padding:clamp(4rem,10vh,7.5rem) 0;
+    background:rgba(247,237,224,.9);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(20,10,8,.12);
+  }
+  .sechead{display:grid;gap:.9rem;justify-items:center;text-align:center;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
+  .sechead p.lede{max-width:52ch;opacity:.78}
+
+  /* Tracks are capped at 360px and the row is centred, so one partner sits as
+     a neat single card rather than stretching across the whole page. Add more
+     partners and they line up beside it, two or three to a row. */
+  .partner-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),360px));
+    justify-content:center;
+    gap:clamp(1rem,2.4vw,1.8rem);
+    max-width:1140px;margin-inline:auto;
+  }
+  .partner{
+    display:grid;gap:1.1rem;justify-items:center;text-align:center;
+    padding:clamp(1.8rem,4vw,2.8rem);
+    background:var(--paper);
+    border:1px solid rgba(20,10,8,.14);
+    transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease,border-color .3s ease;
+  }
+  .partner:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(58,4,4,.5);border-color:rgba(96,8,8,.3)}
+  /* The plate that holds a partner's logo. Swap the text for an <img>. */
+  .partner__mark{
+    width:100%;min-height:110px;
+    display:grid;place-content:center;gap:.35rem;
+    padding:1.2rem;
+    border:1px solid rgba(96,8,8,.18);
+    background:linear-gradient(150deg,#F7EDE0,#E7D2B6);
+  }
+  .partner__mark b{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.4rem,3vw,1.9rem);
+    letter-spacing:.16em;text-indent:.16em;color:var(--oxblood);line-height:1;
+  }
+  .partner__mark span{
+    font-family:var(--display);font-size:.6rem;
+    letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;opacity:.65;
+  }
+  .partner__mark img{width:100%;height:auto;max-height:96px;object-fit:contain}
+  .partner__role{
+    font-family:var(--display);font-size:.62rem;
+    letter-spacing:.26em;text-transform:uppercase;text-indent:.26em;color:var(--oxblood);
+  }
+  .partner h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);letter-spacing:.02em}
+  .partner p{font-size:.98rem;opacity:.78;max-width:38ch}
+  .partner .link{
+    font-family:var(--display);font-size:.66rem;letter-spacing:.22em;
+    text-transform:uppercase;text-indent:.22em;color:var(--oxblood);
+    border-bottom:1px solid rgba(96,8,8,.4);padding-bottom:2px;
+  }
+  .partner .link:hover{border-bottom-color:var(--oxblood)}
+
+  .partner-note{
+    margin-top:clamp(2rem,4vw,3rem);text-align:center;
+    font-size:.92rem;opacity:.7;
+  }
+  .partner-note a{color:var(--oxblood);border-bottom:1px solid rgba(96,8,8,.35)}
+
+  /* ══════════════════════════════════════════════════════════════════════
+     CONTACT
+     ══════════════════════════════════════════════════════════════════════ */
+  .contact{
+    position:relative;z-index:1;
+    background:var(--oxblood-deep);
+    color:var(--paper);
+    padding:clamp(4rem,10vh,7rem) 0 0;
+    overflow:hidden;
+  }
+  .contact::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(70% 110% at 50% 0%,rgba(96,8,8,.85),transparent 62%);
+    pointer-events:none;
+  }
+  .contact > *{position:relative}
+  .contact .kicker{color:var(--paper);opacity:.75}
+  .contact h2{color:var(--paper)}
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
+    gap:clamp(1.6rem,3.5vw,2.8rem);
+    margin-bottom:clamp(2.5rem,5vw,4rem);
+  }
+  .cblock{display:grid;gap:.5rem;align-content:start}
+  .cblock dt{
+    font-family:var(--display);font-size:.6rem;
+    letter-spacing:.28em;text-transform:uppercase;text-indent:.28em;
+    color:rgba(239,221,198,.6);
+  }
+  .cblock dd{margin:0;font-size:1.02rem;line-height:1.5;word-break:break-word}
+  .cblock dd a{border-bottom:1px solid rgba(239,221,198,.32);padding-bottom:1px;transition:border-color .25s}
+  .cblock dd a:hover{border-bottom-color:var(--paper)}
+  .cblock small{display:block;margin-top:.15rem;font-size:.84rem;opacity:.6}
+
+  .socials{display:flex;gap:.7rem;flex-wrap:wrap}
+  .socials a{
+    width:40px;height:40px;display:grid;place-items:center;
+    border:1px solid rgba(239,221,198,.28);
+    transition:background .3s,color .3s,transform .3s,border-color .3s;
+  }
+  .socials a:hover{background:var(--paper);color:var(--oxblood-deep);border-color:var(--paper);transform:translateY(-3px)}
+  .socials svg{width:17px;height:17px}
+
+  .contact-cta{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:1.5rem;padding:clamp(1.6rem,3.5vw,2.4rem) 0;
+    border-top:1px solid rgba(239,221,198,.18);
+    border-bottom:1px solid rgba(239,221,198,.18);
+  }
+  .contact-cta p{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,1.8rem);max-width:26ch;line-height:1.2}
+
+  .colophon{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:1rem;padding:1.5rem 0;
+    font-size:.86rem;color:rgba(239,221,198,.6);
+  }
+  .colophon nav{display:flex;flex-wrap:wrap;gap:1.3rem}
+  .colophon a:hover{color:var(--paper)}
+
+  /* ══════════════════════════════════════════════════════════════════════
+     REDUCED MOTION — nothing animates, everything still reads
+     ══════════════════════════════════════════════════════════════════════ */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition-duration:.001ms !important;animation-duration:.001ms !important}
+  }
+</style>
 </head>
+
 <body>
-<a class="skip-link" href="#main">Skip to main content</a>
+<a class="skip" href="#cover">Skip to content</a>
 
-<div class="scroll-progress" aria-hidden="true"></div>
+<canvas id="waves" aria-hidden="true"></canvas>
 
-<noscript>
-  <div class="noscript-note">
-    <strong>JavaScript is turned off.</strong> The pages read normally, but the
-    live countdown, the delegation map, the country matrix and the committee
-    listings are generated in the browser and will not appear. Enable JavaScript,
-    or write to the Secretariat and we will send the same information by email.
-  </div>
-</noscript>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TOP NAVIGATION BAR
+     ══════════════════════════════════════════════════════════════════════ -->
+<header class="topbar" id="topbar">
+  <div class="topbar__inner">
 
-<div class="curtain" aria-hidden="true">
-  <div class="curtain__inner">
-    <svg class="curtain__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.1"/><circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0.001 8.60708" opacity=".9"/><circle cx="32" cy="32" r="23.2" stroke="currentColor" stroke-width="0.65" opacity=".5"/><circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.1"/><ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="0.8" opacity=".7"/><path d="M16.4 32h31.2" stroke="currentColor" stroke-width="0.8" opacity=".7"/><path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width="0.75" opacity=".45"/></svg>
-    <div class="curtain__bar"><i></i></div>
-    <span class="curtain__text">Model G20 · MMXXVI</span>
-  </div>
-</div>
-
-<header class="site-nav">
-  <div class="site-nav__inner">
-    <a class="crest" href="index.html" aria-label="Model G20 2026 — home">
-      <svg class="crest__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.1"/><circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0.001 8.60708" opacity=".9"/><circle cx="32" cy="32" r="23.2" stroke="currentColor" stroke-width="0.65" opacity=".5"/><circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.1"/><ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="0.8" opacity=".7"/><path d="M16.4 32h31.2" stroke="currentColor" stroke-width="0.8" opacity=".7"/><path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width="0.75" opacity=".45"/></svg>
-      <span class="crest__type">
-        <span class="crest__name">Model G20</span>
-        <span class="crest__sub">School of Raya · 2026</span>
-      </span>
+    <!-- EDIT 2 — the logo / home link. Change the words, or replace the <svg>
+         with <img src="assets/img/your-logo.svg" alt="Model G20" width="34">. -->
+    <a class="brand" href="index.html" aria-label="Model G20 2026 — home">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.001 8.60708"/>
+        <circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.3"/>
+        <ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="1" opacity=".7"/>
+        <path d="M16.4 32h31.2" stroke="currentColor" stroke-width="1" opacity=".7"/>
+        <path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width=".9" opacity=".45"/>
+      </svg>
+      <span class="brand__name">Model G20 <em>2026</em></span>
     </a>
 
-    <nav class="nav-links" aria-label="Primary">
-      <a class="nav-link" href="about.html">About</a>
-      <a class="nav-link" href="committees.html">Committees</a>
-      <a class="nav-link" href="country-matrix.html">Country Matrix</a>
-      <a class="nav-link" href="schedule.html">Schedule</a>
-      <a class="nav-link" href="resources.html">Resources</a>
-      <a class="nav-link" href="gallery.html">Gallery</a>
-
-      <div class="nav-more">
-        <button class="nav-link nav-more__btn" type="button" aria-expanded="false" aria-haspopup="true">
-          More
-          <svg width="9" height="6" viewBox="0 0 12 8" fill="none" aria-hidden="true" style="margin-left:.35em">
-            <path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <div class="nav-more__panel">
-          <a class="nav-more__item" href="secretariat.html">Secretariat <span>Team</span></a>
-          <a class="nav-more__item" href="faqs.html">FAQs <span>Answers</span></a>
-          <a class="nav-more__item" href="contact.html">Contact <span>Reach us</span></a>
-          <a class="nav-more__item" href="design-system.html">Design System <span>Brand</span></a>
-        </div>
-      </div>
+    <!-- EDIT 3 — the navigation links. To add one, copy a line and change the
+         text and the href. To remove one, delete its line. Keep the same list
+         in the mobile menu further down so the two agree. -->
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="committees.html">Committees</a>
+      <a href="secretariat.html">Secretariat</a>
+      <a href="about.html">About</a>
     </nav>
 
-    <div class="nav-actions">
-      <a class="btn btn--sm nav-cta-desktop" href="register.html">
-        Register
-        <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <button class="burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu">
-        <span class="burger__box" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="topbar__actions">
+      <!-- EDIT 4 — the Register button. -->
+      <a class="btn" href="register.html">Register</a>
+
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
+        <i></i><i></i><i></i>
       </button>
     </div>
   </div>
 </header>
 
-<div class="drawer" id="site-drawer" aria-hidden="true">
-  <nav class="drawer__nav" aria-label="Mobile">
-    <a class="drawer__link" href="index.html" aria-current="page"><span>Home</span><i>01</i></a>
-    <a class="drawer__link" href="about.html"><span>About</span><i>02</i></a>
-    <a class="drawer__link" href="committees.html"><span>Committees</span><i>03</i></a>
-    <a class="drawer__link" href="country-matrix.html"><span>Country Matrix</span><i>04</i></a>
-    <a class="drawer__link" href="secretariat.html"><span>Secretariat</span><i>05</i></a>
-    <a class="drawer__link" href="schedule.html"><span>Schedule</span><i>06</i></a>
-    <a class="drawer__link" href="resources.html"><span>Resources</span><i>07</i></a>
-    <a class="drawer__link" href="gallery.html"><span>Gallery</span><i>08</i></a>
-    <a class="drawer__link" href="faqs.html"><span>FAQs</span><i>09</i></a>
-    <a class="drawer__link" href="contact.html"><span>Contact</span><i>10</i></a>
-    <a class="drawer__link" href="register.html"><span>Registration</span><i>11</i></a>
-  </nav>
-  <div class="drawer__foot">
-    <div class="countdown countdown--compact" data-countdown aria-label="Countdown to the summit"></div>
-    <p class="t-xs" style="color:rgba(244,233,218,.62)">13 – 15 November 2026 · FLAME University, Pune</p>
-  </div>
+<!-- Mobile menu — mirrors the links above -->
+<div class="sheet" id="sheet" aria-hidden="true">
+  <a href="index.html">Home <span>01</span></a>
+  <a href="committees.html">Committees <span>02</span></a>
+  <a href="secretariat.html">Secretariat <span>03</span></a>
+  <a href="about.html">About <span>04</span></a>
+  <a href="#partners">Partners <span>05</span></a>
+  <a href="#contact">Contact <span>06</span></a>
+  <a class="btn btn--pale" href="register.html">Register</a>
 </div>
 
-<main id="main">
-<!-- ============================================================ HERO -->
-<section class="hero">
-  <div class="hero__map" aria-hidden="true">
-    <div class="worldmap" data-worldmap="hero" data-step="2.8"></div>
-  </div>
+<main>
 
-  <div class="shell shell--wide hero__grid">
-    <div class="stack-6">
-      <span class="eyebrow" data-reveal="fade">Inaugural Edition · MMXXVI</span>
+  <!-- ════════════════════════════════════════════════════════════════════
+       COVER
+       EDIT 5 — the headline, theme line, dates and venue.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="cover" id="cover">
+    <p class="eyebrow">The School of Raya</p>
 
-      <h1 class="hero__title">
-        <span class="reveal-mask"><span>Model</span></span>
-        <span class="reveal-mask"><span><em>G20</em> 2026</span></span>
-      </h1>
+    <h1>Model G20<span class="year">2026</span></h1>
 
-      <p class="hero__theme" data-reveal style="--i:1">
-        “Common Ground” — rebuilding trust in a fragmented world, at the table
-        where eighty per cent of world output is decided.
+    <div class="rule"></div>
+
+    <p class="theme">“Common Ground” — rebuilding trust in a fragmented world.</p>
+
+    <div class="clock" id="clock" role="timer" aria-live="off">
+      <div class="unit"><b id="d">00</b><span>Days</span></div>
+      <div class="unit"><b id="h">00</b><span>Hours</span></div>
+      <div class="unit"><b id="m">00</b><span>Minutes</span></div>
+      <div class="unit"><b id="s">00</b><span>Seconds</span></div>
+    </div>
+
+    <p class="whenwhere">13 – 15 November 2026 · FLAME University, Pune</p>
+
+    <div class="cover__cta">
+      <a class="btn btn--lg" href="register.html">Register as a delegate</a>
+      <a class="btn btn--line btn--lg" href="committees.html">Explore the committees</a>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       OUR PARTNERS
+       EDIT 6 — to add a partner, copy one whole <article class="partner">
+       block and change its contents. To use a real logo instead of the
+       typographic plate, delete the two lines inside .partner__mark and put
+       an <img> there — the commented example shows exactly how.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="partners" id="partners">
+    <div class="wrap">
+      <div class="sechead">
+        <p class="kicker">Our Partners</p>
+        <h2>In association with</h2>
+        <p class="lede">
+          Model G20 2026 is convened by The School of Raya and hosted on the
+          campus of FLAME University, Pune.
+        </p>
+      </div>
+
+      <div class="partner-grid">
+
+        <article class="partner">
+          <div class="partner__mark">
+            <!-- To use the official logo, replace the two lines below with:
+                 <img src="assets/img/partners/flame-university.png" alt="FLAME University"> -->
+            <b>FLAME</b>
+            <span>University</span>
+          </div>
+          <p class="partner__role">Host Institution</p>
+          <h3>FLAME University</h3>
+          <p>
+            Ten committee rooms, a plenary auditorium, a dedicated press centre
+            and on-campus accommodation, all inside a single walkable campus at
+            Lavale, Pune.
+          </p>
+          <!-- Point this at the partner's website when you have the link. -->
+          <a class="link" href="#">Visit website</a>
+        </article>
+
+        <!-- ── COPY FROM HERE to add another partner ──────────────────────
+        <article class="partner">
+          <div class="partner__mark">
+            <b>NAME</b>
+            <span>Descriptor</span>
+          </div>
+          <p class="partner__role">Partner Category</p>
+          <h3>Partner Name</h3>
+          <p>One or two sentences on what they contribute to the conference.</p>
+          <a class="link" href="#">Visit website</a>
+        </article>
+        ── COPY TO HERE ─────────────────────────────────────────────────── -->
+
+      </div>
+
+      <p class="partner-note">
+        Interested in partnering with Model G20 2026?
+        <a href="#contact">Write to our Outreach desk</a>.
       </p>
+    </div>
+  </section>
 
-      <p class="hero__rot" data-reveal style="--i:2">
-        <span>Three days of</span>
-        <span class="rotator" aria-hidden="true">
-          <span>negotiation</span><span>consensus</span><span>statecraft</span><span>diplomacy</span>
-        </span>
-        <span class="visually-hidden">negotiation, consensus, statecraft and diplomacy.</span>
-      </p>
+  <!-- ════════════════════════════════════════════════════════════════════
+       CONTACT US
+       EDIT 7 — replace every address, number and handle below with the
+       Secretariat's real details. They are placeholders as shipped.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="sechead" style="justify-items:start;text-align:left;margin-bottom:clamp(2rem,4vw,3rem)">
+        <p class="kicker">Contact Us</p>
+        <h2>Write to the Secretariat</h2>
+      </div>
 
-      <dl class="hero__meta" data-reveal style="--i:3">
-        <div class="hero__meta-item">
-          <dt>Convenes</dt>
-          <dd>13 – 15 November 2026</dd>
+      <dl class="contact-grid">
+        <div class="cblock">
+          <dt>Delegates &amp; allotment</dt>
+          <dd><a href="mailto:delegates@modelg20.example">delegates@modelg20.example</a></dd>
+          <dd><small>Registration, allotment, substitutions and refunds.</small></dd>
         </div>
-        <div class="hero__meta-item">
+
+        <div class="cblock">
+          <dt>Press &amp; media</dt>
+          <dd><a href="mailto:press@modelg20.example">press@modelg20.example</a></dd>
+          <dd><small>Accreditation, imagery and interview requests.</small></dd>
+        </div>
+
+        <div class="cblock">
+          <dt>Partnerships</dt>
+          <dd><a href="mailto:secretariat@modelg20.example">secretariat@modelg20.example</a></dd>
+          <dd><small>Sponsorship and institutional delegations.</small></dd>
+        </div>
+
+        <div class="cblock">
+          <dt>Telephone</dt>
+          <dd><a href="tel:+910000000000">+91 00000 00000</a></dd>
+          <dd><small>Weekdays 10:00 – 18:00 IST.</small></dd>
+        </div>
+
+        <div class="cblock">
           <dt>Venue</dt>
-          <dd>FLAME University, Pune</dd>
+          <dd>
+            FLAME University<br>
+            Lavale, Off Pune–Bangalore Highway<br>
+            Pune, Maharashtra 412115, India
+          </dd>
         </div>
-        <div class="hero__meta-item">
-          <dt>Convened by</dt>
-          <dd>The School of Raya</dd>
+
+        <div class="cblock">
+          <dt>Follow the summit</dt>
+          <dd>
+            <div class="socials">
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.5V17M7.5 7.4v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </a>
+              <a href="#" aria-label="X">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5l4.5 2.5-4.5 2.5v-5Z" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </dd>
         </div>
       </dl>
 
-      <div class="row" data-reveal style="--i:4">
-        <a class="btn btn--lg" href="register.html">
-          Register as a delegate
-          <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a class="btn btn--ghost btn--lg" href="committees.html">Explore the committees</a>
-      </div>
-    </div>
-
-    <aside class="glass glass--pad hero__panel" data-reveal="scale" style="--i:2">
-      <div class="row row--between row--tight">
-        <span class="eyebrow eyebrow--bare">Opening ceremony in</span>
-        <span class="badge badge--dot badge--live">Live</span>
+      <div class="contact-cta">
+        <p>Registration is open. Allotments are released on a rolling basis.</p>
+        <a class="btn btn--pale btn--lg" href="register.html">Register as a delegate</a>
       </div>
 
-      <div class="countdown" data-countdown aria-label="Time remaining until the summit opens"></div>
-
-      <p class="t-xs t-muted" data-countdown-live>
-        Registrations close 20 October 2026. Allotments are released on a rolling basis.
-      </p>
-      <p class="t-xs t-muted" data-countdown-over hidden>
-        The summit is under way. Follow proceedings from the Press Centre.
-      </p>
-
-      <hr class="divider">
-
-      <dl class="reg-summary" data-deadlines></dl>
-
-      <a class="btn-text" href="register.html">
-        View registration
-        <span class="btn-text__line"></span>
-      </a>
-    </aside>
-  </div>
-
-  <div class="hero__scroll" aria-hidden="true">
-    <span>Scroll</span>
-    <i></i>
-  </div>
-</section>
-
-<!-- ============================================================ MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track" data-marquee-nations></div>
-</div>
-
-<!-- ============================================================ INTRO -->
-<section class="section">
-  <div class="shell">
-    <div class="split">
-      <div class="split__sticky stack-4">
-        <span class="eyebrow" data-reveal>The conference</span>
-        <h2 class="t-display" data-reveal style="--i:1">
-          Not a school event.<br>A summit.
-        </h2>
-      </div>
-
-      <div class="stack-6">
-        <p class="t-lead" data-reveal>
-          The G20 is the only forum where the world's largest economies negotiate
-          without a veto, without a charter, and without the option of walking away.
-          Model G20 2026 reproduces that pressure exactly: ten committees running
-          in parallel, live crisis, an accredited press corps, and a Leaders'
-          Declaration that only carries if the room agrees.
-        </p>
-        <p class="t-body" data-reveal style="--i:1">
-          Delegates arrive holding a national brief and leave having defended it
-          against nineteen others. Some will find the consensus. Most will find
-          out what it costs.
-        </p>
-
-        <div class="stat-strip" data-stats data-reveal style="--i:2"></div>
-
-        <div class="row" data-reveal style="--i:4">
-          <a class="btn btn--ghost" href="about.html">Read the full brief</a>
-          <a class="btn-text" href="secretariat.html">Meet the Secretariat<span class="btn-text__line"></span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ THEME -->
-<section class="section section--tight">
-  <div class="shell shell--wide">
-    <div class="theme-band on-dark" data-reveal="scale">
-      <svg class="theme-band__glyph" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="0.9"/>
-        <circle cx="50" cy="50" r="34" stroke="currentColor" stroke-width="0.6"/>
-        <ellipse cx="50" cy="50" rx="14" ry="46" stroke="currentColor" stroke-width="0.6"/>
-        <ellipse cx="50" cy="50" rx="30" ry="46" stroke="currentColor" stroke-width="0.6"/>
-        <path d="M4 50h92M50 4v92M11 27h78M11 73h78" stroke="currentColor" stroke-width="0.6"/>
-      </svg>
-
-      <div class="shell shell--flush">
-        <div class="stack-6" style="max-width:56ch">
-          <span class="eyebrow">Theme of the 2026 edition</span>
-          <h2 class="t-display" style="color:var(--parchment-100)">Common Ground</h2>
-          <p class="t-lead t-quiet-italic">
-            Rebuilding trust in a fragmented world.
-          </p>
-          <p class="t-body">
-            Twenty economies. Eighty per cent of world output. One table. The 2026
-            edition asks its delegates a harder question than any communiqué has
-            answered in a decade: what is still negotiable?
-          </p>
-          <div class="row">
-            <a class="btn btn--invert" href="about.html">The 2026 mandate</a>
-            <a class="btn btn--ghost" href="resources.html">Background guides</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ PILLARS -->
-<section class="section on-paper">
-  <div class="shell">
-    <div class="section-head section-head--center" style="margin-bottom:clamp(2.5rem,5vw,4rem)">
-      <span class="eyebrow eyebrow--center" data-reveal>What the summit is built on</span>
-      <h2 class="t-h1" data-reveal style="--i:1">Five commitments</h2>
-      <p class="t-lead t-muted u-maxw-md" data-reveal style="--i:2">
-        Every committee, every document and every hour of floor time is designed
-        against these five. They are the standard the Secretariat is held to.
-      </p>
-    </div>
-
-    <!-- Five cards read better as 3 + 2 than as 4 + 1, so the track minimum
-         is set to break at three columns. -->
-    <div class="grid grid-auto-lg" data-reveal-group>
-      <article class="card card--interactive">
-        <span class="tile-num">01</span>
-        <h3 class="card__title">Diplomacy</h3>
-        <p class="t-sm t-muted">
-          Procedure taught properly, then enforced. Delegates learn the difference
-          between a speech and a position, and why only one of them moves a room.
-        </p>
-      </article>
-
-      <article class="card card--interactive">
-        <span class="tile-num">02</span>
-        <h3 class="card__title">Global Leadership</h3>
-        <p class="t-sm t-muted">
-          Every seat carries a real country's constraints — its debt, its coalitions,
-          its electorate. Leadership here means carrying those and still building
-          a majority.
-        </p>
-      </article>
-
-      <article class="card card--interactive">
-        <span class="tile-num">03</span>
-        <h3 class="card__title">Innovation</h3>
-        <p class="t-sm t-muted">
-          A dedicated Digital Economy Working Group negotiating frontier AI
-          governance — compute thresholds, cross-border data, and the sovereignty
-          questions underneath both.
-        </p>
-      </article>
-
-      <article class="card card--interactive">
-        <span class="tile-num">04</span>
-        <h3 class="card__title">Sustainability</h3>
-        <p class="t-sm t-muted">
-          Two committees on the transition, and a hard rule: no climate outcome is
-          adopted without a costed finance annex attached to it.
-        </p>
-      </article>
-
-      <article class="card card--interactive">
-        <span class="tile-num">05</span>
-        <h3 class="card__title">Youth Leadership</h3>
-        <p class="t-sm t-muted">
-          The Y20 communiqué is formally transmitted to the Leaders' Summit and may
-          be cited on the floor — the only engagement group with that standing.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ COMMITTEES -->
-<section class="section">
-  <div class="shell">
-    <div class="row row--between" style="margin-bottom:clamp(1.5rem,3vw,2.5rem);align-items:flex-end">
-      <div class="section-head">
-        <span class="eyebrow" data-reveal>Ten committees</span>
-        <h2 class="t-h1" data-reveal style="--i:1">The floor</h2>
-      </div>
-      <a class="btn btn--ghost u-hide@sm" href="committees.html" data-reveal>All committees</a>
-    </div>
-
-    <div class="track-list" data-tracks></div>
-
-    <div class="row row--center" style="margin-top:2.5rem">
-      <a class="btn u-show@sm" href="committees.html">All committees</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ MAP -->
-<section class="section on-paper">
-  <div class="shell shell--wide">
-    <div class="split" style="align-items:end;margin-bottom:clamp(2rem,4vw,3rem)">
-      <div class="stack-4">
-        <span class="eyebrow" data-reveal>Forty-six delegations</span>
-        <h2 class="t-display" data-reveal style="--i:1">One table,<br>drawn to scale</h2>
-      </div>
-      <div class="stack-4">
-        <p class="t-lead" data-reveal>
-          Twenty-one G20 members, twelve invited states and thirteen international
-          organisations are seated across the ten committees. Every marker sits at
-          the delegation's real capital; every arc converges on Pune.
-        </p>
-        <div class="row row--between">
-          <div class="wm-legend" data-reveal style="--i:1">
-            <span><i style="background:var(--maroon-600)"></i> G20 member</span>
-            <span><i style="background:var(--maroon-400)"></i> Invited state</span>
-            <span><i style="background:var(--maroon-600);box-shadow:0 0 0 4px var(--a-maroon-16)"></i> Host campus</span>
-          </div>
-          <a class="btn btn--ghost" href="country-matrix.html" data-reveal style="--i:2">Open the country matrix</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="worldmap u-relative" data-worldmap="full" data-reveal="scale"></div>
-
-    <p class="t-xs t-faint u-center" style="margin-top:1.4rem">
-      Select any delegation to see how many committees still have a seat open for it.
-    </p>
-  </div>
-</section>
-
-<!-- ============================================================ SCHEDULE PREVIEW -->
-<section class="section">
-  <div class="shell">
-    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
-      <span class="eyebrow" data-reveal>Three days</span>
-      <h2 class="t-h1" data-reveal style="--i:1">How the summit runs</h2>
-    </div>
-
-    <div class="grid grid-3" data-reveal-group>
-      <article class="card card--interactive card--pad-lg">
-        <span class="card__meta">Day One · Friday 13 Nov</span>
-        <h3 class="card__title">Accreditation &amp; Opening</h3>
-        <p class="t-sm t-muted">
-          Credentials issued, the procession of delegations, and the Chair's charge
-          to the floor. Two committee sessions close the day, followed by the
-          diplomatic reception.
-        </p>
-        <span class="badge badge--quiet u-mt-auto">9 scheduled entries</span>
-      </article>
-
-      <article class="card card--interactive card--pad-lg">
-        <span class="card__meta">Day Two · Saturday 14 Nov</span>
-        <h3 class="card__title">The Negotiating Day</h3>
-        <p class="t-sm t-muted">
-          Crisis convenes without notice, working papers merge, and positions
-          harden. The leaders' press conference is held live in front of the
-          International Press Corps.
-        </p>
-        <span class="badge badge--quiet u-mt-auto">9 scheduled entries</span>
-      </article>
-
-      <article class="card card--interactive card--pad-lg">
-        <span class="card__meta">Day Three · Sunday 15 Nov</span>
-        <h3 class="card__title">Adoption &amp; Close</h3>
-        <p class="t-sm t-muted">
-          Final voting bloc, adoption of outcome documents, transmission to the
-          Leaders' Summit, and the awards ceremony before the lowering of the flags.
-        </p>
-        <span class="badge badge--quiet u-mt-auto">7 scheduled entries</span>
-      </article>
-    </div>
-
-    <div class="row row--center" style="margin-top:2.5rem" data-reveal>
-      <a class="btn btn--ghost" href="schedule.html">Full three-day schedule</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ QUOTE -->
-<section class="section section--tight">
-  <div class="shell shell--text">
-    <blockquote class="quote" data-reveal>
-      <p class="quote__text">
-        The G20 has no treaty, no secretariat of its own and no power to compel
-        anyone. It works only when twenty governments decide that agreeing is
-        worth more than winning. That is the whole exercise.
-      </p>
-      <footer class="quote__by">From the 2026 Delegate Handbook · Office of the Director-General</footer>
-    </blockquote>
-  </div>
-</section>
-
-<!-- ============================================================ CTA -->
-<section class="section section--tight">
-  <div class="shell shell--wide">
-    <div class="cta-band" data-reveal="scale">
-      <div class="split split--even" style="align-items:center">
-        <div class="stack-5">
-          <span class="eyebrow" style="color:var(--parchment-300)">Registration open</span>
-          <h2 class="t-display" style="color:var(--parchment-100)">Take a seat at the table</h2>
-          <p class="t-body" style="color:rgba(244,233,218,.82);max-width:46ch">
-            Individual delegates, institutional delegations, press corps and
-            observers. Allotments are released on a rolling basis — earlier
-            registrations get earlier choice.
-          </p>
-          <div class="row">
-            <a class="btn btn--invert btn--lg" href="register.html">
-              Begin registration
-              <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a class="btn btn--ghost btn--lg" href="faqs.html">Read the FAQs</a>
-          </div>
-        </div>
-
-        <div class="stack-4">
-          <div class="countdown" data-countdown aria-label="Time remaining until the summit opens"></div>
-          <dl class="reg-summary" data-deadlines></dl>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-<footer class="site-footer">
-  <div class="shell shell--wide">
-    <div class="footer-grid">
-      <div>
-        <a class="crest" href="index.html" style="color:var(--parchment-100)">
-          <svg class="crest__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.1"/><circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0.001 8.60708" opacity=".9"/><circle cx="32" cy="32" r="23.2" stroke="currentColor" stroke-width="0.65" opacity=".5"/><circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.1"/><ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="0.8" opacity=".7"/><path d="M16.4 32h31.2" stroke="currentColor" stroke-width="0.8" opacity=".7"/><path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width="0.75" opacity=".45"/></svg>
-          <span class="crest__type">
-            <span class="crest__name" style="color:var(--parchment-100)">Model G20</span>
-            <span class="crest__sub" style="color:rgba(239,221,198,.55)">School of Raya · 2026</span>
-          </span>
-        </a>
-        <p class="t-sm" style="color:rgba(244,233,218,.72);margin-top:1.4rem;max-width:38ch">
-          An international summit simulation convened by The School of Raya at
-          FLAME University, Pune. Three days, ten committees, forty-six delegations.
-        </p>
-        <div class="row row--tight" style="margin-top:1.6rem">
-          <a class="social" href="#" aria-label="Model G20 on Instagram">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
-          </a>
-          <a class="social" href="#" aria-label="Model G20 on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.5V17M7.5 7.4v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </a>
-          <a class="social" href="#" aria-label="Model G20 on X">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </a>
-          <a class="social" href="#" aria-label="Model G20 on YouTube">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5l4.5 2.5-4.5 2.5v-5Z" fill="currentColor"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div>
-        <h2 class="footer-col__title">The Summit</h2>
-        <nav class="footer-links" aria-label="Summit">
-          <a href="about.html">About the conference</a>
+      <div class="colophon">
+        <span>© 2026 Model G20 · The School of Raya</span>
+        <nav aria-label="Footer">
           <a href="committees.html">Committees</a>
-          <a href="country-matrix.html">Country matrix</a>
-          <a href="schedule.html">Schedule</a>
           <a href="secretariat.html">Secretariat</a>
+          <a href="about.html">About</a>
+          <a href="country-matrix.html">Country Matrix</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="resources.html">Resources</a>
+          <a href="faqs.html">FAQs</a>
         </nav>
       </div>
-
-      <div>
-        <h2 class="footer-col__title">Delegates</h2>
-        <nav class="footer-links" aria-label="Delegates">
-          <a href="register.html">Registration</a>
-          <a href="resources.html">Resources &amp; guides</a>
-          <a href="faqs.html">Frequently asked questions</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="contact.html">Contact the Secretariat</a>
-        </nav>
-      </div>
-
-      <div>
-        <h2 class="footer-col__title">Convene</h2>
-        <div class="stack-3">
-          <p class="t-sm" style="color:rgba(244,233,218,.72)">
-            13 – 15 November 2026<br>
-            FLAME University<br>
-            Lavale, Pune 412115
-          </p>
-          <div class="countdown countdown--compact" data-countdown aria-label="Countdown to the summit"></div>
-          <a class="btn btn--invert btn--sm" href="register.html" style="width:fit-content">Secure a seat</a>
-        </div>
-      </div>
     </div>
+  </section>
 
-    <div class="footer-mega" aria-hidden="true">COMMON GROUND</div>
+</main>
 
-    <div class="footer-bottom">
-      <span>© 2026 Model G20 · The School of Raya. All rights reserved.</span>
-      <span class="row row--tight" style="gap:1.4rem">
-        <a href="design-system.html" style="color:rgba(244,233,218,.58)">Design system</a>
-        <a href="wireframes.html" style="color:rgba(244,233,218,.58)">Wireframes</a>
-        <a href="contact.html" style="color:rgba(244,233,218,.58)">Press enquiries</a>
-      </span>
-    </div>
-  </div>
-</footer>
+<!-- Optional. Loading the site's data file first lets the countdown below read
+     the summit date from it, so the cover and the interior pages can never
+     disagree. Delete this line and the cover page still works on its own —
+     it falls back to the date written into the script. -->
+<script src="assets/js/data.js"></script>
 
-<button class="to-top" type="button" aria-label="Back to top">
-  <svg viewBox="0 0 16 16" width="15" height="15" fill="none" aria-hidden="true">
-    <path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</button>
+<script>
+(() => {
+  "use strict";
 
-<script src="assets/js/world.js" defer></script>
-<script src="assets/js/data.js" defer></script>
-<script src="assets/js/render.js" defer></script>
-<script src="assets/js/map.js" defer></script>
-<script src="assets/js/app.js" defer></script>
+  /* ════════════════════════════════════════════════════════════════════
+     EDIT 8 — THE COUNTDOWN DATE
+     The date below is the fallback. If assets/js/data.js is present the page
+     reads the date from there instead, so the whole site stays in step.
+     To change it here, edit the line marked FALLBACK. Format is
+     YYYY-MM-DDTHH:MM:SS+05:30  (the +05:30 is India Standard Time).
+     ════════════════════════════════════════════════════════════════════ */
+  const FALLBACK = "2026-11-13T09:00:00+05:30";
+  const opens = (window.MG20 && window.MG20.EVENT && window.MG20.EVENT.startISO) || FALLBACK;
+  const target = new Date(opens).getTime();
+
+  const pad = n => String(Math.max(0, n)).padStart(2, "0");
+  const d0 = document.getElementById("d"), h0 = document.getElementById("h"),
+        m0 = document.getElementById("m"), s0 = document.getElementById("s");
+
+  function tick(){
+    const diff = Math.max(0, target - Date.now()) / 1000 | 0;
+    d0.textContent = pad(diff / 86400 | 0);
+    h0.textContent = pad((diff / 3600 | 0) % 24);
+    m0.textContent = pad((diff / 60 | 0) % 60);
+    s0.textContent = pad(diff % 60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- top bar: frost once the cover has scrolled away ---------- */
+  const bar = document.getElementById("topbar");
+  const onScroll = () => bar.classList.toggle("is-stuck", scrollY > 40);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- mobile menu ---------- */
+  const burger = document.getElementById("burger"), sheet = document.getElementById("sheet");
+  const setMenu = open => {
+    burger.setAttribute("aria-expanded", String(open));
+    sheet.classList.toggle("is-open", open);
+    sheet.setAttribute("aria-hidden", String(!open));
+    document.body.classList.toggle("menu-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+  burger.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+  sheet.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+  addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+
+  /* ════════════════════════════════════════════════════════════════════
+     THE ANIMATED BACKGROUND
+     A field of horizontal lines, twisted by three moving vortices: one that
+     follows the cursor, and two that ride in from opposite corners as you
+     scroll. Nothing below needs editing to change the page's content — but
+     if you want it calmer, lower the 0.42 in strokeStyle, or the k values
+     in vortices().
+     ════════════════════════════════════════════════════════════════════ */
+  const cv = document.getElementById("waves"), ctx = cv.getContext("2d");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W = 0, H = 0, lines = [], STEP = 13, MARGIN = 0;
+
+  const pointer = { x: .5, y: .5, tx: .5, ty: .5 };
+  let scroll = 0, scrollTarget = 0;
+
+  function resize(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // the swirl can drag a point this far, so source lines start well outside the frame
+    MARGIN = Math.min(W, H) * 0.62;
+    const gap = W < 640 ? 15 : 13;
+    lines = [];
+    for (let y = -MARGIN; y < H + MARGIN; y += gap) lines.push(y);
+  }
+  addEventListener("resize", resize);
+  resize();
+
+  addEventListener("pointermove", e => {
+    pointer.tx = e.clientX / W; pointer.ty = e.clientY / H;
+  }, { passive: true });
+  addEventListener("scroll", () => {
+    const max = Math.max(1, document.body.scrollHeight - innerHeight);
+    scrollTarget = Math.min(1, scrollY / max);
+  }, { passive: true });
+
+  function vortices(){
+    const px = pointer.x * W, py = pointer.y * H;
+    const s = scroll, R = Math.min(W, H);
+    const list = [
+      { x: px, y: py, k: 1.7, r: R * 0.46 },
+      { x: W * (1.18 - 0.62 * s), y: H * (-0.18 + 0.55 * s), k: -2.0 * s, r: R * 0.55 },
+      { x: W * (-0.18 + 0.58 * s), y: H * (1.18 - 0.58 * s), k:  2.0 * s, r: R * 0.55 }
+    ];
+    for (const o of list){ o.inv = 1 / (2 * o.r * o.r); o.cut = 9.2 * o.r * o.r; }
+    return list;
+  }
+
+  function draw(t){
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(96,8,8,0.42)";
+
+    pointer.x += (pointer.tx - pointer.x) * 0.055;
+    pointer.y += (pointer.ty - pointer.y) * 0.055;
+    scroll += (scrollTarget - scroll) * 0.06;
+
+    const vs = vortices();
+    const amp = Math.min(H * 0.05, 34);
+
+    for (let i = 0; i < lines.length; i++){
+      const y0 = lines[i];
+      ctx.beginPath();
+      const x0 = -MARGIN;
+      for (let x = x0; x <= W + MARGIN; x += STEP){
+        let py = y0
+          + amp * Math.sin(x * 0.0040 + t * 0.00022 + i * 0.085)
+          + amp * 0.45 * Math.sin(x * 0.0093 - t * 0.00016 + i * 0.042);
+        let px = x;
+
+        for (let v = 0; v < vs.length; v++){
+          const o = vs[v];
+          if (o.k === 0) continue;
+          const dx = px - o.x, dy = py - o.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 > o.cut) continue;
+          const a = o.k * Math.exp(-d2 * o.inv);
+          const c = Math.cos(a), s = Math.sin(a);
+          px = o.x + dx * c - dy * s;
+          py = o.y + dx * s + dy * c;
+        }
+        x === x0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+  }
+
+  if (reduce) draw(0);
+  else (function loop(t){ draw(t); requestAnimationFrame(loop); })(0);
+})();
+</script>
 </body>
 </html>

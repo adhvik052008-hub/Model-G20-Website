@@ -115,6 +115,13 @@ def build_scripts(meta: dict) -> str:
 
 def build_page(slug: str, head_tpl: str, header_tpl: str, footer_tpl: str, crest: str) -> str:
     meta, content = parse_page(read(PAGES / f"{slug}.html"))
+
+    # A standalone page carries its own <html>, styling and scripts. It is
+    # copied through byte for byte — the cover page works this way so it can be
+    # edited directly without knowing anything about the shell.
+    if meta.get("standalone", "").lower() == "true":
+        return content + "\n"
+
     body_class = meta.get("body_class", "").strip()
     return SHELL.format(
         head=build_head(meta, head_tpl, slug),
@@ -151,6 +158,8 @@ def write_sitemap(slugs: list[str]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build the Model G20 2026 site.")
     parser.add_argument("--check", action="store_true", help="build without writing files")
+    parser.add_argument("--force", action="store_true",
+                        help="overwrite pages that were edited directly since the last build")
     args = parser.parse_args()
 
     head_tpl = read(PARTIALS / "head.html")
@@ -166,11 +175,23 @@ def main() -> int:
         return 1
 
     total = 0
+    skipped = []
     for slug in slugs:
         html = build_page(slug, head_tpl, header_tpl, footer_tpl, crest)
         total += len(html)
+        out = ROOT / f"{slug}.html"
+
+        # If someone edited the built page directly, do not silently discard
+        # their work — say so and leave the file alone until --force.
+        if out.exists() and not args.check and not args.force:
+            if out.stat().st_mtime > (PAGES / f"{slug}.html").stat().st_mtime + 1:
+                if out.read_text(encoding="utf-8") != html:
+                    skipped.append(slug)
+                    print(f"  SKIPPED  {slug}.html  (edited directly since the last build)")
+                    continue
+
         if not args.check:
-            (ROOT / f"{slug}.html").write_text(html, encoding="utf-8")
+            out.write_text(html, encoding="utf-8")
         print(f"  {'checked' if args.check else 'built'}  {slug}.html  ({len(html):,} bytes)")
 
     if not args.check:
@@ -180,6 +201,13 @@ def main() -> int:
     print(f"\n{len(slugs)} pages · {total:,} bytes total")
     if unknown:
         print(f"note: {', '.join(unknown)} not listed in PAGE_ORDER")
+    if skipped:
+        print(
+            "\nLeft alone because they were edited directly: "
+            + ", ".join(f"{s}.html" for s in skipped)
+            + "\n  • To keep those edits, copy them back into src/pages/ so they survive."
+            + "\n  • To discard them and rebuild from src/, run:  python3 build.py --force"
+        )
     return 0
 
 
