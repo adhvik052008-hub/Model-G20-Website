@@ -34,22 +34,22 @@ standalone: true
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Model G20 2026 — The School of Raya</title>
-<meta name="description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 13–15 November 2026.">
+<meta name="description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 8–9 October 2026.">
 <meta name="theme-color" content="#EFDDC6">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Model G20 2026 — The School of Raya">
-<meta property="og:description" content="An international summit simulation. 13–15 November 2026, FLAME University, Pune.">
+<meta property="og:description" content="An international summit simulation. 8–9 October 2026, FLAME University, Pune.">
 <meta property="og:image" content="assets/img/og.svg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+<!-- Typeface: Helvetica, with Arial and Liberation Sans as stand-ins where
+     Helvetica is not installed. Nothing is downloaded — this page needs no
+     internet connection at all. -->
 
 <style>
   /* ══════════════════════════════════════════════════════════════════════
@@ -63,8 +63,8 @@ standalone: true
     --oxblood:#600808;    /* the maroon accent                   */
     --oxblood-deep:#3A0404;
 
-    --serif:"Cormorant Garamond",Didot,"Bodoni MT",Garamond,Georgia,serif;
-    --display:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
+    --serif:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;   /* body text     */
+    --display:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif; /* headings, UI  */
 
     --bar-h:74px;         /* height of the top navigation bar    */
     --gutter:clamp(1.25rem,5vw,4rem);
@@ -274,11 +274,11 @@ standalone: true
     letter-spacing:.42em;text-transform:uppercase;text-indent:.42em;
   }
   h1{
-    font-family:var(--display);font-weight:400;
+    font-family:var(--display);font-weight:600;
     font-size:clamp(2.4rem,7.8vw,7rem);
-    line-height:.94;letter-spacing:.06em;text-indent:.06em;
+    line-height:.96;letter-spacing:-.015em;text-indent:-.015em;
   }
-  h1 .year{display:block;font-style:italic;letter-spacing:.02em;color:var(--oxblood)}
+  h1 .year{display:block;font-weight:300;letter-spacing:-.01em;color:var(--oxblood)}
   .rule{width:min(42ch,68vw);height:1px;background:var(--ink);opacity:.45}
   .theme{
     font-style:italic;font-weight:300;
@@ -518,7 +518,7 @@ standalone: true
 
   <!-- ════════════════════════════════════════════════════════════════════
        COVER
-       EDIT 5 — the headline, theme line, dates and venue.
+       EDIT 5 — the headline, dates and venue.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="cover" id="cover">
     <p class="eyebrow">The School of Raya</p>
@@ -527,7 +527,9 @@ standalone: true
 
     <div class="rule"></div>
 
-    <p class="theme">“Common Ground” — rebuilding trust in a fragmented world.</p>
+    <!-- A tagline can sit here if you ever want one. Delete the arrows at
+         each end of the next line to switch it back on, then edit the words. -->
+    <!-- <p class="theme">Your tagline here.</p> -->
 
     <div class="clock" id="clock" role="timer" aria-live="off">
       <div class="unit"><b id="d">00</b><span>Days</span></div>
@@ -536,7 +538,7 @@ standalone: true
       <div class="unit"><b id="s">00</b><span>Seconds</span></div>
     </div>
 
-    <p class="whenwhere">13 – 15 November 2026 · FLAME University, Pune</p>
+    <p class="whenwhere">8 – 9 October 2026 · FLAME University, Pune</p>
 
     <div class="cover__cta">
       <a class="btn btn--lg" href="register.html">Register as a delegate</a>
@@ -711,7 +713,7 @@ standalone: true
      To change it here, edit the line marked FALLBACK. Format is
      YYYY-MM-DDTHH:MM:SS+05:30  (the +05:30 is India Standard Time).
      ════════════════════════════════════════════════════════════════════ */
-  const FALLBACK = "2026-11-13T09:00:00+05:30";
+  const FALLBACK = "2026-10-08T09:00:00+05:30";
   const opens = (window.MG20 && window.MG20.EVENT && window.MG20.EVENT.startISO) || FALLBACK;
   const target = new Date(opens).getTime();
 

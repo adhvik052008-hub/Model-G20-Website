@@ -68,8 +68,8 @@ while you work; press `Ctrl+C` when you're done.
 Open **`assets/js/data.js`**. Near the top:
 
 ```js
-startISO: "2026-11-13T09:00:00+05:30",
-datesLabel: "13 – 15 November 2026",
+startISO: "2026-10-08T09:00:00+05:30",
+datesLabel: "8 – 9 October 2026",
 ```
 
 `startISO` drives every countdown on the site, including the one on the front
@@ -79,7 +79,7 @@ Standard Time, leave it as it is.
 `datesLabel` is the human-readable version shown in text. Change both.
 
 Then look in **`src/pages/index.html`** for the line reading
-`13 – 15 November 2026 · FLAME University, Pune` and update that too — it's
+`8 – 9 October 2026 · FLAME University, Pune` and update that too — it's
 written out in full on the cover so the page reads correctly even if the data
 file is ever removed.
 

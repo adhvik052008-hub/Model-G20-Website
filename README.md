@@ -2,7 +2,7 @@
 
 The official website for **Model G20 2026** — an international summit simulation
 convened by **The School of Raya**, hosted at **FLAME University, Pune**,
-13–15 November 2026.
+8–9 October 2026.
 
 A zero-dependency static site: no framework, no bundler, no `node_modules`.
 Fourteen pages, four stylesheets, five scripts. Deploys to GitHub Pages, Netlify,

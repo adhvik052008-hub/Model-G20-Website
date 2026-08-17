@@ -105,10 +105,8 @@
      Display: high-contrast old-style serif — gravitas, statecraft.
      Text/UI: neo-grotesque — clarity, neutrality, data density.
      --------------------------------------------------------------------- */
-  --font-display: "Cormorant Garamond", "Cormorant", "EB Garamond", "Iowan Old Style",
-                  "Apple Garamond", Garamond, "Times New Roman", serif;
-  --font-sans: "Inter", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI",
-               "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+  --font-sans: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo,
                Consolas, monospace;
 

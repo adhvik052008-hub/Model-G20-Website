@@ -30,11 +30,11 @@
     venueCity: "Pune, Maharashtra 412115, India",
     venueLat: 18.58,
     venueLon: 73.7,
-    /* Summit opens 13 November 2026, 09:00 IST */
-    startISO: "2026-11-13T09:00:00+05:30",
-    endISO: "2026-11-15T17:30:00+05:30",
-    datesLabel: "13 – 15 November 2026",
-    daysLabel: "Friday – Sunday",
+    /* Summit opens 8 October 2026, 09:00 IST */
+    startISO: "2026-10-08T09:00:00+05:30",
+    endISO: "2026-10-09T17:30:00+05:30",
+    datesLabel: "8 – 9 October 2026",
+    daysLabel: "Thursday – Friday",
     /* PLACEHOLDER — replace with the Secretariat's published channels */
     email: "secretariat@modelg20.example",
     emailDelegates: "delegates@modelg20.example",
@@ -44,13 +44,13 @@
       { value: 500, suffix: "+", label: "Delegates" },
       { value: 10, suffix: "", label: "Committees" },
       { value: 46, suffix: "", label: "Delegations" },
-      { value: 3, suffix: "", label: "Days of Summit" }
+      { value: 2, suffix: "", label: "Days of Summit" }
     ],
     deadlines: [
-      { k: "Early Registration closes", v: "15 September 2026", state: "open" },
-      { k: "Regular Registration closes", v: "20 October 2026", state: "open" },
-      { k: "Allotments released", v: "27 October 2026", state: "pending" },
-      { k: "Position papers due", v: "5 November 2026", state: "pending" }
+      { k: "Early Registration closes", v: "15 August 2026", state: "open" },
+      { k: "Regular Registration closes", v: "15 September 2026", state: "open" },
+      { k: "Allotments released", v: "22 September 2026", state: "pending" },
+      { k: "Position papers due", v: "1 October 2026", state: "pending" }
     ]
   };
 
@@ -334,8 +334,8 @@
      ====================================================================== */
   var SCHEDULE = [
     {
-      id: "d1", label: "Day One", date: "Friday 13 November",
-      note: "Accreditation, ceremonial opening and the first two committee sessions.",
+      id: "d1", label: "Day One", date: "Thursday 8 October",
+      note: "Accreditation, ceremonial opening, and the first two committee sessions.",
       items: [
         { t: "07:30", t2: "09:00", title: "Delegate Accreditation & Registration", venue: "Grand Foyer, Academic Block", tag: "Logistics" },
         { t: "09:00", t2: "09:30", title: "Procession of Delegations", venue: "Central Courtyard", tag: "Ceremonial", key: true },
@@ -345,38 +345,27 @@
         { t: "11:30", t2: "13:15", title: "Committee Session I — Opening Statements", venue: "All Committees", tag: "Session" },
         { t: "13:15", t2: "14:15", title: "Delegates' Luncheon", venue: "Dining Hall", tag: "Break" },
         { t: "14:15", t2: "16:30", title: "Committee Session II — Setting the Agenda", venue: "All Committees", tag: "Session" },
+        { t: "15:00", t2: "16:30", title: "Emergency Sherpa Session Convenes", venue: "Crisis Room", tag: "Crisis", key: true,
+          desc: "Situation briefed on the floor. No prior notice is given to delegates." },
         { t: "16:45", t2: "17:30", title: "First Press Briefing", venue: "Press Centre", tag: "Media" },
         { t: "18:30", t2: "20:30", title: "Diplomatic Reception", venue: "Amphitheatre Lawn", tag: "Social", key: true }
       ]
     },
     {
-      id: "d2", label: "Day Two", date: "Saturday 14 November",
-      note: "The negotiating day. Crisis opens, working papers merge, positions harden.",
+      id: "d2", label: "Day Two", date: "Friday 9 October",
+      note: "Drafting, merger and adoption — then the closing plenary and the awards floor.",
       items: [
         { t: "08:45", t2: "09:00", title: "Morning Roll Call", venue: "All Committees", tag: "Session" },
         { t: "09:00", t2: "11:15", title: "Committee Session III — Moderated Caucus", venue: "All Committees", tag: "Session" },
-        { t: "09:30", t2: "11:15", title: "Emergency Sherpa Session Convenes", venue: "Crisis Room", tag: "Crisis", key: true,
-          desc: "Situation briefed on the floor. No prior notice is given to delegates." },
-        { t: "11:30", t2: "13:30", title: "Committee Session IV — Working Paper Drafting", venue: "All Committees", tag: "Session" },
-        { t: "13:30", t2: "14:30", title: "Luncheon & Bloc Consultations", venue: "Dining Hall", tag: "Break" },
-        { t: "14:30", t2: "15:15", title: "Leaders' Press Conference", venue: "Press Centre", tag: "Media", key: true },
-        { t: "14:30", t2: "17:00", title: "Committee Session V — Merger & Amendment", venue: "All Committees", tag: "Session" },
-        { t: "17:15", t2: "18:00", title: "Sherpa–Finance Track Joint Consultation", venue: "Council Room", tag: "Session" },
-        { t: "19:30", t2: "22:30", title: "Delegate Ball & Cultural Evening", venue: "Great Hall", tag: "Social", key: true }
-      ]
-    },
-    {
-      id: "d3", label: "Day Three", date: "Sunday 15 November",
-      note: "Adoption of outcome documents, closing plenary and the awards ceremony.",
-      items: [
-        { t: "09:00", t2: "11:00", title: "Committee Session VI — Final Voting Bloc", venue: "All Committees", tag: "Session", key: true },
-        { t: "11:15", t2: "12:30", title: "Adoption of Outcome Documents", venue: "All Committees", tag: "Session" },
-        { t: "12:30", t2: "13:30", title: "Luncheon", venue: "Dining Hall", tag: "Break" },
-        { t: "13:30", t2: "14:45", title: "Closing Plenary — Transmission to Leaders", venue: "Auditorium", tag: "Ceremonial", key: true,
+        { t: "11:30", t2: "13:15", title: "Committee Session IV — Working Paper Drafting", venue: "All Committees", tag: "Session" },
+        { t: "13:15", t2: "14:15", title: "Luncheon & Bloc Consultations", venue: "Dining Hall", tag: "Break" },
+        { t: "14:15", t2: "15:00", title: "Leaders' Press Conference", venue: "Press Centre", tag: "Media", key: true },
+        { t: "14:15", t2: "16:15", title: "Committee Session V — Merger, Amendment & Final Vote", venue: "All Committees", tag: "Session", key: true },
+        { t: "16:30", t2: "17:30", title: "Adoption of Outcome Documents", venue: "All Committees", tag: "Session" },
+        { t: "17:45", t2: "18:45", title: "Closing Plenary — Transmission to Leaders", venue: "Auditorium", tag: "Ceremonial", key: true,
           desc: "Each Chair transmits their committee's outcome to the Leaders' Summit for the record." },
-        { t: "15:00", t2: "16:15", title: "Awards Ceremony", venue: "Auditorium", tag: "Ceremonial", key: true },
-        { t: "16:15", t2: "16:45", title: "Closing Address & Lowering of Flags", venue: "Central Courtyard", tag: "Ceremonial" },
-        { t: "16:45", t2: "17:30", title: "Farewell Tea", venue: "Amphitheatre Lawn", tag: "Social" }
+        { t: "18:45", t2: "19:45", title: "Awards Ceremony & Lowering of Flags", venue: "Auditorium", tag: "Ceremonial", key: true },
+        { t: "20:00", t2: "22:30", title: "Delegate Ball & Cultural Evening", venue: "Great Hall", tag: "Social", key: true }
       ]
     }
   ];
@@ -404,7 +393,7 @@
     { office: "Under-Secretary-General, Outreach & Partnerships", initials: "OP", group: "External",
       remit: "Institutional delegations, sponsorship and the diplomatic guest programme." },
     { office: "Under-Secretary-General, Logistics & Operations", initials: "LO", group: "Operations",
-      remit: "Venue, accommodation, transport, catering and delegate safety across three days." },
+      remit: "Venue, accommodation, transport, catering and delegate safety across both days." },
     { office: "Under-Secretary-General, Design & Technology", initials: "DT", group: "Operations",
       remit: "Visual identity, this platform, the live results system and all summit signage." },
     { office: "Under-Secretary-General, Finance", initials: "FN", group: "Operations",
@@ -456,15 +445,15 @@
     { cat: "Delegates", q: "What is the dress code?",
       a: "Western business formal for all committee sessions and the closing plenary. National or traditional formal attire is equally welcome and is encouraged for the opening ceremony. The Delegate Ball is black tie optional." },
     { cat: "Registration", q: "What does the delegate fee include?",
-      a: "Committee participation across three days, all summit documentation, delegate kit and placard, lunch and refreshments on all three days, the diplomatic reception, the Delegate Ball, and certification. Accommodation and travel are quoted separately." },
+      a: "Committee participation across both days, all summit documentation, delegate kit and placard, lunch and refreshments on both days, the diplomatic reception, the Delegate Ball, and certification. Accommodation and travel are quoted separately." },
     { cat: "Registration", q: "Is accommodation available on campus?",
-      a: "Yes. A limited block of twin-sharing rooms is held for outstation delegates for the nights of 12, 13 and 14 November, allocated in order of confirmed payment. Faculty advisors are accommodated separately." },
+      a: "Yes. A limited block of twin-sharing rooms is held for outstation delegates for the nights of 7 and 8 October, allocated in order of confirmed payment. Faculty advisors are accommodated separately." },
     { cat: "Registration", q: "What is the refund policy?",
-      a: "Registrations cancelled on or before 20 October 2026 are refunded in full less a processing charge. Cancellations between 21 October and 3 November receive a fifty per cent refund. No refund is issued after 3 November, though a substitution of delegate within the same delegation is permitted at no cost until 10 November." },
+      a: "Registrations cancelled on or before 15 September 2026 are refunded in full less a processing charge. Cancellations between 16 and 28 September receive a fifty per cent refund. No refund is issued after 28 September, though a substitution of delegate within the same delegation is permitted at no cost until 3 October." },
     { cat: "Registration", q: "Can my registration be transferred to another delegate?",
-      a: "Yes. Substitutions within the same registered delegation are free until 10 November 2026, subject to the incoming delegate meeting the committee's stated experience level. Write to the Chargé d'Affaires with both names." },
+      a: "Yes. Substitutions within the same registered delegation are free until 3 October 2026, subject to the incoming delegate meeting the committee's stated experience level. Write to the Chargé d'Affaires with both names." },
     { cat: "Logistics", q: "How do I reach the venue?",
-      a: "FLAME University is roughly 45 minutes from Pune Airport and 30 minutes from Pune Junction railway station. Shuttle transfers run from both on 12 and 13 November against pre-booking, which is collected in the registration form." },
+      a: "FLAME University is roughly 45 minutes from Pune Airport and 30 minutes from Pune Junction railway station. Shuttle transfers run from both on 7 and 8 October against pre-booking, which is collected in the registration form." },
     { cat: "Logistics", q: "Is the venue accessible?",
       a: "All committee rooms, the auditorium, dining hall and press centre are step-free and lift-served, with accessible washrooms on every floor. Tell us what you need in the accessibility field on the registration form and the Logistics office will confirm arrangements in writing before you travel." },
     { cat: "Logistics", q: "What are the meal arrangements?",
@@ -472,7 +461,7 @@
     { cat: "Committees", q: "When are background guides released?",
       a: "Core guides are published with the opening of registration and are downloadable from the Resources page. The crisis primer for the Emergency Sherpa Session is released 48 hours before the summit opens, and no earlier — that is the point of it." },
     { cat: "Committees", q: "Are position papers compulsory?",
-      a: "Yes, for every committee except the International Press Corps, where a portfolio submission replaces it. Papers are due by 23:59 IST on 5 November 2026. A delegate who does not submit remains eligible to participate but is not eligible for an award." },
+      a: "Yes, for every committee except the International Press Corps, where a portfolio submission replaces it. Papers are due by 23:59 IST on 1 October 2026. A delegate who does not submit remains eligible to participate but is not eligible for an award." },
     { cat: "Committees", q: "How are awards decided?",
       a: "Each committee recognises Best Delegate, two High Commendations and two Special Mentions, judged on substantive command, diplomacy, quality of caucusing and contribution to the outcome document. The Chair's assessment is final; the Secretariat does not review awards." },
     { cat: "Committees", q: "May I use a laptop or phone in committee?",
@@ -503,7 +492,7 @@
      ====================================================================== */
   var FEES = [
     { id: "individual", name: "Individual Delegate", price: "₹3,500", per: "per delegate", featured: false,
-      includes: ["Committee participation, all three days", "Full documentation & delegate kit", "Lunch and refreshments", "Diplomatic reception", "Certificate of participation"] },
+      includes: ["Committee participation, both days", "Full documentation & delegate kit", "Lunch and refreshments", "Diplomatic reception", "Certificate of participation"] },
     { id: "delegation", name: "Institutional Delegation", price: "₹3,100", per: "per delegate · 5 or more", featured: true, ribbon: "Most chosen",
       includes: ["Everything in Individual Delegate", "Bloc allotment where the matrix permits", "Faculty advisor pass at no charge", "Eligible for Best Delegation", "Priority accommodation block"] },
     { id: "press", name: "International Press Corps", price: "₹2,900", per: "per correspondent", featured: false,
@@ -512,7 +501,7 @@
       includes: ["Gallery access to all committees", "Opening and closing ceremonies", "Lunch and refreshments", "Advisor briefing programme", "Certificate of attendance"] }
   ];
 
-  var ACCOMMODATION = { label: "On-campus accommodation", price: "₹4,200", per: "3 nights · twin sharing · 12–15 November" };
+  var ACCOMMODATION = { label: "On-campus accommodation", price: "₹2,800", per: "2 nights · twin sharing · 7–9 October" };
 
   /* ======================================================================
      EXPORT
