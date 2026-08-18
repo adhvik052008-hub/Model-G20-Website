@@ -6,6 +6,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* The hidden attribute has to beat any component's own display rule.
+   Without this, a .btn or .form-note carrying [hidden] stays on screen,
+   because an author `display: inline-flex` outranks the UA sheet. */
+[hidden] { display: none !important; }
+
 * { margin: 0; }
 
 html {
