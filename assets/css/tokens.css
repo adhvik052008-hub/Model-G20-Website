@@ -1,0 +1,269 @@
+/* ==========================================================================
+   MODEL G20 2026 — DESIGN TOKENS
+   The single source of truth for colour, type, space, motion and elevation.
+   Every component consumes semantic tokens; never raw hex values.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------
+     1. PALETTE — primitives
+     Brand core: #EFDDC6 (Parchment) · #600808 (Sovereign Maroon)
+     · #FFFFFF (Ivory) · #000000 (Ink)
+     Ramps are tonal derivations of the two brand hues only. No new hues.
+     --------------------------------------------------------------------- */
+  --parchment-50:  #FDFAF5;
+  --parchment-100: #F9F2E8;
+  --parchment-200: #F4E9DA;
+  --parchment-300: #EFDDC6; /* ◆ BRAND PRIMARY — page ground */
+  --parchment-400: #E3CBAE;
+  --parchment-500: #D5B896;
+  --parchment-600: #BFA07C;
+
+  --maroon-100: #F2DEDE;
+  --maroon-200: #DDAFAF;
+  --maroon-300: #B96B6B;
+  --maroon-400: #96302B;
+  --maroon-500: #7A1010;
+  --maroon-600: #600808; /* ◆ BRAND ACCENT — signature */
+  --maroon-700: #4C0606;
+  --maroon-800: #380404;
+  --maroon-900: #240303;
+  --maroon-950: #170202;
+
+  --ivory: #FFFFFF;
+  --ink:   #000000;
+
+  /* Warm neutrals — black tinted toward the parchment ground so type never
+     reads cold or "web default" against the beige. */
+  --ink-900: #120C0A;
+  --ink-800: #1F1613;
+  --ink-700: #33251F;
+  --ink-600: #4A3830;
+  --ink-500: #6A544A;
+  --ink-400: #8C7466;
+  --ink-300: #B3A08F;
+
+  /* Alpha channels for glass, rules and scrims */
+  --a-ink-04: rgba(18, 12, 10, 0.04);
+  --a-ink-08: rgba(18, 12, 10, 0.08);
+  --a-ink-12: rgba(18, 12, 10, 0.12);
+  --a-ink-20: rgba(18, 12, 10, 0.20);
+  --a-ink-40: rgba(18, 12, 10, 0.40);
+  --a-ink-70: rgba(18, 12, 10, 0.70);
+
+  --a-maroon-06: rgba(96, 8, 8, 0.06);
+  --a-maroon-10: rgba(96, 8, 8, 0.10);
+  --a-maroon-16: rgba(96, 8, 8, 0.16);
+  --a-maroon-28: rgba(96, 8, 8, 0.28);
+  --a-maroon-55: rgba(96, 8, 8, 0.55);
+
+  --a-ivory-08: rgba(255, 255, 255, 0.08);
+  --a-ivory-14: rgba(255, 255, 255, 0.14);
+  --a-ivory-25: rgba(255, 255, 255, 0.25);
+  --a-ivory-45: rgba(255, 255, 255, 0.45);
+  --a-ivory-62: rgba(255, 255, 255, 0.62);
+  --a-ivory-80: rgba(255, 255, 255, 0.80);
+
+  --a-parch-12: rgba(239, 221, 198, 0.12);
+  --a-parch-28: rgba(239, 221, 198, 0.28);
+  --a-parch-60: rgba(239, 221, 198, 0.60);
+
+  /* ---------------------------------------------------------------------
+     2. SEMANTIC SURFACE TOKENS — light ground (default)
+     --------------------------------------------------------------------- */
+  --bg:            var(--parchment-300);
+  --bg-raised:     var(--parchment-100);
+  --bg-sunken:     var(--parchment-400);
+  --surface:       var(--ivory);
+  --surface-muted: var(--parchment-200);
+
+  --text:          var(--ink-900);
+  --text-body:     var(--ink-700);
+  --text-muted:    var(--ink-500);
+  --text-faint:    var(--ink-400);
+  --text-invert:   var(--parchment-200);
+
+  --accent:        var(--maroon-600);
+  --accent-hover:  var(--maroon-500);
+  --accent-deep:   var(--maroon-800);
+  --accent-ink:    var(--parchment-100); /* text on maroon */
+
+  --line:          var(--a-ink-12);
+  --line-strong:   var(--a-ink-20);
+  --line-accent:   var(--a-maroon-16);
+
+  --focus-ring:    var(--maroon-600);
+
+  /* Glassmorphism recipe — light */
+  --glass-bg:      var(--a-ivory-45);
+  --glass-brd:     var(--a-ivory-62);
+  --glass-blur:    22px;
+  --glass-sat:     165%;
+
+  /* ---------------------------------------------------------------------
+     3. TYPOGRAPHY
+     Display: high-contrast old-style serif — gravitas, statecraft.
+     Text/UI: neo-grotesque — clarity, neutrality, data density.
+     --------------------------------------------------------------------- */
+  --font-display: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+  --font-sans: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+               Consolas, monospace;
+
+  /* Fluid type scale — 1.250 minor third at the small end, widening to 1.333 */
+  --fs-hero:    clamp(3.25rem, 1.20rem + 9.1vw, 10.5rem);
+  --fs-display: clamp(2.60rem, 1.35rem + 5.6vw, 6.50rem);
+  --fs-h1:      clamp(2.20rem, 1.35rem + 3.8vw, 4.25rem);
+  --fs-h2:      clamp(1.80rem, 1.28rem + 2.3vw, 3.00rem);
+  --fs-h3:      clamp(1.40rem, 1.14rem + 1.1vw, 2.05rem);
+  --fs-h4:      clamp(1.16rem, 1.06rem + 0.4vw, 1.40rem);
+  --fs-lead:    clamp(1.06rem, 0.99rem + 0.34vw, 1.32rem);
+  --fs-body:    1.0625rem;  /* 17px */
+  --fs-sm:      0.9375rem;  /* 15px */
+  --fs-xs:      0.8125rem;  /* 13px */
+  --fs-micro:   0.6875rem;  /* 11px */
+
+  --lh-tight:   1.02;
+  --lh-snug:    1.16;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.68;
+
+  --ls-hero:    -0.035em;
+  --ls-display: -0.025em;
+  --ls-tight:   -0.015em;
+  --ls-normal:  0em;
+  --ls-wide:    0.06em;
+  --ls-eyebrow: 0.22em;
+  --ls-seal:    0.34em;
+
+  --fw-light: 300;
+  --fw-book:  400;
+  --fw-medium: 500;
+  --fw-semi:  600;
+  --fw-bold:  700;
+
+  /* ---------------------------------------------------------------------
+     4. SPACE — 4px base grid
+     --------------------------------------------------------------------- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.5rem;
+  --sp-6:  2rem;
+  --sp-7:  2.5rem;
+  --sp-8:  3rem;
+  --sp-9:  4rem;
+  --sp-10: 5rem;
+  --sp-11: 6.5rem;
+  --sp-12: 8rem;
+
+  /* Section rhythm — fluid vertical cadence */
+  --section-y:      clamp(4.5rem, 3rem + 7vw, 9.5rem);
+  --section-y-tight: clamp(3rem, 2rem + 4.5vw, 6rem);
+
+  /* ---------------------------------------------------------------------
+     5. LAYOUT
+     --------------------------------------------------------------------- */
+  --container:      1200px;
+  --container-wide: 1420px;
+  --container-text: 74ch;
+  --gutter: clamp(1.25rem, 0.6rem + 3.2vw, 3.5rem);
+  --nav-h: 76px;
+
+  /* ---------------------------------------------------------------------
+     6. RADII
+     --------------------------------------------------------------------- */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   14px;
+  --r-lg:   22px;
+  --r-xl:   34px;
+  --r-2xl:  48px;
+  --r-pill: 999px;
+
+  /* ---------------------------------------------------------------------
+     7. ELEVATION — warm-tinted, never neutral grey
+     --------------------------------------------------------------------- */
+  --sh-xs: 0 1px 2px rgba(56, 4, 4, 0.06);
+  --sh-sm: 0 2px 6px rgba(56, 4, 4, 0.07), 0 1px 2px rgba(56, 4, 4, 0.05);
+  --sh-md: 0 10px 26px -8px rgba(56, 4, 4, 0.16), 0 2px 6px rgba(56, 4, 4, 0.05);
+  --sh-lg: 0 26px 56px -18px rgba(56, 4, 4, 0.24), 0 6px 14px rgba(56, 4, 4, 0.06);
+  --sh-xl: 0 48px 96px -30px rgba(56, 4, 4, 0.32), 0 10px 24px rgba(56, 4, 4, 0.07);
+  --sh-glass: 0 20px 60px -24px rgba(36, 3, 3, 0.34);
+  --sh-inset-hair: inset 0 1px 0 var(--a-ivory-45);
+
+  /* ---------------------------------------------------------------------
+     8. MOTION
+     --------------------------------------------------------------------- */
+  --e-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --e-out-expo: cubic-bezier(0.16, 1, 0.30, 1);
+  --e-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --e-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --d-instant: 90ms;
+  --d-fast:    180ms;
+  --d-base:    320ms;
+  --d-slow:    600ms;
+  --d-slower:  980ms;
+  --d-cine:    1400ms;
+
+  /* ---------------------------------------------------------------------
+     9. Z-INDEX
+     --------------------------------------------------------------------- */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-nav: 500;
+  --z-drawer: 700;
+  --z-modal: 900;
+  --z-cursor: 1000;
+  --z-curtain: 1200;
+}
+
+/* ==========================================================================
+   INVERTED CONTEXT — "State" sections rendered on deep maroon.
+   Applying .on-dark remaps semantics so every component inverts correctly
+   without a single component-level override.
+   ========================================================================== */
+.on-dark {
+  --bg:            var(--maroon-800);
+  --bg-raised:     var(--maroon-700);
+  --bg-sunken:     var(--maroon-950);
+  --surface:       rgba(255, 255, 255, 0.05);
+  --surface-muted: rgba(255, 255, 255, 0.03);
+
+  --text:          var(--parchment-100);
+  --text-body:     rgba(244, 233, 218, 0.82);
+  --text-muted:    rgba(244, 233, 218, 0.62);
+  --text-faint:    rgba(244, 233, 218, 0.42);
+  --text-invert:   var(--maroon-800);
+
+  --accent:        var(--parchment-300);
+  --accent-hover:  var(--ivory);
+  --accent-deep:   var(--parchment-500);
+  --accent-ink:    var(--maroon-800);
+
+  --line:          rgba(239, 221, 198, 0.16);
+  --line-strong:   rgba(239, 221, 198, 0.28);
+  --line-accent:   rgba(239, 221, 198, 0.30);
+
+  --focus-ring:    var(--parchment-300);
+
+  --glass-bg:      rgba(255, 255, 255, 0.07);
+  --glass-brd:     rgba(255, 255, 255, 0.16);
+
+  color: var(--text-body);
+  background-color: var(--bg);
+}
+
+/* Parchment-tinted alternate band (light, but separated from the ground) */
+.on-paper {
+  --bg: var(--parchment-100);
+  background-color: var(--bg);
+}
+
+.on-ivory {
+  --bg: var(--ivory);
+  background-color: var(--bg);
+}

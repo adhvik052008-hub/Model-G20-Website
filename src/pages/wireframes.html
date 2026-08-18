@@ -1,0 +1,332 @@
+<!--meta
+title: Wireframes
+nav: wireframes
+description: Low-fidelity layout blueprints, responsive behaviour and the end-to-end user journeys behind the Model G20 2026 site.
+-->
+
+<section class="page-head">
+  <div class="shell shell--wide">
+    <div class="watermark" style="right:-3%;top:-14%" aria-hidden="true">WF</div>
+    <div class="page-head__grid">
+      <div class="stack-5">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html">Summit</a><span>/</span>
+          <a href="design-system.html">Design System</a><span>/</span>
+          <span aria-current="page">Wireframes</span>
+        </nav>
+        <h1 class="page-head__title">
+          <span class="reveal-mask"><span>Wireframes &amp;</span></span>
+          <span class="reveal-mask"><span><em class="t-quiet-italic t-accent">user journeys</em></span></span>
+        </h1>
+      </div>
+      <div class="stack-4" data-reveal style="--i:2">
+        <p class="t-lead">
+          The structural decisions underneath the finished pages: what sits where,
+          how each layout collapses, and the four journeys the information
+          architecture is built to serve.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ IA -->
+<section class="section section--flush-top">
+  <div class="shell shell--wide">
+    <hr class="divider" style="margin-bottom:clamp(2.5rem,5vw,4rem)">
+
+    <div class="section-head" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+      <span class="eyebrow" data-reveal>Information architecture</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Eleven destinations, three tiers</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Primary navigation carries the six destinations a prospective delegate
+        needs before deciding. Secondary destinations sit behind the overflow
+        menu. Registration is never in either — it is a persistent action.
+      </p>
+    </div>
+
+    <div class="grid grid-3" data-reveal-group>
+      <div class="card">
+        <span class="card__meta">Tier 1 — Primary nav</span>
+        <h3 class="card__title">Deciding</h3>
+        <p class="t-sm t-muted">About · Committees · Country Matrix · Schedule · Resources · Gallery</p>
+        <p class="t-xs t-faint">Everything needed to answer “should I apply, and to what?”</p>
+      </div>
+      <div class="card">
+        <span class="card__meta">Tier 2 — Overflow</span>
+        <h3 class="card__title">Verifying</h3>
+        <p class="t-sm t-muted">Secretariat · FAQs · Contact · Design System</p>
+        <p class="t-xs t-faint">Consulted once, usually late, usually by a faculty advisor or a partner.</p>
+      </div>
+      <div class="card">
+        <span class="card__meta">Tier 3 — Persistent action</span>
+        <h3 class="card__title">Converting</h3>
+        <p class="t-sm t-muted">Registration</p>
+        <p class="t-xs t-faint">Present in the bar at every scroll position, in every CTA band, and in the footer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WIREFRAMES -->
+<section class="section on-paper">
+  <div class="shell shell--wide">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>Blueprints</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Page layouts</h2>
+      <p class="t-lead t-muted" data-reveal style="--i:2">
+        Desktop structure at ≥1120px. Every layout below collapses to a single
+        column at 620px; the two-column splits collapse at 900px.
+      </p>
+    </div>
+
+    <div class="grid grid-2" data-reveal-group>
+
+      <!-- HOME -->
+      <div class="stack-3">
+        <span class="ds-label" style="margin:0">Home — index.html</span>
+        <div class="wire">
+          <div class="wb wb--solid">Fixed glass nav · crest / 6 links / more / register</div>
+          <div class="wire__row">
+            <div class="wb wb--xtall">Hero type<br>H1 · theme · rotator · meta · 2 CTAs<br><small>dot-matrix world map behind</small></div>
+            <div class="wb wb--xtall">Glass panel<br>Countdown · deadlines · CTA</div>
+          </div>
+          <div class="wb">Nations marquee — infinite ticker</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Sticky heading</div>
+            <div class="wb wb--tall">Intro copy + stat strip ×4</div>
+          </div>
+          <div class="wb wb--solid wb--tall">Theme band — inverted, full-bleed card</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Pillar ×5</div>
+            <div class="wb wb--tall">auto-fit grid, min 270px</div>
+          </div>
+          <div class="wb wb--tall">Committee track list ×10 — full-width rows</div>
+          <div class="wb wb--xtall">Interactive delegation map — full container width</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Day 1</div><div class="wb wb--tall">Day 2</div><div class="wb wb--tall">Day 3</div>
+          </div>
+          <div class="wb">Pull quote — 74ch</div>
+          <div class="wb wb--solid wb--tall">CTA band — inverted</div>
+          <div class="wb wb--solid wb--tall">Footer — 4 columns + megatype</div>
+        </div>
+      </div>
+
+      <!-- COMMITTEES -->
+      <div class="stack-3">
+        <span class="ds-label" style="margin:0">Committees — committees.html</span>
+        <div class="wire">
+          <div class="wb wb--solid">Fixed glass nav</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Page head · crumbs · masked H1</div>
+            <div class="wb wb--tall">Standfirst + CTA</div>
+          </div>
+          <div class="wire__row">
+            <div class="wb">Difficulty</div><div class="wb">Seats</div><div class="wb">Outputs</div>
+          </div>
+          <div class="wire__row">
+            <div class="wb wb--xtall">Committee card<br>abbr · track · name<br>agenda · brief<br>seats / open / level<br>difficulty · dossier</div>
+            <div class="wb wb--xtall">Committee card</div>
+          </div>
+          <div class="wire__row">
+            <div class="wb wb--xtall">Committee card</div>
+            <div class="wb wb--xtall">Committee card ×10 total</div>
+          </div>
+          <div class="wb wb--ghost">→ Dossier opens in a focus-trapped modal</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Sticky heading</div>
+            <div class="wb wb--tall">Track explainer timeline ×4</div>
+          </div>
+          <div class="wb wb--tall">Centred CTA</div>
+          <div class="wb wb--solid wb--tall">Footer</div>
+        </div>
+      </div>
+
+      <!-- MATRIX -->
+      <div class="stack-3">
+        <span class="ds-label" style="margin:0">Country Matrix — country-matrix.html</span>
+        <div class="wire">
+          <div class="wb wb--solid">Fixed glass nav</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Page head · masked H1</div>
+            <div class="wb wb--tall">Standfirst + legend</div>
+          </div>
+          <div class="wb wb--solid">Sticky toolbar — search · group filters</div>
+          <div class="wire__row">
+            <div class="wb">Committee chips ×11</div>
+            <div class="wb">Open seats only</div>
+          </div>
+          <div class="wb">Result summary — counts</div>
+          <div class="wb wb--xtall">
+            Matrix grid<br>
+            sticky delegation column · 10 committee columns<br>
+            <small>horizontal scroll · availability dot per cell</small>
+          </div>
+          <div class="wb wb--ghost">Single committee selected → focused card list instead of grid</div>
+          <div class="wb wb--ghost">No matches → empty state with reset</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Sticky heading</div>
+            <div class="wb wb--tall">Allotment criteria ×4</div>
+          </div>
+          <div class="wb wb--solid wb--tall">CTA band</div>
+          <div class="wb wb--solid wb--tall">Footer</div>
+        </div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="stack-3">
+        <span class="ds-label" style="margin:0">Registration — register.html</span>
+        <div class="wire">
+          <div class="wb wb--solid">Fixed glass nav</div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Page head · masked H1</div>
+            <div class="wb wb--tall">Standfirst + countdown</div>
+          </div>
+          <div class="wire__row">
+            <div class="wb wb--tall">Fee</div><div class="wb wb--tall">Fee ★</div>
+            <div class="wb wb--tall">Fee</div><div class="wb wb--tall">Fee</div>
+          </div>
+          <div class="wire__row">
+            <div class="wb wb--xtall">
+              Stepper 1–5<br><br>
+              Step panel (one visible)<br>
+              1 Type · 2 Delegate · 3 Preferences<br>4 Logistics · 5 Review<br><br>
+              Back / Continue / Submit
+            </div>
+            <div class="wb wb--xtall">Sticky aside<br>Key dates<br>Countdown<br>Good to know<br>Help</div>
+          </div>
+          <div class="wb wb--ghost">Draft auto-saved to localStorage on every change</div>
+          <div class="wb wb--ghost">Submit → success panel replaces the form in place</div>
+          <div class="wb wb--solid wb--tall">Footer</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ RESPONSIVE -->
+<section class="section">
+  <div class="shell shell--wide">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>Responsive behaviour</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Four breakpoints, no more</h2>
+    </div>
+
+    <div class="table-wrap" data-reveal>
+      <table class="table">
+        <caption class="visually-hidden">Responsive behaviour by breakpoint</caption>
+        <thead>
+          <tr><th scope="col">Breakpoint</th><th scope="col">Navigation</th><th scope="col">Grids</th><th scope="col">Notable</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" style="text-align:left;font-weight:600">≥ 1121px</th>
+            <td>Full link bar + overflow menu + register CTA</td>
+            <td>Splits at 0.85 / 1.15fr · 3–4 column grids</td>
+            <td>Custom cursor mounts · sticky matrix toolbar · sticky registration aside</td>
+          </tr>
+          <tr>
+            <th scope="row" style="text-align:left;font-weight:600">901 – 1120px</th>
+            <td>Burger + full-screen drawer</td>
+            <td>Splits hold · 3-column grids hold</td>
+            <td>Registration aside drops below the form at 1000px</td>
+          </tr>
+          <tr>
+            <th scope="row" style="text-align:left;font-weight:600">621 – 900px</th>
+            <td>Burger + drawer</td>
+            <td>Splits collapse to one column · 3–4 col becomes 2 col</td>
+            <td>Sticky headings become static · gallery items span 6 of 12</td>
+          </tr>
+          <tr>
+            <th scope="row" style="text-align:left;font-weight:600">≤ 620px</th>
+            <td>Burger + drawer · CTA moves into the drawer foot</td>
+            <td>Everything single column</td>
+            <td>Matrix toolbar unsticks · stepper hides labels, keeps dots · map info card moves above the map</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ JOURNEYS -->
+<section class="section on-dark">
+  <div class="shell shell--wide">
+    <div class="section-head" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <span class="eyebrow" data-reveal>End to end</span>
+      <h2 class="t-h1" data-reveal style="--i:1">Four user journeys</h2>
+      <p class="t-lead" data-reveal style="--i:2">
+        Every page exists to serve at least one of these. A page that serves none
+        does not ship.
+      </p>
+    </div>
+
+    <div class="stack-8">
+      <div class="stack-3" data-reveal>
+        <h3 class="t-h3">01 — The prospective delegate</h3>
+        <div class="journey">
+          <div class="jstep"><span class="jstep__n">Land</span><span class="jstep__t">Home</span><span class="jstep__d">Countdown and theme establish scale in under five seconds.</span></div>
+          <div class="jstep"><span class="jstep__n">Assess</span><span class="jstep__t">Committees</span><span class="jstep__d">Difficulty grading answers “is this for me?” before the agenda does.</span></div>
+          <div class="jstep"><span class="jstep__n">Check</span><span class="jstep__t">Country Matrix</span><span class="jstep__d">Filter to open seats in the committee they want.</span></div>
+          <div class="jstep"><span class="jstep__n">Confirm</span><span class="jstep__t">FAQs</span><span class="jstep__d">Fee, refund policy, dress code, deadline.</span></div>
+          <div class="jstep"><span class="jstep__n">Convert</span><span class="jstep__t">Registration</span><span class="jstep__d">Five steps, draft saved, deep-linked committee pre-filled.</span></div>
+        </div>
+      </div>
+
+      <div class="stack-3" data-reveal>
+        <h3 class="t-h3">02 — The faculty advisor</h3>
+        <div class="journey">
+          <div class="jstep"><span class="jstep__n">Land</span><span class="jstep__t">About</span><span class="jstep__d">Legitimacy first: who convenes it, where, under what supervision.</span></div>
+          <div class="jstep"><span class="jstep__n">Verify</span><span class="jstep__t">Secretariat</span><span class="jstep__d">Accountability, safeguarding and the standing rules.</span></div>
+          <div class="jstep"><span class="jstep__n">Plan</span><span class="jstep__t">Schedule</span><span class="jstep__d">Three-day programme, dress code, conduct expectations.</span></div>
+          <div class="jstep"><span class="jstep__n">Cost</span><span class="jstep__t">Registration</span><span class="jstep__d">Delegation rate, accommodation, advisor pass.</span></div>
+          <div class="jstep"><span class="jstep__n">Ask</span><span class="jstep__t">Contact</span><span class="jstep__d">Routed to the right desk with a named response time.</span></div>
+        </div>
+      </div>
+
+      <div class="stack-3" data-reveal>
+        <h3 class="t-h3">03 — The allotted delegate, preparing</h3>
+        <div class="journey">
+          <div class="jstep"><span class="jstep__n">Return</span><span class="jstep__t">Resources</span><span class="jstep__d">Handbook, rules of procedure, their committee's guide.</span></div>
+          <div class="jstep"><span class="jstep__n">Write</span><span class="jstep__t">Position papers</span><span class="jstep__d">Structure, format, plagiarism policy, the missed-deadline rule.</span></div>
+          <div class="jstep"><span class="jstep__n">Aim</span><span class="jstep__t">Awards criteria</span><span class="jstep__d">Four weighted criteria, published in advance.</span></div>
+          <div class="jstep"><span class="jstep__n">Arrive</span><span class="jstep__t">Schedule</span><span class="jstep__d">Hour by hour, with accreditation and the crisis caveat.</span></div>
+        </div>
+      </div>
+
+      <div class="stack-3" data-reveal>
+        <h3 class="t-h3">04 — The partner or sponsor</h3>
+        <div class="journey">
+          <div class="jstep"><span class="jstep__n">Scale</span><span class="jstep__t">Home</span><span class="jstep__d">Delegates, committees, delegations, days — above the fold.</span></div>
+          <div class="jstep"><span class="jstep__n">Proof</span><span class="jstep__t">Gallery</span><span class="jstep__d">The visual record and the Press Corps' reach.</span></div>
+          <div class="jstep"><span class="jstep__n">Terms</span><span class="jstep__t">Resources</span><span class="jstep__d">Sponsorship prospectus and the brand kit.</span></div>
+          <div class="jstep"><span class="jstep__n">Open</span><span class="jstep__t">Contact</span><span class="jstep__d">Partnerships desk, direct.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ STATES -->
+<section class="section">
+  <div class="shell">
+    <div class="split">
+      <div class="split__sticky stack-3">
+        <span class="eyebrow" data-reveal>Edge cases</span>
+        <h2 class="t-h1" data-reveal style="--i:1">States the design accounts for</h2>
+      </div>
+
+      <div class="grid grid-2" data-reveal-group>
+        <div class="card"><h3 class="card__title">Empty</h3><p class="t-sm t-muted">Matrix search with no matches renders a mark, an explanation and a one-click reset — never a blank region.</p></div>
+        <div class="card"><h3 class="card__title">Loading</h3><p class="t-sm t-muted">The curtain holds for 900ms then lifts unconditionally, so a slow asset can never trap a visitor behind it.</p></div>
+        <div class="card"><h3 class="card__title">Error</h3><p class="t-sm t-muted">Field errors render inline from native validity messages, tint the control, and move focus to the first offender.</p></div>
+        <div class="card"><h3 class="card__title">Success</h3><p class="t-sm t-muted">Forms replace themselves with a confirmation panel in place, moving focus to its heading rather than scrolling silently.</p></div>
+        <div class="card"><h3 class="card__title">Interrupted</h3><p class="t-sm t-muted">Registration drafts persist to localStorage on every change and are restored with a visible notice.</p></div>
+        <div class="card"><h3 class="card__title">Post-event</h3><p class="t-sm t-muted">Once the start date passes, the countdown swaps its supporting copy to the in-progress message automatically.</p></div>
+        <div class="card"><h3 class="card__title">Webfonts blocked</h3><p class="t-sm t-muted">Both families declare full local fallback stacks, so the page keeps its serif/grotesque contrast offline.</p></div>
+        <div class="card"><h3 class="card__title">Not found</h3><p class="t-sm t-muted">A dedicated 404 keeps the full navigation and routes to the four most likely destinations.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
