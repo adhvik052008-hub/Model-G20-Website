@@ -227,43 +227,6 @@
   }
 
   /* ======================================================================
-     CUSTOM CURSOR
-     ====================================================================== */
-  function cursor() {
-    if (reduced || window.matchMedia("(pointer: coarse)").matches) return;
-    var el = doc.createElement("div");
-    el.className = "cursor";
-    el.setAttribute("aria-hidden", "true");
-    el.innerHTML = '<div class="cursor__ring"></div><div class="cursor__dot"></div>';
-    doc.body.appendChild(el);
-    var ring = $(".cursor__ring", el);
-    var dot = $(".cursor__dot", el);
-
-    var tx = 0, ty = 0, rx = 0, ry = 0;
-    on(window, "mousemove", function (e) {
-      tx = e.clientX; ty = e.clientY;
-      el.classList.add("is-active");
-      dot.style.transform = "translate3d(" + tx + "px," + ty + "px,0)";
-    }, { passive: true });
-    on(doc, "mouseleave", function () { el.classList.remove("is-active"); });
-
-    (function loop() {
-      rx += (tx - rx) * 0.16;
-      ry += (ty - ry) * 0.16;
-      ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0)";
-      requestAnimationFrame(loop);
-    })();
-
-    var HOVER = 'a, button, [role="button"], input, select, textarea, .card--interactive, .wm-node, .gal-item, label.choice';
-    on(doc, "mouseover", function (e) {
-      if (e.target.closest && e.target.closest(HOVER)) el.classList.add("is-hover");
-    });
-    on(doc, "mouseout", function (e) {
-      if (e.target.closest && e.target.closest(HOVER)) el.classList.remove("is-hover");
-    });
-  }
-
-  /* ======================================================================
      ACCORDION
      ====================================================================== */
   function accordion() {
@@ -448,7 +411,8 @@
   /* ======================================================================
      FORM VALIDATION
      Native constraints, custom presentation. Nothing is submitted anywhere:
-     there is no backend in this build — see README.
+     the form posts to Netlify Forms when deployed there; otherwise the
+     success state is shown locally. See README.
      ====================================================================== */
   function validateField(input) {
     var field = input.closest(".field") || input.closest(".choice-group");
@@ -472,6 +436,25 @@
         });
       });
 
+      var errNote = $("[data-form-error]", form);
+      var submitBtn = $("button[type=submit]", form);
+
+      function succeed() {
+        var done = $("[data-form-done]", form.parentNode) || $("#" + form.dataset.done);
+        if (!done) return;
+        form.hidden = true;
+        done.hidden = false;
+        done.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
+        var h = $("h2, h3", done);
+        if (h) { h.setAttribute("tabindex", "-1"); h.focus(); }
+      }
+
+      function busy(state) {
+        if (!submitBtn) return;
+        submitBtn.disabled = state;
+        submitBtn.classList.toggle("is-busy", state);
+      }
+
       on(form, "submit", function (e) {
         e.preventDefault();
         var fields = $$("input, select, textarea", form).filter(function (i) { return !i.disabled; });
@@ -482,132 +465,27 @@
           firstBad.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
           return;
         }
-        var done = $("[data-form-done]", form.parentNode) || $("#" + form.dataset.done);
-        if (done) {
-          form.hidden = true;
-          done.hidden = false;
-          done.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
-          var h = $("h2, h3", done);
-          if (h) { h.setAttribute("tabindex", "-1"); h.focus(); }
-        }
-        try { window.localStorage.removeItem("mg20-draft"); } catch (err) {}
+        if (errNote) errNote.hidden = true;
+
+        // Without data-post there is nothing behind the form: show the success
+        // state so the page can be reviewed, and send nothing anywhere.
+        if (!form.hasAttribute("data-post")) { succeed(); return; }
+
+        busy(true);
+        window.fetch(form.getAttribute("action") || "/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(form)).toString()
+        }).then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          succeed();
+        })["catch"](function () {
+          if (errNote) errNote.hidden = false;
+          if (errNote) errNote.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
+        }).then(function () { busy(false); });
       });
     });
   }
-
-  /* ======================================================================
-     REGISTRATION WIZARD
-     ====================================================================== */
-  function wizard() {
-    var form = $("[data-wizard]");
-    if (!form) return;
-    var steps = $$(".reg-step", form);
-    var dots = $$(".step", form.closest("[data-wizard-scope]") || doc);
-    var current = 0;
-    var firstPaint = true;
-
-    function paint() {
-      steps.forEach(function (s, i) { s.hidden = i !== current; });
-      dots.forEach(function (d, i) {
-        d.classList.toggle("is-active", i === current);
-        d.classList.toggle("is-done", i < current);
-      });
-      var back = $("[data-wizard-back]", form);
-      var next = $("[data-wizard-next]", form);
-      var submit = $("[data-wizard-submit]", form);
-      if (back) back.hidden = current === 0;
-      if (next) next.hidden = current === steps.length - 1;
-      if (submit) submit.hidden = current !== steps.length - 1;
-      if (current === steps.length - 1) summarise();
-      /* On load the wizard just renders — it must not steal focus or scroll
-         the visitor past the fee cards they arrived to read. */
-      if (firstPaint) { firstPaint = false; return; }
-      var head = $(".reg-step__head", steps[current]);
-      if (head) { head.setAttribute("tabindex", "-1"); head.focus({ preventScroll: true }); }
-      form.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
-    }
-
-    function stepValid() {
-      var inputs = $$("input, select, textarea", steps[current]).filter(function (i) { return !i.disabled; });
-      var bad = null;
-      inputs.forEach(function (i) { if (!validateField(i) && !bad) bad = i; });
-      if (bad) { bad.focus(); bad.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" }); }
-      return !bad;
-    }
-
-    function summarise() {
-      var box = $("[data-wizard-summary]", form);
-      if (!box) return;
-      var rows = [];
-      $$("input, select, textarea", form).forEach(function (i) {
-        if (!i.name || i.type === "submit" || i.type === "button") return;
-        var label = i.dataset.summary;
-        if (!label) return;
-        if (i.type === "radio" && !i.checked) return;
-        /* An unset select still has a selected option — its placeholder. Skip
-           on the value, not the label, or "Select a committee…" gets reviewed. */
-        if (!i.value && i.type !== "checkbox") return;
-
-        var val = i.value;
-        if (i.type === "checkbox") val = i.checked ? "Yes" : "No";
-        else if (i.type === "radio") val = i.dataset.summaryValue || i.value;
-        else if (i.tagName === "SELECT" && i.selectedIndex > -1) val = i.options[i.selectedIndex].text;
-        rows.push('<div class="reg-summary__row"><dt>' + label + "</dt><dd>" + escapeHTML(val) + "</dd></div>");
-      });
-      box.innerHTML = rows.length
-        ? rows.join("")
-        : '<p class="t-sm t-muted">Nothing to review yet.</p>';
-    }
-
-    on($("[data-wizard-next]", form), "click", function () {
-      if (!stepValid()) return;
-      current = Math.min(current + 1, steps.length - 1);
-      saveDraft();
-      paint();
-    });
-    on($("[data-wizard-back]", form), "click", function () {
-      current = Math.max(current - 1, 0);
-      paint();
-    });
-
-    /* Draft persistence — a delegate mid-form should not lose their work. */
-    function saveDraft() {
-      var data = {};
-      $$("input, select, textarea", form).forEach(function (i) {
-        if (!i.name) return;
-        if (i.type === "checkbox") data[i.name] = i.checked;
-        else if (i.type === "radio") { if (i.checked) data[i.name] = i.value; }
-        else data[i.name] = i.value;
-      });
-      try { window.localStorage.setItem("mg20-draft", JSON.stringify(data)); } catch (e) {}
-    }
-    function loadDraft() {
-      var raw;
-      try { raw = window.localStorage.getItem("mg20-draft"); } catch (e) { return; }
-      if (!raw) return;
-      var data;
-      try { data = JSON.parse(raw); } catch (e) { return; }
-      $$("input, select, textarea", form).forEach(function (i) {
-        if (!i.name || !(i.name in data)) return;
-        if (i.type === "checkbox") i.checked = !!data[i.name];
-        else if (i.type === "radio") i.checked = i.value === data[i.name];
-        else i.value = data[i.name];
-      });
-      var note = $("[data-draft-note]", form);
-      if (note) note.hidden = false;
-    }
-    on(form, "input", saveDraft);
-    on(form, "change", saveDraft);
-    loadDraft();
-    paint();
-  }
-
-  function escapeHTML(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  window.MG20esc = escapeHTML;
 
   /* ======================================================================
      PARALLAX — light touch, transform only
@@ -651,9 +529,7 @@
     marquee();
     searchInputs();
     forms();
-    wizard();
     parallax();
-    cursor();
   }
 
   if (doc.readyState === "loading") on(doc, "DOMContentLoaded", init);

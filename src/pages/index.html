@@ -23,6 +23,8 @@ standalone: true
     EDIT 6  Our Partners
     EDIT 7  Contact details
     EDIT 8  The countdown date
+    EDIT 9  The conference timeline (key dates)
+    EDIT 10 The Core Secretariat cards
 
   A note on the rest of the site: the interior pages (Committees, Secretariat,
   About, and so on) share one navigation bar and footer, so they are assembled
@@ -33,14 +35,14 @@ standalone: true
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Model G20 2026 — The School of Raya</title>
-<meta name="description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 8–9 October 2026.">
+<title>School of Raya Model G20 2026</title>
+<meta name="description" content="School of Raya Model G20 2026 — two days of rigorous diplomacy, debate and decision-making. 8th – 9th October 2026 at The School of Raya, Bengaluru.">
 <meta name="theme-color" content="#EFDDC6">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Model G20 2026 — The School of Raya">
-<meta property="og:description" content="An international summit simulation. 8–9 October 2026, FLAME University, Pune.">
+<meta property="og:title" content="School of Raya Model G20 2026">
+<meta property="og:description" content="Two days of rigorous diplomacy, debate and decision-making. 8th – 9th October 2026, The School of Raya.">
 <meta property="og:image" content="assets/img/og.svg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -281,9 +283,9 @@ standalone: true
   h1 .year{display:block;font-weight:300;letter-spacing:-.01em;color:var(--oxblood)}
   .rule{width:min(42ch,68vw);height:1px;background:var(--ink);opacity:.45}
   .theme{
-    font-style:italic;font-weight:300;
-    font-size:clamp(1rem,1.75vw,1.32rem);
-    max-width:40ch;line-height:1.4;opacity:.86;
+    font-weight:400;
+    font-size:clamp(1.02rem,1.9vw,1.38rem);
+    max-width:34ch;line-height:1.4;opacity:.82;
   }
   .clock{
     display:flex;align-items:flex-start;
@@ -406,6 +408,7 @@ standalone: true
   .contact h2{color:var(--paper)}
 
   .contact-grid{
+    align-content:start;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
     gap:clamp(1.6rem,3.5vw,2.8rem);
@@ -454,6 +457,153 @@ standalone: true
     html{scroll-behavior:auto}
     *,*::before,*::after{transition-duration:.001ms !important;animation-duration:.001ms !important}
   }
+  /* ══════════════════════════════════════════════════════════════════════
+     COVER — host line and partnership credit
+     ══════════════════════════════════════════════════════════════════════ */
+  h1 .host{
+    display:block;font-weight:400;
+    font-size:.42em;letter-spacing:.01em;line-height:1.15;
+    margin-bottom:.12em;
+  }
+  .partnership{
+    font-size:clamp(.78rem,1.35vw,.92rem);
+    letter-spacing:.02em;opacity:.72;max-width:52ch;text-wrap:balance;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     CONFERENCE TIMELINE
+     ══════════════════════════════════════════════════════════════════════ */
+  .timeline-sec{
+    position:relative;z-index:1;
+    background:var(--paper-light);
+    padding:clamp(3.4rem,8vw,6.5rem) 0;
+    border-top:1px solid rgba(96,8,8,.12);
+  }
+  .kd-track{
+    list-style:none;margin:0;padding:0;
+    display:grid;gap:clamp(1.6rem,3vw,2rem);
+    grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
+    max-width:1240px;margin-inline:auto;
+  }
+  @media (min-width:1040px){ .kd-track{grid-template-columns:repeat(5,1fr)} }
+  .kd{
+    position:relative;display:grid;gap:.35rem;align-content:start;
+    padding-top:1.9rem;
+  }
+  .kd::before{
+    content:"";position:absolute;top:7px;left:0;right:0;height:1px;
+    background:rgba(96,8,8,.22);
+  }
+  .kd:last-child::before{right:calc(100% - 15px)}
+  .kd__dot{
+    position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;
+    border:1.5px solid var(--oxblood);background:var(--paper-light);
+  }
+  .kd.is-done .kd__dot{background:var(--oxblood)}
+  .kd.is-open .kd__dot{
+    background:var(--oxblood);
+    box-shadow:0 0 0 4px rgba(96,8,8,.14);
+  }
+  .kd--key .kd__dot{border-width:2.5px}
+  .kd__date{
+    font-family:var(--display);font-weight:600;
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--oxblood);
+  }
+  .kd__title{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.25;
+  }
+  .kd__note{font-size:.87rem;line-height:1.5;opacity:.7;max-width:30ch}
+  .kd--key .kd__title{color:var(--oxblood)}
+
+  /* ══════════════════════════════════════════════════════════════════════
+     CORE SECRETARIAT
+     ══════════════════════════════════════════════════════════════════════ */
+  .core-sec{
+    position:relative;z-index:1;
+    background:var(--paper);
+    padding:clamp(3.4rem,8vw,6.5rem) 0;
+    border-top:1px solid rgba(96,8,8,.12);
+  }
+  .face-grid{
+    display:grid;gap:clamp(1.1rem,2.4vw,1.7rem);
+    grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));
+    max-width:1140px;margin-inline:auto;
+  }
+  .face{
+    display:grid;gap:.3rem;justify-items:center;text-align:center;
+    padding:clamp(1.3rem,2.6vw,1.9rem) 1rem;
+    background:#fff;
+    border:1px solid rgba(96,8,8,.12);
+    border-radius:2px;
+    transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s,border-color .4s;
+  }
+  .face:hover{
+    transform:translateY(-4px);
+    border-color:rgba(96,8,8,.3);
+    box-shadow:0 16px 34px -22px rgba(58,4,4,.5);
+  }
+  .face__portrait{
+    width:clamp(74px,9vw,92px);aspect-ratio:1;margin-bottom:.7rem;
+    border-radius:50%;overflow:hidden;
+    display:grid;place-items:center;
+    background:var(--paper-light);
+    border:1px solid rgba(96,8,8,.16);
+  }
+  .face__portrait img{width:100%;height:100%;object-fit:cover}
+  .face__plate{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.05rem,2vw,1.3rem);letter-spacing:.06em;
+    color:var(--oxblood);opacity:.55;
+  }
+  .face__abbr{
+    font-family:var(--display);font-size:.6rem;font-weight:600;
+    letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;
+    color:var(--oxblood);opacity:.7;
+  }
+  .face__name{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1rem,1.7vw,1.14rem);letter-spacing:.01em;
+  }
+  .face__office{font-size:.86rem;line-height:1.45;opacity:.68}
+
+  /* ══════════════════════════════════════════════════════════════════════
+     CONTACT — split with the map
+     ══════════════════════════════════════════════════════════════════════ */
+  .sechead--left{justify-items:start;text-align:left;margin-bottom:clamp(2rem,4vw,3rem)}
+  .contact-split{
+    display:grid;gap:clamp(1.8rem,4vw,3rem);
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    align-items:start;
+  }
+  .cblock--wide{grid-column:1 / -1}
+  .map-card{
+    display:grid;gap:.7rem;
+    border:1px solid rgba(239,221,198,.24);
+    border-radius:2px;padding:.55rem .55rem .75rem;
+    background:rgba(239,221,198,.06);
+  }
+  .map-card iframe{
+    width:100%;aspect-ratio:4 / 3;min-height:260px;
+    border:0;display:block;
+    filter:grayscale(1) contrast(1.05);
+    transition:filter .5s;
+  }
+  .map-card:hover iframe{filter:grayscale(0)}
+  .map-card__link{
+    justify-self:start;padding-inline:.4rem;
+    font-family:var(--display);font-size:.68rem;font-weight:500;
+    letter-spacing:.2em;text-transform:uppercase;
+    border-bottom:1px solid rgba(239,221,198,.34);
+  }
+  .map-card__link:hover{border-bottom-color:var(--paper)}
+
+  @media (max-width:860px){
+    .contact-split{grid-template-columns:1fr}
+    .map-card iframe{aspect-ratio:16 / 10;min-height:0}
+  }
+
 </style>
 </head>
 
@@ -470,7 +620,7 @@ standalone: true
 
     <!-- EDIT 2 — the logo / home link. Change the words, or replace the <svg>
          with <img src="assets/img/your-logo.svg" alt="Model G20" width="34">. -->
-    <a class="brand" href="index.html" aria-label="Model G20 2026 — home">
+    <a class="brand" href="index.html" aria-label="School of Raya Model G20 2026 — home">
       <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
         <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.4"/>
         <circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.001 8.60708"/>
@@ -487,14 +637,16 @@ standalone: true
          in the mobile menu further down so the two agree. -->
     <nav class="topnav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="committees.html">Committees</a>
-      <a href="secretariat.html">Secretariat</a>
       <a href="about.html">About</a>
+      <a href="committees.html">Committees</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="secretariat.html">Secretariat</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <div class="topbar__actions">
       <!-- EDIT 4 — the Register button. -->
-      <a class="btn" href="register.html">Register</a>
+      <a class="btn" href="register.html">Registration</a>
 
       <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
         <i></i><i></i><i></i>
@@ -506,12 +658,13 @@ standalone: true
 <!-- Mobile menu — mirrors the links above -->
 <div class="sheet" id="sheet" aria-hidden="true">
   <a href="index.html">Home <span>01</span></a>
-  <a href="committees.html">Committees <span>02</span></a>
-  <a href="secretariat.html">Secretariat <span>03</span></a>
-  <a href="about.html">About <span>04</span></a>
-  <a href="#partners">Partners <span>05</span></a>
-  <a href="#contact">Contact <span>06</span></a>
-  <a class="btn btn--pale" href="register.html">Register</a>
+  <a href="about.html">About <span>02</span></a>
+  <a href="committees.html">Committees <span>03</span></a>
+  <a href="schedule.html">Schedule <span>04</span></a>
+  <a href="secretariat.html">Secretariat <span>05</span></a>
+  <a href="register.html">Registration <span>06</span></a>
+  <a href="contact.html">Contact <span>07</span></a>
+  <a class="btn btn--pale" href="register.html">Register now</a>
 </div>
 
 <main>
@@ -521,15 +674,13 @@ standalone: true
        EDIT 5 — the headline, dates and venue.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="cover" id="cover">
-    <p class="eyebrow">The School of Raya</p>
+    <p class="eyebrow">Inaugural Edition</p>
 
-    <h1>Model G20<span class="year">2026</span></h1>
+    <h1><span class="host">School of Raya</span>Model G20<span class="year">2026</span></h1>
 
     <div class="rule"></div>
 
-    <!-- A tagline can sit here if you ever want one. Delete the arrows at
-         each end of the next line to switch it back on, then edit the words. -->
-    <!-- <p class="theme">Your tagline here.</p> -->
+    <p class="theme">Two days of rigorous diplomacy, debate and decision-making.</p>
 
     <div class="clock" id="clock" role="timer" aria-live="off">
       <div class="unit"><b id="d">00</b><span>Days</span></div>
@@ -538,7 +689,8 @@ standalone: true
       <div class="unit"><b id="s">00</b><span>Seconds</span></div>
     </div>
 
-    <p class="whenwhere">8 – 9 October 2026 · FLAME University, Pune</p>
+    <p class="whenwhere">8th – 9th October 2026 · School of Raya</p>
+    <p class="partnership">In partnership with Flame University and Wanyang India.</p>
 
     <div class="cover__cta">
       <a class="btn btn--lg" href="register.html">Register as a delegate</a>
@@ -560,8 +712,8 @@ standalone: true
         <p class="kicker">Our Partners</p>
         <h2>In association with</h2>
         <p class="lede">
-          Model G20 2026 is convened by The School of Raya and hosted on the
-          campus of FLAME University, Pune.
+          School of Raya Model G20 2026 is convened by The School of Raya in
+          partnership with Flame University and Wanyang India.
         </p>
       </div>
 
@@ -569,19 +721,32 @@ standalone: true
 
         <article class="partner">
           <div class="partner__mark">
-            <!-- To use the official logo, replace the two lines below with:
-                 <img src="assets/img/partners/flame-university.png" alt="FLAME University"> -->
-            <b>FLAME</b>
-            <span>University</span>
+            <!-- PLACEHOLDER LOGO. Drop the official artwork in at
+                 assets/img/partners/flame-university.svg (same filename) and it
+                 appears here automatically. -->
+            <img src="assets/img/partners/flame-university.svg" alt="Flame University" width="260" height="96">
           </div>
-          <p class="partner__role">Host Institution</p>
-          <h3>FLAME University</h3>
+          <p class="partner__role">Academic Partner</p>
+          <h3>Flame University</h3>
           <p>
-            Ten committee rooms, a plenary auditorium, a dedicated press centre
-            and on-campus accommodation, all inside a single walkable campus at
-            Lavale, Pune.
+            Academic guidance on the agendas, the Chair's bench and the standard
+            of debate the conference is run to.
           </p>
-          <!-- Point this at the partner's website when you have the link. -->
+          <a class="link" href="#">Visit website</a>
+        </article>
+
+        <article class="partner">
+          <div class="partner__mark">
+            <!-- PLACEHOLDER LOGO. Same as above:
+                 assets/img/partners/wanyang-india.svg -->
+            <img src="assets/img/partners/wanyang-india.svg" alt="Wanyang India" width="260" height="96">
+          </div>
+          <p class="partner__role">Programme Partner</p>
+          <h3>Wanyang India</h3>
+          <p>
+            Programme support across the two days, from delegate materials to
+            the running of the conference floor.
+          </p>
           <a class="link" href="#">Visit website</a>
         </article>
 
@@ -601,8 +766,124 @@ standalone: true
       </div>
 
       <p class="partner-note">
-        Interested in partnering with Model G20 2026?
-        <a href="#contact">Write to our Outreach desk</a>.
+        Interested in partnering with School of Raya Model G20 2026?
+        <a href="contact.html">Write to our Outreach desk</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CONFERENCE TIMELINE — key dates
+       EDIT 9 — each <li> is one milestone. Copy one to add another.
+       Give the final milestone class="kd kd--key" to mark it as the event.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="timeline-sec" id="timeline">
+    <div class="wrap">
+      <div class="sechead">
+        <p class="kicker">Conference Timeline</p>
+        <h2>Key dates</h2>
+        <p class="lede">
+          From the day registration opens to the opening gavel. Allotted
+          delegates are notified by email at every step.
+        </p>
+      </div>
+
+      <ol class="kd-track">
+        <li class="kd is-done">
+          <span class="kd__dot" aria-hidden="true"></span>
+          <span class="kd__date">1st August 2026</span>
+          <span class="kd__title">Registration opens</span>
+          <span class="kd__note">Applications accepted from schools and individual delegates.</span>
+        </li>
+        <li class="kd is-open">
+          <span class="kd__dot" aria-hidden="true"></span>
+          <span class="kd__date">15th September 2026</span>
+          <span class="kd__title">Registration closes</span>
+          <span class="kd__note">Late applications are considered only against unfilled seats.</span>
+        </li>
+        <li class="kd is-pending">
+          <span class="kd__dot" aria-hidden="true"></span>
+          <span class="kd__date">22nd September 2026</span>
+          <span class="kd__title">Allotments released</span>
+          <span class="kd__note">Committee and country allocations issued by email.</span>
+        </li>
+        <li class="kd is-pending">
+          <span class="kd__dot" aria-hidden="true"></span>
+          <span class="kd__date">25th September 2026</span>
+          <span class="kd__title">Background guides issued</span>
+          <span class="kd__note">Agenda briefs and rules of procedure sent to every delegate.</span>
+        </li>
+        <li class="kd kd--key is-pending">
+          <span class="kd__dot" aria-hidden="true"></span>
+          <span class="kd__date">8th – 9th October 2026</span>
+          <span class="kd__title">The conference</span>
+          <span class="kd__note">Two days at The School of Raya, Bengaluru.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CORE SECRETARIAT
+       EDIT 10 — five placeholder cards. For each one, change the name and the
+       office. To use a photograph, replace the <span class="face__plate">…
+       </span> line with:
+           <img src="assets/img/team/their-photo.jpg" alt="Their Name">
+       Put the image in assets/img/team/ and crop it square.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="core-sec" id="secretariat">
+    <div class="wrap">
+      <div class="sechead">
+        <p class="kicker">Core Secretariat</p>
+        <h2>Who convenes it</h2>
+        <p class="lede">
+          The offices that hold the academic standard of the conference.
+          Appointments are announced ahead of the event.
+        </p>
+      </div>
+
+      <div class="face-grid">
+
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">SG</span></div>
+          <p class="face__abbr">SG</p>
+          <h3 class="face__name">To be announced</h3>
+          <p class="face__office">Secretary-General</p>
+        </article>
+
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DG</span></div>
+          <p class="face__abbr">DG</p>
+          <h3 class="face__name">To be announced</h3>
+          <p class="face__office">Director-General</p>
+        </article>
+
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DSG</span></div>
+          <p class="face__abbr">DSG</p>
+          <h3 class="face__name">To be announced</h3>
+          <p class="face__office">Deputy Secretary-General</p>
+        </article>
+
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">CDA</span></div>
+          <p class="face__abbr">CDA</p>
+          <h3 class="face__name">To be announced</h3>
+          <p class="face__office">Chargé d'Affaires</p>
+        </article>
+
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">USG</span></div>
+          <p class="face__abbr">USG</p>
+          <h3 class="face__name">To be announced</h3>
+          <p class="face__office">Under-Secretary-General</p>
+        </article>
+
+      </div>
+
+      <p class="partner-note">
+        The full Secretariat and Organising Committee are listed on the
+        <a href="secretariat.html">Secretariat page</a>.
       </p>
     </div>
   </section>
@@ -614,81 +895,89 @@ standalone: true
        ════════════════════════════════════════════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="sechead" style="justify-items:start;text-align:left;margin-bottom:clamp(2rem,4vw,3rem)">
+      <div class="sechead sechead--left">
         <p class="kicker">Contact Us</p>
         <h2>Write to the Secretariat</h2>
       </div>
 
-      <dl class="contact-grid">
-        <div class="cblock">
-          <dt>Delegates &amp; allotment</dt>
-          <dd><a href="mailto:delegates@modelg20.example">delegates@modelg20.example</a></dd>
-          <dd><small>Registration, allotment, substitutions and refunds.</small></dd>
-        </div>
+      <div class="contact-split">
+        <dl class="contact-grid">
+          <div class="cblock">
+            <dt>Email</dt>
+            <dd><a href="mailto:modelg20@schoolofraya.edu">modelg20@schoolofraya.edu</a></dd>
+            <dd><small>Registration, committees, press and partnerships.</small></dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Press &amp; media</dt>
-          <dd><a href="mailto:press@modelg20.example">press@modelg20.example</a></dd>
-          <dd><small>Accreditation, imagery and interview requests.</small></dd>
-        </div>
+          <div class="cblock">
+            <dt>Telephone</dt>
+            <dd><a href="tel:+918040001234">+91 80 4000 1234</a></dd>
+            <dd><small>Weekdays 09:00 – 17:00 IST.</small></dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Partnerships</dt>
-          <dd><a href="mailto:secretariat@modelg20.example">secretariat@modelg20.example</a></dd>
-          <dd><small>Sponsorship and institutional delegations.</small></dd>
-        </div>
+          <div class="cblock">
+            <dt>Address</dt>
+            <dd>
+              The School of Raya<br>
+              Hennur Bagalur Road, Dasanayakanahalli<br>
+              Bengaluru, Karnataka 562149<br>
+              India
+            </dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Telephone</dt>
-          <dd><a href="tel:+910000000000">+91 00000 00000</a></dd>
-          <dd><small>Weekdays 10:00 – 18:00 IST.</small></dd>
-        </div>
+          <div class="cblock">
+            <dt>Conference dates</dt>
+            <dd>8th – 9th October 2026</dd>
+            <dd><small>Two days. Doors open 08:00 IST on the first morning.</small></dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Venue</dt>
-          <dd>
-            FLAME University<br>
-            Lavale, Off Pune–Bangalore Highway<br>
-            Pune, Maharashtra 412115, India
-          </dd>
-        </div>
+          <div class="cblock cblock--wide">
+            <dt>Follow the conference</dt>
+            <dd>
+              <div class="socials">
+                <a href="#" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.5V17M7.5 7.4v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </a>
+                <a href="#" aria-label="X">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5l4.5 2.5-4.5 2.5v-5Z" fill="currentColor"/></svg>
+                </a>
+              </div>
+              <small>Placeholder links — point each one at the real account.</small>
+            </dd>
+          </div>
+        </dl>
 
-        <div class="cblock">
-          <dt>Follow the summit</dt>
-          <dd>
-            <div class="socials">
-              <a href="#" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.5V17M7.5 7.4v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              </a>
-              <a href="#" aria-label="X">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              </a>
-              <a href="#" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5l4.5 2.5-4.5 2.5v-5Z" fill="currentColor"/></svg>
-              </a>
-            </div>
-          </dd>
+        <!-- The map needs no API key. To move the pin, change the q= address. -->
+        <div class="map-card">
+          <iframe
+            src="https://maps.google.com/maps?q=The%20School%20of%20Raya%2C%20Hennur%20Bagalur%20Road%2C%20Dasanayakanahalli%2C%20Bengaluru%2C%20Karnataka%20562149&amp;z=14&amp;output=embed"
+            title="Map showing The School of Raya, Bengaluru"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <a class="map-card__link" href="https://maps.google.com/maps?q=The+School+of+Raya%2C+Hennur+Bagalur+Road%2C+Dasanayakanahalli%2C+Bengaluru%2C+Karnataka+562149" target="_blank" rel="noopener">Open in Google Maps</a>
         </div>
-      </dl>
+      </div>
 
       <div class="contact-cta">
-        <p>Registration is open. Allotments are released on a rolling basis.</p>
-        <a class="btn btn--pale btn--lg" href="register.html">Register as a delegate</a>
+        <p>Registration is open to delegates from any school.</p>
+        <a class="btn btn--pale btn--lg" href="register.html">Go to registration</a>
       </div>
 
       <div class="colophon">
-        <span>© 2026 Model G20 · The School of Raya</span>
+        <span>© 2026 School of Raya Model G20. All rights reserved.</span>
         <nav aria-label="Footer">
-          <a href="committees.html">Committees</a>
-          <a href="secretariat.html">Secretariat</a>
           <a href="about.html">About</a>
-          <a href="country-matrix.html">Country Matrix</a>
+          <a href="committees.html">Committees</a>
           <a href="schedule.html">Schedule</a>
-          <a href="resources.html">Resources</a>
-          <a href="faqs.html">FAQs</a>
+          <a href="secretariat.html">Secretariat</a>
+          <a href="register.html">Registration</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
     </div>
