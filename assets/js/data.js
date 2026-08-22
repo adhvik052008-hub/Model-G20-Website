@@ -39,32 +39,15 @@
     mapQuery: "The School of Raya, Hennur Bagalur Road, Dasanayakanahalli, Bengaluru, Karnataka 562149",
 
     /* PLACEHOLDER — replace with the Secretariat's published channels */
-    email: "modelg20@schoolofraya.edu",
+    email: "modelg20@theschoolofraya.com",
     phone: "+91 80 4000 1234",
 
-    partnershipLine: "In partnership with Flame University and Wanyang India."
+    partnershipLine: "In partnership with Flame University and One Young India."
   };
 
   EVENT.mapEmbed = "https://maps.google.com/maps?q=" +
     encodeURIComponent(EVENT.mapQuery) + "&z=14&output=embed";
   EVENT.mapLink = "https://maps.google.com/maps?q=" + encodeURIComponent(EVENT.mapQuery);
-
-  /* ======================================================================
-     KEY DATES — the homepage timeline, in order.
-     state: "done" | "open" | "pending"
-     ====================================================================== */
-  var KEY_DATES = [
-    { k: "Registration opens",        v: "1st August 2026",     state: "done",
-      note: "Applications accepted from schools and individual delegates." },
-    { k: "Registration closes",       v: "15th September 2026", state: "open",
-      note: "Late applications are considered only against unfilled seats." },
-    { k: "Allotments released",       v: "22nd September 2026", state: "pending",
-      note: "Committee and country allocations issued by email." },
-    { k: "Background guides issued",  v: "25th September 2026", state: "pending",
-      note: "Agenda briefs and rules of procedure sent to every delegate." },
-    { k: "Conference",                v: "8th – 9th October 2026", state: "pending",
-      note: "Two days at The School of Raya, Bengaluru.", key: true }
-  ];
 
   /* ======================================================================
      PARTNERS
@@ -75,9 +58,9 @@
     { name: "Flame University", mark: "FLAME", sub: "University",
       role: "Academic Partner", url: "#",
       logo: "assets/img/partners/flame-university.svg" },
-    { name: "Wanyang India",    mark: "WANYANG", sub: "India",
+    { name: "One Young India", mark: "ONE YOUNG", sub: "India",
       role: "Programme Partner", url: "#",
-      logo: "assets/img/partners/wanyang-india.svg" }
+      logo: "assets/img/partners/one-young-india.svg" }
   ];
 
   /* ======================================================================
@@ -153,40 +136,28 @@
 
   /* ======================================================================
      CORE SECRETARIAT
-     PLACEHOLDER — five offices with placeholder names and portraits.
-     To use a real photograph, add `photo: "assets/img/team/their-file.jpg"`.
-     The initials plate is drawn automatically when `photo` is absent.
+     To use a photograph, add photo: "assets/img/team/their-file.jpg".
+     Without one, the card draws an initials plate.
      ====================================================================== */
   var SECRETARIAT = [
-    { office: "Secretary-General",        abbr: "SG",  name: "To be announced", initials: "SG",
-      remit: "Ultimate authority over the conference. Chairs the Executive Board and signs every credential issued." },
-    { office: "Director-General",         abbr: "DG",  name: "To be announced", initials: "DG",
-      remit: "Runs the conference floor. Owns the substantive programme and the Chair's bench." },
-    { office: "Deputy Secretary-General", abbr: "DSG", name: "To be announced", initials: "DSG",
-      remit: "Second signature on all Secretariat instruments. Deputises in the Secretary-General's absence." },
-    { office: "Chargé d'Affaires",        abbr: "CDA", name: "To be announced", initials: "CDA",
-      remit: "The delegate's first and last point of contact, from allotment through to the closing ceremony." },
-    { office: "Under-Secretary-General",  abbr: "USG", name: "To be announced", initials: "USG",
-      remit: "Appoints and trains the Chair's bench. Approves every background guide before release." }
+    { name: "Aadya Banka",     initials: "AB", office: "Secretary General" },
+    { name: "Deetya Aradhya",  initials: "DA", office: "Director General" },
+    { name: "Dakshil Mathuria", initials: "DM", office: "Director General" },
+    { name: "Samir Wajid",     initials: "SW", office: "Director General" }
   ];
 
   /* ======================================================================
-     ORGANISING COMMITTEE
-     PLACEHOLDER — same shape as the Secretariat above.
+     ORGANISING COMMITTEE — same shape as above.
      ====================================================================== */
   var ORGANISING = [
-    { office: "Head of Delegate Affairs", abbr: "DA",  name: "To be announced", initials: "DA",
-      remit: "Registration, allotments and delegate correspondence." },
-    { office: "Head of Logistics",        abbr: "LOG", name: "To be announced", initials: "LOG",
-      remit: "Venue, catering, transport and delegate safety across both days." },
-    { office: "Head of Press & Media",    abbr: "PR",  name: "To be announced", initials: "PR",
-      remit: "The press corps, photography and the conference record." },
-    { office: "Head of Design",           abbr: "DES", name: "To be announced", initials: "DES",
-      remit: "Identity, print, signage and the conference's visual language." },
-    { office: "Head of Outreach",         abbr: "OUT", name: "To be announced", initials: "OUT",
-      remit: "School partnerships, invitations and the delegate pipeline." },
-    { office: "Head of Technology",       abbr: "TEC", name: "To be announced", initials: "TEC",
-      remit: "This website, the registration pipeline and floor technology." }
+    { name: "Abinaya Vijaybhaskar",  initials: "AV", office: "Organising Committee Head" },
+    { name: "Medha Shashi Bhaskara", initials: "MB", office: "Organising Committee Head" },
+    { name: "Aanya Chauhan",         initials: "AC", office: "Communication Head" },
+    { name: "Chaitanya Ballari",     initials: "CB", office: "Website Head" },
+    { name: "Adhvik Kaarthikeya",    initials: "AK", office: "Website Head" },
+    { name: "Hari Lokesh",           initials: "HL", office: "Finance Head" },
+    { name: "Siddharth Sajith",      initials: "SS", office: "Logistics Head" },
+    { name: "Sia Grover",            initials: "SG", office: "Head of Delegate Affairs" }
   ];
 
   /* ======================================================================
@@ -205,7 +176,6 @@
      ====================================================================== */
   global.MG20 = {
     EVENT: EVENT,
-    KEY_DATES: KEY_DATES,
     PARTNERS: PARTNERS,
     COMMITTEES: COMMITTEES,
     SECRETARIAT: SECRETARIAT,

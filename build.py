@@ -32,13 +32,13 @@ PARTIALS = ROOT / "src" / "partials"
 
 # Order matters only for the build log.
 PAGE_ORDER = [
-    "index", "about", "committees", "schedule", "secretariat",
+    "index", "about", "committees", "schedule",
     "register", "contact", "404",
 ]
 
 # nav key -> the placeholder that receives aria-current="page"
 NAV_KEYS = [
-    "home", "about", "committees", "schedule", "secretariat",
+    "home", "about", "committees", "schedule",
     "register", "contact",
 ]
 

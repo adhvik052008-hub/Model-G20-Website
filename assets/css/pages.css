@@ -611,7 +611,7 @@
 }
 .fee-card--featured .fee-card__name,
 .fee-card--featured .fee-card__price { color: var(--parchment-100); }
-.fee-card--featured .fee-card__list li { color: rgba(244,233,218,.82); }
+.fee-card--featured .fee-card__list li { color: rgba(239, 221, 198,.82); }
 .fee-card--featured .fee-card__list li::before { border-color: var(--parchment-300); }
 .fee-card__name { font-family: var(--font-display); font-size: var(--fs-h3); color: var(--text); line-height: 1.15; }
 .fee-card__price {
@@ -1507,14 +1507,17 @@ a.contact-card__value:hover { color: var(--maroon-600); text-decoration: underli
   justify-content: space-between;
   gap: clamp(1.5rem, 4vw, 2.5rem);
 }
+.cta-band__inner > .stack-4 { flex: 1 1 32ch; max-width: 56ch; }
+.cta-band__inner > .btn,
+.cta-band__actions { margin-left: auto; }
 .cta-band__actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
 .eyebrow--invert { color: var(--parchment-300); }
 
-.footer-brand__blurb { color: rgba(244,233,218,.72); margin-top: 1.4rem; max-width: 38ch; }
-.footer-brand__partners { color: rgba(244,233,218,.5); margin-top: 0.7rem; max-width: 38ch; }
+.footer-brand__blurb { color: rgba(239, 221, 198,.72); margin-top: 1.4rem; max-width: 38ch; }
+.footer-brand__partners { color: rgba(239, 221, 198,.5); margin-top: 0.7rem; max-width: 38ch; }
 .footer-socials { margin-top: 1.6rem; }
 .footer-contact { display: grid; gap: var(--sp-3); }
-.footer-contact p { margin: 0; font-size: var(--fs-sm); color: rgba(244,233,218,.78); line-height: var(--lh-normal); }
+.footer-contact p { margin: 0; font-size: var(--fs-sm); color: rgba(239, 221, 198,.78); line-height: var(--lh-normal); }
 .footer-contact__label {
   display: block;
   font-family: var(--font-display);
@@ -1551,14 +1554,110 @@ a.contact-card__value:hover { color: var(--maroon-600); text-decoration: underli
   font-weight: var(--fw-semi);
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: rgba(244,233,218,.72);
+  color: rgba(239, 221, 198,.72);
 }
 .footer-map__link:hover { color: var(--parchment-100); }
 .footer-bottom__links { display: flex; flex-wrap: wrap; gap: 1.4rem; }
-.footer-bottom__links a { color: rgba(244,233,218,.58); }
+.footer-bottom__links a { color: rgba(239, 221, 198,.58); }
 .footer-bottom__links a:hover { color: var(--parchment-100); }
 
 @media (prefers-reduced-motion: reduce) {
   .cmte, .why-card, .contact-card, .fact, .person, .step-card { transition: none; }
   .map-frame iframe, .footer-map iframe { transition: none; }
 }
+
+/* --------------------------------------------------------------------------
+   J. PROSE BOXES — one box per section on the About page
+   -------------------------------------------------------------------------- */
+.prose-box {
+  position: relative;
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.4rem);
+  padding: clamp(2rem, 5vw, 3.8rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-sm);
+}
+.prose-box--accent {
+  background: var(--a-maroon-06);
+  border-color: var(--a-maroon-16);
+}
+.prose-box__index {
+  position: absolute;
+  top: clamp(1.4rem, 3vw, 2.2rem);
+  right: clamp(1.4rem, 3vw, 2.4rem);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--maroon-600);
+  opacity: 0.5;
+}
+.prose-box__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  max-width: 20ch;
+}
+.prose-box__head { align-self: start; }
+.prose-box__body > p + p { margin-top: var(--sp-4); }
+@media (min-width: 900px) {
+  .prose-box { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+  .prose-box__body > p:first-child { margin-top: 0; }
+}
+.prose-box__standfirst {
+  font-family: var(--font-display);
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--maroon-600);
+  margin-top: var(--sp-3);
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--a-maroon-28);
+  max-width: 42ch;
+}
+.prose-box p:not(.prose-box__standfirst) {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-relaxed);
+  color: var(--text-body);
+  max-width: 68ch;
+}
+
+/* Four across, so the Secretariat reads as one rank */
+.people-grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); max-width: 900px; }
+@media (min-width: 1000px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* Team cards are a circle, a name and a position — nothing else */
+.person {
+  justify-items: center;
+  text-align: center;
+  gap: var(--sp-2);
+}
+.person__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-snug);
+}
+.person__office {
+  font-family: var(--font-display);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
+  text-wrap: balance;
+  text-transform: uppercase;
+  color: var(--maroon-600);
+}
+.cta-band__lead { color: rgba(255, 255, 255, 0.82); max-width: 52ch; }
+
+/* The CTA band is a solid maroon field: buttons on it are white, or white-outlined. */
+.cta-band .btn--ghost {
+  --btn-fg: var(--ivory);
+  --btn-brd: var(--a-ivory-45);
+}
+.cta-band .btn--ghost::before { background: var(--ivory); }
+.cta-band .btn--ghost:hover,
+.cta-band .btn--ghost:focus-visible { color: var(--maroon-600); border-color: var(--ivory); }
+.cta-band .eyebrow--invert::before { background: var(--a-ivory-45); }

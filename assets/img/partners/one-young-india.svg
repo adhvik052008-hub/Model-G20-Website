@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 96" role="img" aria-label="Wanyang India">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 96" role="img" aria-label="One Young India">
   <!-- PLACEHOLDER LOGO. Replace this file with the official artwork,
        keeping the same filename, and the site picks it up automatically. -->
   <rect width="260" height="96" fill="none"/>
@@ -7,7 +7,7 @@
     <path d="M33 40.5 41 60l5-12.5L51 60l8-19.5"/>
   </g>
   <text x="86" y="45" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-size="25" font-weight="700" letter-spacing="1.2" fill="#600808">WANYANG</text>
+        font-size="25" font-weight="700" letter-spacing="1.2" fill="#600808">ONE YOUNG</text>
   <text x="86" y="68" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
         font-size="13" font-weight="400" letter-spacing="5.4" fill="#600808" opacity=".78">INDIA</text>
 </svg>

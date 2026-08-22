@@ -11,7 +11,7 @@ The School of Raya, Bengaluru · 8th – 9th October 2026
 
 ![Static site](https://img.shields.io/badge/static-no%20build%20step-600808?style=flat-square)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-600808?style=flat-square)
-![Pages](https://img.shields.io/badge/pages-8-600808?style=flat-square)
+![Pages](https://img.shields.io/badge/pages-7-600808?style=flat-square)
 ![Deploys on Netlify](https://img.shields.io/badge/deploys%20on-Netlify-600808?style=flat-square)
 
 <br>
@@ -29,7 +29,7 @@ conference simulation held over two days in Bengaluru. Seven pages covering the
 conference from first visit through to a submitted registration.
 
 It is **zero-dependency**: no framework, no bundler, no `node_modules`, no build
-service. Eight HTML pages, four stylesheets, three scripts. The generated HTML
+service. Seven HTML pages, four stylesheets, three scripts. The generated HTML
 is committed, so any static host serves it straight from the repository root.
 
 |                   |                                                        |
@@ -209,10 +209,13 @@ docs/preview/               The screenshots used in this README
 | Parchment        | `#EFDDC6` | The page ground                                 |
 | Sovereign Maroon | `#600808` | Primary action, active state, inverted sections |
 | Ivory            | `#FFFFFF` | Card surfaces                                   |
-| Ink              | `#000000` | Type, warmed toward the ground                  |
+| Ink              | `#000000` | Type                                            |
 
-Every other value in the system is a tonal derivation of those two brand hues —
-there is no third hue anywhere.
+**Those four are the only colours on the site.** Every stylesheet and every page
+was audited: the CSS contains exactly four hex literals, and every tint, rule,
+shadow and muted text colour is one of those four at reduced opacity, letting
+the ground show through. There is no fifth value anywhere. (Partner logos, once
+supplied, carry their own brand colours — as they should.)
 
 Type is **Helvetica** throughout, falling back to Arial and Liberation Sans,
 with IBM Plex Mono for tabular figures. Nothing but the monospace face is
@@ -237,28 +240,45 @@ text-bearing pair falls below 4.5:1.
 
 ---
 
+## Logos
+
+Three slots are wired and waiting. Drop a file at the exact path and it
+appears — there is no code to change, and until the file exists a drawn
+stand-in shows instead, so the page is never broken.
+
+| Slot | Path |
+| --- | --- |
+| Model G20 emblem (top-left of the home page) | `assets/img/logo-modelg20.png` |
+| Flame University | `assets/img/partners/flame-university.png` |
+| One Young India | `assets/img/partners/one-young-india.png` |
+
+`.png`, `.jpg` or `.svg` all work as long as the filename matches. Images are
+scaled with `object-fit: contain`, so any aspect ratio fits without distortion.
+
+Note that official logos carry their own brand colours — Flame's navy and gold,
+the Model G20 emblem's blue, green, yellow and red. Those sit outside the
+four-colour palette by design; a logo is not repainted to match a site.
+
+---
+
 ## Before launch
 
 Everything below ships as a placeholder:
 
-1. **Contact details** — `EVENT.email` (`modelg20@schoolofraya.edu`) and
-   `EVENT.phone` (`+91 80 4000 1234`) in `assets/js/data.js`, plus the same two
-   values written into the homepage's contact section.
-2. **Secretariat and Organising Committee** — every card reads "To be
-   announced". Set `name` on any entry in `SECRETARIAT` or `ORGANISING` in
-   `data.js`, and add `photo: "assets/img/team/their-file.jpg"` for a portrait.
-   The homepage's five cards are hand-written under `EDIT 10`.
-3. **Partner logos** — `assets/img/partners/flame-university.svg` and
-   `wanyang-india.svg` are typographic stand-ins. Replace the files, keeping the
-   same names, and both the homepage and the data file pick them up.
+1. **Phone number** — `EVENT.phone` (`+91 80 4000 1234`) in `assets/js/data.js`,
+   and the same number written into the home page's contact section. The email
+   address, `modelg20@theschoolofraya.com`, is real.
+2. **Team portraits** — every card draws an initials plate. Add
+   `photo: "assets/img/team/their-file.jpg"` to any entry in `SECRETARIAT` or
+   `ORGANISING` in `data.js` for a real portrait, cropped square. The home
+   page's cards are hand-written under `EDIT 9` and `EDIT 10`.
+3. **Logos** — see the table above.
 4. **Partner website links** — the two "Visit website" links point at `#`.
 5. **Social media** — the four handles in `SOCIALS` point at `#`.
-6. **Key dates** — the four registration milestones in `KEY_DATES` are
-   plausible dates working back from 8th October. Confirm them.
-7. **Map pin** — the embed points at the postal address. If the pin lands
+6. **Map pin** — the embed points at the postal address. If the pin lands
    slightly off, change `EVENT.mapQuery` in `data.js` and the `q=` value in the
-   homepage's map iframe.
-8. **Social card** — export `assets/img/og.svg` to a 1200×630 **PNG** and update
+   home page's map iframe.
+7. **Social card** — export `assets/img/og.svg` to a 1200×630 **PNG** and update
    the `og:image` path in `src/partials/head.html`; several platforms will not
    render an SVG preview.
 

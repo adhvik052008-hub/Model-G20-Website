@@ -23,8 +23,8 @@ standalone: true
     EDIT 6  Our Partners
     EDIT 7  Contact details
     EDIT 8  The countdown date
-    EDIT 9  The conference timeline (key dates)
-    EDIT 10 The Core Secretariat cards
+    EDIT 9  Letters from Secretariat
+    EDIT 10 The Organising Committee
 
   A note on the rest of the site: the interior pages (Committees, Secretariat,
   About, and so on) share one navigation bar and footer, so they are assembled
@@ -59,11 +59,16 @@ standalone: true
      Change a value here and it updates everywhere on this page at once.
      ══════════════════════════════════════════════════════════════════════ */
   :root{
-    --paper:#EFDDC6;      /* the beige ground                    */
-    --paper-light:#F7EDE0;/* a lighter beige, used for panels    */
-    --ink:#140A08;        /* near-black text                     */
-    --oxblood:#600808;    /* the maroon accent                   */
-    --oxblood-deep:#3A0404;
+    /* Only four colours exist on this site. Everything that looks like a
+       fifth is one of these four at reduced opacity, showing the ground
+       through it. */
+    --paper:#EFDDC6;      /* the beige ground        */
+    --oxblood:#600808;    /* the maroon accent       */
+    --white:#FFFFFF;      /* card surfaces           */
+    --ink:#000000;        /* type                    */
+
+    --paper-light:rgba(255,255,255,.5);  /* white veil over the beige */
+    --oxblood-deep:#600808;              /* one dark surface, exactly */
 
     --serif:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;   /* body text     */
     --display:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif; /* headings, UI  */
@@ -135,7 +140,7 @@ standalone: true
     line-height:1;cursor:pointer;white-space:nowrap;
     transition:background .28s ease,color .28s ease,transform .28s ease,box-shadow .28s ease;
   }
-  .btn:hover{background:var(--paper);color:var(--oxblood);transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(58,4,4,.65)}
+  .btn:hover{background:var(--paper);color:var(--oxblood);transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(96, 8, 8,.65)}
   .btn--line{background:transparent;color:var(--oxblood)}
   .btn--line:hover{background:var(--oxblood);color:var(--paper)}
   .btn--lg{padding:1.05rem 2.2rem;font-size:clamp(.72rem,1.05vw,.84rem)}
@@ -154,11 +159,11 @@ standalone: true
   }
   /* Frosts over once you scroll past the cover */
   .topbar.is-stuck{
-    background:rgba(247,237,224,.82);
+    background:rgba(239, 221, 198,.82);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
-    border-bottom-color:rgba(20,10,8,.1);
-    box-shadow:0 10px 30px -24px rgba(58,4,4,.6);
+    border-bottom-color:rgba(0, 0, 0,.1);
+    box-shadow:0 10px 30px -24px rgba(96, 8, 8,.6);
   }
   .topbar__inner{
     width:100%;max-width:1400px;margin-inline:auto;padding-inline:var(--gutter);
@@ -167,8 +172,20 @@ standalone: true
 
   /* — Logo / home link — EDIT 2 is inside the markup below — */
   .brand{display:flex;align-items:center;gap:.7rem;flex:none}
-  .brand svg{width:34px;height:34px;color:var(--oxblood);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
-  .brand:hover svg{transform:rotate(-10deg) scale(1.06)}
+  /* The drawn globe shows until the real logo file exists; the moment it
+     loads it takes over. Nothing to edit either way. */
+  .brand__mark{
+    position:relative;display:block;width:36px;height:36px;flex:none;
+    transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .brand__mark svg,.brand__mark img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  }
+  .brand__mark img{opacity:0}
+  .brand__mark.is-real img{opacity:1}
+  .brand__mark.is-real svg{opacity:0}
+  .brand svg{color:var(--oxblood)}
+  .brand:hover .brand__mark{transform:rotate(-10deg) scale(1.06)}
   .brand__name{
     font-family:var(--display);font-size:1.02rem;font-weight:500;
     letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;line-height:1;
@@ -203,7 +220,7 @@ standalone: true
   .burger{
     display:none;width:42px;height:42px;
     flex-direction:column;align-items:center;justify-content:center;gap:4px;
-    border:1px solid rgba(20,10,8,.22);background:rgba(247,237,224,.6);
+    border:1px solid rgba(0, 0, 0,.22);background:rgba(239, 221, 198,.6);
     cursor:pointer;transition:border-color .25s,background .25s;
   }
   .burger:hover{border-color:var(--oxblood)}
@@ -307,16 +324,21 @@ standalone: true
     color:var(--paper);opacity:.72;
   }
   .whenwhere{
-    font-family:var(--display);font-weight:500;
-    font-size:clamp(.68rem,1.1vw,.82rem);
-    letter-spacing:.24em;text-transform:uppercase;text-indent:.24em;
-    color:var(--oxblood);
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1rem,2.1vw,1.5rem);
+    letter-spacing:.16em;text-transform:uppercase;text-indent:.16em;
+    color:var(--oxblood);line-height:1.2;
   }
-  .cover__cta{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
+  .whenwhere--venue{
+    font-weight:400;
+    font-size:clamp(.72rem,1.25vw,.92rem);
+    letter-spacing:.28em;text-indent:.28em;
+    opacity:.72;margin-top:-.15rem;
+  }
   /* On a phone the wide tracking strands the last word on its own line. */
   @media (max-width:560px){
-    .whenwhere{letter-spacing:.14em;text-indent:.14em;text-wrap:balance}
-    .cover__cta{width:100%;flex-direction:column;align-items:stretch}
+    .whenwhere{letter-spacing:.1em;text-indent:.1em;text-wrap:balance}
+    .whenwhere--venue{letter-spacing:.2em;text-indent:.2em}
   }
 
   /* ══════════════════════════════════════════════════════════════════════
@@ -325,10 +347,10 @@ standalone: true
   .partners{
     position:relative;z-index:1;
     padding:clamp(4rem,10vh,7.5rem) 0;
-    background:rgba(247,237,224,.9);
+    background:rgba(239, 221, 198,.9);
     -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
-    border-top:1px solid rgba(20,10,8,.12);
+    border-top:1px solid rgba(0, 0, 0,.12);
   }
   .sechead{display:grid;gap:.9rem;justify-items:center;text-align:center;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
   .sechead p.lede{max-width:52ch;opacity:.78}
@@ -347,17 +369,17 @@ standalone: true
     display:grid;gap:1.1rem;justify-items:center;text-align:center;
     padding:clamp(1.8rem,4vw,2.8rem);
     background:var(--paper);
-    border:1px solid rgba(20,10,8,.14);
+    border:1px solid rgba(0, 0, 0,.14);
     transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease,border-color .3s ease;
   }
-  .partner:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(58,4,4,.5);border-color:rgba(96,8,8,.3)}
+  .partner:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(96, 8, 8,.5);border-color:rgba(96,8,8,.3)}
   /* The plate that holds a partner's logo. Swap the text for an <img>. */
   .partner__mark{
     width:100%;min-height:110px;
     display:grid;place-content:center;gap:.35rem;
     padding:1.2rem;
     border:1px solid rgba(96,8,8,.18);
-    background:linear-gradient(150deg,#F7EDE0,#E7D2B6);
+    background:var(--paper);
   }
   .partner__mark b{
     font-family:var(--display);font-weight:500;
@@ -368,7 +390,17 @@ standalone: true
     font-family:var(--display);font-size:.6rem;
     letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;opacity:.65;
   }
-  .partner__mark img{width:100%;height:auto;max-height:96px;object-fit:contain}
+  /* The stand-in stays in the flow even when invisible, so it is what gives
+     the slot its size — the real logo is laid over the top of it. */
+  .logo-slot{position:relative;display:block}
+  .logo-slot__stand-in{
+    display:block;width:100%;max-width:260px;height:96px;object-fit:contain;
+  }
+  .logo-slot__real{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;
+  }
+  .logo-slot.is-real .logo-slot__real{opacity:1}
+  .logo-slot.is-real .logo-slot__stand-in{opacity:0}
   .partner__role{
     font-family:var(--display);font-size:.62rem;
     letter-spacing:.26em;text-transform:uppercase;text-indent:.26em;color:var(--oxblood);
@@ -458,74 +490,34 @@ standalone: true
     *,*::before,*::after{transition-duration:.001ms !important;animation-duration:.001ms !important}
   }
   /* ══════════════════════════════════════════════════════════════════════
-     COVER — host line and partnership credit
+     COVER — the host line above the wordmark
      ══════════════════════════════════════════════════════════════════════ */
   h1 .host{
     display:block;font-weight:400;
     font-size:.42em;letter-spacing:.01em;line-height:1.15;
     margin-bottom:.12em;
   }
-  .partnership{
-    font-size:clamp(.78rem,1.35vw,.92rem);
-    letter-spacing:.02em;opacity:.72;max-width:52ch;text-wrap:balance;
-  }
 
   /* ══════════════════════════════════════════════════════════════════════
-     CONFERENCE TIMELINE
+     THE TEAM — Letters from Secretariat, then the Organising Committee
+     Both bands are opaque so the wave field stays behind the cover only.
      ══════════════════════════════════════════════════════════════════════ */
-  .timeline-sec{
+  .core-sec,.oc-sec{
     position:relative;z-index:1;
-    background:var(--paper-light);
-    padding:clamp(3.4rem,8vw,6.5rem) 0;
+    padding:clamp(3.6rem,8vw,6.8rem) 0;
     border-top:1px solid rgba(96,8,8,.12);
   }
-  .kd-track{
-    list-style:none;margin:0;padding:0;
-    display:grid;gap:clamp(1.6rem,3vw,2rem);
-    grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
-    max-width:1240px;margin-inline:auto;
+  .core-sec{                       /* beige, with a white veil over it   */
+    background-color:var(--paper);
+    background-image:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45));
   }
-  @media (min-width:1040px){ .kd-track{grid-template-columns:repeat(5,1fr)} }
-  .kd{
-    position:relative;display:grid;gap:.35rem;align-content:start;
-    padding-top:1.9rem;
+  .oc-sec{background:var(--paper)}
+  .face-grid--4{
+    grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));
+    max-width:960px;
   }
-  .kd::before{
-    content:"";position:absolute;top:7px;left:0;right:0;height:1px;
-    background:rgba(96,8,8,.22);
-  }
-  .kd:last-child::before{right:calc(100% - 15px)}
-  .kd__dot{
-    position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;
-    border:1.5px solid var(--oxblood);background:var(--paper-light);
-  }
-  .kd.is-done .kd__dot{background:var(--oxblood)}
-  .kd.is-open .kd__dot{
-    background:var(--oxblood);
-    box-shadow:0 0 0 4px rgba(96,8,8,.14);
-  }
-  .kd--key .kd__dot{border-width:2.5px}
-  .kd__date{
-    font-family:var(--display);font-weight:600;
-    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--oxblood);
-  }
-  .kd__title{
-    font-family:var(--display);font-weight:500;
-    font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.25;
-  }
-  .kd__note{font-size:.87rem;line-height:1.5;opacity:.7;max-width:30ch}
-  .kd--key .kd__title{color:var(--oxblood)}
-
-  /* ══════════════════════════════════════════════════════════════════════
-     CORE SECRETARIAT
-     ══════════════════════════════════════════════════════════════════════ */
-  .core-sec{
-    position:relative;z-index:1;
-    background:var(--paper);
-    padding:clamp(3.4rem,8vw,6.5rem) 0;
-    border-top:1px solid rgba(96,8,8,.12);
-  }
+  /* Eight people read as two ranks of four, never five-and-three. */
+  @media (min-width:1000px){ .oc-sec .face-grid{grid-template-columns:repeat(4,1fr)} }
   .face-grid{
     display:grid;gap:clamp(1.1rem,2.4vw,1.7rem);
     grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));
@@ -542,31 +534,31 @@ standalone: true
   .face:hover{
     transform:translateY(-4px);
     border-color:rgba(96,8,8,.3);
-    box-shadow:0 16px 34px -22px rgba(58,4,4,.5);
+    box-shadow:0 16px 34px -22px rgba(96, 8, 8,.5);
   }
   .face__portrait{
     width:clamp(74px,9vw,92px);aspect-ratio:1;margin-bottom:.7rem;
     border-radius:50%;overflow:hidden;
     display:grid;place-items:center;
-    background:var(--paper-light);
+    background:rgba(96,8,8,.07);
     border:1px solid rgba(96,8,8,.16);
   }
   .face__portrait img{width:100%;height:100%;object-fit:cover}
   .face__plate{
     font-family:var(--display);font-weight:600;
     font-size:clamp(1.05rem,2vw,1.3rem);letter-spacing:.06em;
-    color:var(--oxblood);opacity:.55;
-  }
-  .face__abbr{
-    font-family:var(--display);font-size:.6rem;font-weight:600;
-    letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;
-    color:var(--oxblood);opacity:.7;
+    color:var(--oxblood);opacity:.82;
   }
   .face__name{
-    font-family:var(--display);font-weight:500;
-    font-size:clamp(1rem,1.7vw,1.14rem);letter-spacing:.01em;
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.02rem,1.8vw,1.2rem);letter-spacing:.005em;
+    margin-top:.15rem;
   }
-  .face__office{font-size:.86rem;line-height:1.45;opacity:.68}
+  .face__office{
+    font-family:var(--display);font-size:.68rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--oxblood);opacity:.82;margin-top:.15rem;
+  }
 
   /* ══════════════════════════════════════════════════════════════════════
      CONTACT — split with the map
@@ -618,9 +610,15 @@ standalone: true
 <header class="topbar" id="topbar">
   <div class="topbar__inner">
 
-    <!-- EDIT 2 — the logo / home link. Change the words, or replace the <svg>
-         with <img src="assets/img/your-logo.svg" alt="Model G20" width="34">. -->
+    <!-- EDIT 2 — the logo / home link.
+
+         DROP THE OFFICIAL LOGO IN AT:  assets/img/logo-modelg20.png
+         (that exact path and filename — a .png, .jpg or .svg all work if you
+         match the name). Nothing else needs changing: the moment the file
+         exists it replaces the drawn globe below. Until then the drawn globe
+         shows, so the page is never broken. -->
     <a class="brand" href="index.html" aria-label="School of Raya Model G20 2026 — home">
+      <span class="brand__mark">
       <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
         <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.4"/>
         <circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.001 8.60708"/>
@@ -629,6 +627,9 @@ standalone: true
         <path d="M16.4 32h31.2" stroke="currentColor" stroke-width="1" opacity=".7"/>
         <path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width=".9" opacity=".45"/>
       </svg>
+      <img src="assets/img/logo-modelg20.png" alt="" width="36" height="36"
+           onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
+      </span>
       <span class="brand__name">Model G20 <em>2026</em></span>
     </a>
 
@@ -640,7 +641,6 @@ standalone: true
       <a href="about.html">About</a>
       <a href="committees.html">Committees</a>
       <a href="schedule.html">Schedule</a>
-      <a href="secretariat.html">Secretariat</a>
       <a href="contact.html">Contact</a>
     </nav>
 
@@ -661,9 +661,8 @@ standalone: true
   <a href="about.html">About <span>02</span></a>
   <a href="committees.html">Committees <span>03</span></a>
   <a href="schedule.html">Schedule <span>04</span></a>
-  <a href="secretariat.html">Secretariat <span>05</span></a>
-  <a href="register.html">Registration <span>06</span></a>
-  <a href="contact.html">Contact <span>07</span></a>
+  <a href="register.html">Registration <span>05</span></a>
+  <a href="contact.html">Contact <span>06</span></a>
   <a class="btn btn--pale" href="register.html">Register now</a>
 </div>
 
@@ -674,8 +673,6 @@ standalone: true
        EDIT 5 — the headline, dates and venue.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="cover" id="cover">
-    <p class="eyebrow">Inaugural Edition</p>
-
     <h1><span class="host">School of Raya</span>Model G20<span class="year">2026</span></h1>
 
     <div class="rule"></div>
@@ -689,13 +686,8 @@ standalone: true
       <div class="unit"><b id="s">00</b><span>Seconds</span></div>
     </div>
 
-    <p class="whenwhere">8th – 9th October 2026 · School of Raya</p>
-    <p class="partnership">In partnership with Flame University and Wanyang India.</p>
-
-    <div class="cover__cta">
-      <a class="btn btn--lg" href="register.html">Register as a delegate</a>
-      <a class="btn btn--line btn--lg" href="committees.html">Explore the committees</a>
-    </div>
+    <p class="whenwhere">8th – 9th October 2026</p>
+    <p class="whenwhere whenwhere--venue">The School of Raya</p>
 
   </section>
 
@@ -713,7 +705,7 @@ standalone: true
         <h2>In association with</h2>
         <p class="lede">
           School of Raya Model G20 2026 is convened by The School of Raya in
-          partnership with Flame University and Wanyang India.
+          partnership with Flame University and One Young India.
         </p>
       </div>
 
@@ -721,10 +713,15 @@ standalone: true
 
         <article class="partner">
           <div class="partner__mark">
-            <!-- PLACEHOLDER LOGO. Drop the official artwork in at
-                 assets/img/partners/flame-university.svg (same filename) and it
-                 appears here automatically. -->
-            <img src="assets/img/partners/flame-university.svg" alt="Flame University" width="260" height="96">
+            <!-- DROP THE OFFICIAL LOGO IN AT:
+                 assets/img/partners/flame-university.png
+                 The moment that file exists it replaces the typographic
+                 stand-in below. Nothing else to change. -->
+            <span class="logo-slot">
+              <img class="logo-slot__stand-in" src="assets/img/partners/flame-university.svg" alt="Flame University" width="260" height="96">
+              <img class="logo-slot__real" src="assets/img/partners/flame-university.png" alt="" width="260" height="96"
+                   onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
+            </span>
           </div>
           <p class="partner__role">Academic Partner</p>
           <h3>Flame University</h3>
@@ -737,12 +734,16 @@ standalone: true
 
         <article class="partner">
           <div class="partner__mark">
-            <!-- PLACEHOLDER LOGO. Same as above:
-                 assets/img/partners/wanyang-india.svg -->
-            <img src="assets/img/partners/wanyang-india.svg" alt="Wanyang India" width="260" height="96">
+            <!-- DROP THE OFFICIAL LOGO IN AT:
+                 assets/img/partners/one-young-india.png -->
+            <span class="logo-slot">
+              <img class="logo-slot__stand-in" src="assets/img/partners/one-young-india.svg" alt="One Young India" width="260" height="96">
+              <img class="logo-slot__real" src="assets/img/partners/one-young-india.png" alt="" width="260" height="96"
+                   onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
+            </span>
           </div>
           <p class="partner__role">Programme Partner</p>
-          <h3>Wanyang India</h3>
+          <h3>One Young India</h3>
           <p>
             Programme support across the two days, from delegate materials to
             the running of the conference floor.
@@ -773,118 +774,98 @@ standalone: true
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
-       CONFERENCE TIMELINE — key dates
-       EDIT 9 — each <li> is one milestone. Copy one to add another.
-       Give the final milestone class="kd kd--key" to mark it as the event.
-       ════════════════════════════════════════════════════════════════════ -->
-  <section class="timeline-sec" id="timeline">
-    <div class="wrap">
-      <div class="sechead">
-        <p class="kicker">Conference Timeline</p>
-        <h2>Key dates</h2>
-        <p class="lede">
-          From the day registration opens to the opening gavel. Allotted
-          delegates are notified by email at every step.
-        </p>
-      </div>
-
-      <ol class="kd-track">
-        <li class="kd is-done">
-          <span class="kd__dot" aria-hidden="true"></span>
-          <span class="kd__date">1st August 2026</span>
-          <span class="kd__title">Registration opens</span>
-          <span class="kd__note">Applications accepted from schools and individual delegates.</span>
-        </li>
-        <li class="kd is-open">
-          <span class="kd__dot" aria-hidden="true"></span>
-          <span class="kd__date">15th September 2026</span>
-          <span class="kd__title">Registration closes</span>
-          <span class="kd__note">Late applications are considered only against unfilled seats.</span>
-        </li>
-        <li class="kd is-pending">
-          <span class="kd__dot" aria-hidden="true"></span>
-          <span class="kd__date">22nd September 2026</span>
-          <span class="kd__title">Allotments released</span>
-          <span class="kd__note">Committee and country allocations issued by email.</span>
-        </li>
-        <li class="kd is-pending">
-          <span class="kd__dot" aria-hidden="true"></span>
-          <span class="kd__date">25th September 2026</span>
-          <span class="kd__title">Background guides issued</span>
-          <span class="kd__note">Agenda briefs and rules of procedure sent to every delegate.</span>
-        </li>
-        <li class="kd kd--key is-pending">
-          <span class="kd__dot" aria-hidden="true"></span>
-          <span class="kd__date">8th – 9th October 2026</span>
-          <span class="kd__title">The conference</span>
-          <span class="kd__note">Two days at The School of Raya, Bengaluru.</span>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       CORE SECRETARIAT
-       EDIT 10 — five placeholder cards. For each one, change the name and the
-       office. To use a photograph, replace the <span class="face__plate">…
-       </span> line with:
+       LETTERS FROM SECRETARIAT
+       EDIT 9 — four cards. For each, change the initials, the name and the
+       office. To use a photograph later, replace the
+       <span class="face__plate">…</span> line with:
            <img src="assets/img/team/their-photo.jpg" alt="Their Name">
        Put the image in assets/img/team/ and crop it square.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="core-sec" id="secretariat">
     <div class="wrap">
       <div class="sechead">
-        <p class="kicker">Core Secretariat</p>
-        <h2>Who convenes it</h2>
-        <p class="lede">
-          The offices that hold the academic standard of the conference.
-          Appointments are announced ahead of the event.
-        </p>
+        <p class="kicker">Letters from Secretariat</p>
+        <h2>The people convening it</h2>
+      </div>
+
+      <div class="face-grid face-grid--4">
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AB</span></div>
+          <h3 class="face__name">Aadya Banka</h3>
+          <p class="face__office">Secretary General</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DA</span></div>
+          <h3 class="face__name">Deetya Aradhya</h3>
+          <p class="face__office">Director General</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DM</span></div>
+          <h3 class="face__name">Dakshil Mathuria</h3>
+          <p class="face__office">Director General</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">SW</span></div>
+          <h3 class="face__name">Samir Wajid</h3>
+          <p class="face__office">Director General</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       ORGANISING COMMITTEE
+       EDIT 10 — same card as above. Copy one to add a person.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="oc-sec" id="organising">
+    <div class="wrap">
+      <div class="sechead">
+        <p class="kicker">Organising Committee</p>
+        <h2>The people running it</h2>
       </div>
 
       <div class="face-grid">
-
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AV</span></div>
+          <h3 class="face__name">Abinaya Vijaybhaskar</h3>
+          <p class="face__office">Organising Committee Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">MB</span></div>
+          <h3 class="face__name">Medha Shashi Bhaskara</h3>
+          <p class="face__office">Organising Committee Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AC</span></div>
+          <h3 class="face__name">Aanya Chauhan</h3>
+          <p class="face__office">Communication Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">CB</span></div>
+          <h3 class="face__name">Chaitanya Ballari</h3>
+          <p class="face__office">Website Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AK</span></div>
+          <h3 class="face__name">Adhvik Kaarthikeya</h3>
+          <p class="face__office">Website Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">HL</span></div>
+          <h3 class="face__name">Hari Lokesh</h3>
+          <p class="face__office">Finance Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">SS</span></div>
+          <h3 class="face__name">Siddharth Sajith</h3>
+          <p class="face__office">Logistics Head</p>
+        </article>
         <article class="face">
           <div class="face__portrait"><span class="face__plate" aria-hidden="true">SG</span></div>
-          <p class="face__abbr">SG</p>
-          <h3 class="face__name">To be announced</h3>
-          <p class="face__office">Secretary-General</p>
+          <h3 class="face__name">Sia Grover</h3>
+          <p class="face__office">Head of Delegate Affairs</p>
         </article>
-
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DG</span></div>
-          <p class="face__abbr">DG</p>
-          <h3 class="face__name">To be announced</h3>
-          <p class="face__office">Director-General</p>
-        </article>
-
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DSG</span></div>
-          <p class="face__abbr">DSG</p>
-          <h3 class="face__name">To be announced</h3>
-          <p class="face__office">Deputy Secretary-General</p>
-        </article>
-
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">CDA</span></div>
-          <p class="face__abbr">CDA</p>
-          <h3 class="face__name">To be announced</h3>
-          <p class="face__office">Chargé d'Affaires</p>
-        </article>
-
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">USG</span></div>
-          <p class="face__abbr">USG</p>
-          <h3 class="face__name">To be announced</h3>
-          <p class="face__office">Under-Secretary-General</p>
-        </article>
-
       </div>
-
-      <p class="partner-note">
-        The full Secretariat and Organising Committee are listed on the
-        <a href="secretariat.html">Secretariat page</a>.
-      </p>
     </div>
   </section>
 
@@ -897,14 +878,14 @@ standalone: true
     <div class="wrap">
       <div class="sechead sechead--left">
         <p class="kicker">Contact Us</p>
-        <h2>Write to the Secretariat</h2>
+        <h2>Write to our team</h2>
       </div>
 
       <div class="contact-split">
         <dl class="contact-grid">
           <div class="cblock">
             <dt>Email</dt>
-            <dd><a href="mailto:modelg20@schoolofraya.edu">modelg20@schoolofraya.edu</a></dd>
+            <dd><a href="mailto:modelg20@theschoolofraya.com">modelg20@theschoolofraya.com</a></dd>
             <dd><small>Registration, committees, press and partnerships.</small></dd>
           </div>
 
@@ -975,7 +956,6 @@ standalone: true
           <a href="about.html">About</a>
           <a href="committees.html">Committees</a>
           <a href="schedule.html">Schedule</a>
-          <a href="secretariat.html">Secretariat</a>
           <a href="register.html">Registration</a>
           <a href="contact.html">Contact</a>
         </nav>

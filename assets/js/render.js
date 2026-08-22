@@ -65,37 +65,17 @@
   }
 
   /* ======================================================================
-     KEY DATES — the homepage timeline
-     ====================================================================== */
-  function keyDates() {
-    $$("[data-key-dates]").forEach(function (mount) {
-      mount.innerHTML = D.KEY_DATES.map(function (d, i) {
-        return '<li class="kd' + (d.key ? " kd--key" : "") + ' is-' + d.state + '" data-reveal style="--i:' + i + '">' +
-          '<span class="kd__dot" aria-hidden="true"></span>' +
-          '<span class="kd__date">' + esc(d.v) + "</span>" +
-          '<span class="kd__title">' + esc(d.k) + "</span>" +
-          (d.note ? '<span class="kd__note">' + esc(d.note) + "</span>" : "") +
-        "</li>";
-      }).join("");
-    });
-  }
-
-  /* ======================================================================
      TEAM — Core Secretariat and Organising Committee
      ====================================================================== */
   function personCard(p, i) {
     var portrait = p.photo
       ? '<img class="person__photo" src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" loading="lazy" width="320" height="320">'
-      : '<span class="person__plate" aria-hidden="true"><b>' + esc(p.initials || p.abbr) + "</b></span>";
+      : '<span class="person__plate" aria-hidden="true">' + esc(p.initials) + "</span>";
 
-    return '<article class="person" data-reveal style="--i:' + (i % 3) + '">' +
+    return '<article class="person" data-reveal style="--i:' + (i % 4) + '">' +
       '<div class="person__portrait">' + portrait + "</div>" +
-      '<div class="person__body">' +
-        '<span class="person__abbr">' + esc(p.abbr) + "</span>" +
-        '<h3 class="person__name">' + esc(p.name) + "</h3>" +
-        '<p class="person__office">' + esc(p.office) + "</p>" +
-        (p.remit ? '<p class="person__remit">' + esc(p.remit) + "</p>" : "") +
-      "</div>" +
+      '<h3 class="person__name">' + esc(p.name) + "</h3>" +
+      '<p class="person__office">' + esc(p.office) + "</p>" +
     "</article>";
   }
 
@@ -181,7 +161,6 @@
   function init() {
     if (!D) return;
     committees();
-    keyDates();
     team();
     partners();
     socials();

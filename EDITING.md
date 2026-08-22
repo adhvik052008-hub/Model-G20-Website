@@ -80,9 +80,9 @@ Then run `python3 build.py`.
 
 ### 2. Change contact details
 
-- **Everywhere except the homepage** — `assets/js/data.js`, the `email` and
+- **Everywhere except the home page** — `assets/js/data.js`, the `email` and
   `phone` lines. The footer and the contact page read from there.
-- **The homepage** — `src/pages/index.html`, the section marked **EDIT 7**.
+- **The home page** — `src/pages/index.html`, the section marked **EDIT 7**.
 
 Then run `python3 build.py`.
 
@@ -125,8 +125,9 @@ Open **`assets/js/data.js`** and find `SECRETARIAT` or `ORGANISING`. Add a
 Put the image in `assets/img/team/` and crop it square. Without a `photo`, the
 card draws an initials plate instead.
 
-The five cards on the **homepage** are written out in the HTML rather than
-generated — edit them under **EDIT 10** in `src/pages/index.html`.
+The cards on the **home page** are written out in the HTML rather than
+generated — Letters from Secretariat under **EDIT 9**, the Organising Committee
+under **EDIT 10**, both in `src/pages/index.html`.
 
 Then run `python3 build.py`.
 
@@ -266,15 +267,13 @@ git push
 
 These ship as placeholders and should be replaced before launch:
 
-1. **Contact details** — `modelg20@schoolofraya.edu` and `+91 80 4000 1234`.
-2. **Secretariat and Organising Committee names** — every card reads "To be
-   announced".
-3. **Partner logos** — both are typographic stand-ins.
+1. **Phone number** — `+91 80 4000 1234` is a placeholder. (The email address
+   is real: `modelg20@theschoolofraya.com`.)
+2. **Team portraits** — every card draws an initials plate. See job 4 above.
+3. **Logos** — see job 5 above.
 4. **Partner website links** — the two "Visit website" links point at `#`.
 5. **Social media links** — the four handles in `SOCIALS` point at `#`.
-6. **Key dates** — the four registration milestones are plausible dates working
-   back from the conference. Confirm them.
-7. **Social card image** — export `assets/img/og.svg` to a 1200×630 PNG and
+6. **Social card image** — export `assets/img/og.svg` to a 1200×630 PNG and
    point `og:image` in `src/partials/head.html` at it.
 
 ---

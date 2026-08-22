@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="ground" x1="0" y1="0" x2="0.6" y2="1">
-      <stop offset="0" stop-color="#F9F2E8"/>
+      <stop offset="0" stop-color="#FFFFFF"/>
       <stop offset="1" stop-color="#EFDDC6"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.86" cy="0.1" r="0.7">
@@ -24,14 +24,14 @@
   </g>
 
   <text x="96" y="330" font-family="Cormorant Garamond, Garamond, Times New Roman, serif"
-        font-size="132" font-weight="300" fill="#120C0A" letter-spacing="-4">Model G20</text>
+        font-size="132" font-weight="300" fill="#000000" letter-spacing="-4">Model G20</text>
   <text x="96" y="440" font-family="Cormorant Garamond, Garamond, Times New Roman, serif"
         font-size="132" font-weight="300" font-style="italic" fill="#600808" letter-spacing="-4">2026</text>
 
   <rect x="96" y="482" width="120" height="2" fill="#600808" opacity=".5"/>
 
   <text x="96" y="530" font-family="Inter, Helvetica, Arial, sans-serif" font-size="25"
-        font-weight="500" fill="#4A3830" letter-spacing="1.2">Two days of rigorous diplomacy, debate and decision-making</text>
+        font-weight="500" fill="#600808" letter-spacing="1.2">Two days of rigorous diplomacy, debate and decision-making</text>
   <text x="96" y="572" font-family="Inter, Helvetica, Arial, sans-serif" font-size="21"
         font-weight="600" fill="#600808" letter-spacing="4">8TH – 9TH OCTOBER 2026 · THE SCHOOL OF RAYA, BENGALURU</text>
 
