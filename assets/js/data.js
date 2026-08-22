@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SCHOOL OF RAYA MODEL G20 2026 — CONTENT DATA
+   THE SCHOOL OF RAYA MODEL G20 2026 — CONTENT DATA
    Single source of truth for every piece of conference content rendered by
    JavaScript. Editing this file changes the site; no markup edits required.
 
@@ -17,7 +17,7 @@
      every date printed on the site follow.
      ====================================================================== */
   var EVENT = {
-    name: "School of Raya Model G20 2026",
+    name: "The School of Raya Model G20 2026",
     shortName: "Model G20 2026",
     host: "The School of Raya",
     edition: "Inaugural Edition",
@@ -29,7 +29,7 @@
     datesLabel: "8th – 9th October 2026",
     daysLabel: "Thursday – Friday",
 
-    venue: "School of Raya",
+    venue: "The School of Raya",
     venueLine1: "The School of Raya",
     venueLine2: "Hennur Bagalur Road, Dasanayakanahalli",
     venueLine3: "Bengaluru, Karnataka 562149",
@@ -40,7 +40,6 @@
 
     /* PLACEHOLDER — replace with the Secretariat's published channels */
     email: "modelg20@theschoolofraya.com",
-    phone: "+91 80 4000 1234",
 
     partnershipLine: "In partnership with Flame University and One Young India."
   };
@@ -166,9 +165,9 @@
      ====================================================================== */
   var SOCIALS = [
     { name: "Instagram", handle: "@modelg20raya", url: "#", icon: "instagram" },
-    { name: "LinkedIn",  handle: "School of Raya Model G20", url: "#", icon: "linkedin" },
+    { name: "LinkedIn",  handle: "The School of Raya Model G20", url: "#", icon: "linkedin" },
     { name: "X",         handle: "@modelg20raya", url: "#", icon: "x" },
-    { name: "YouTube",   handle: "School of Raya", url: "#", icon: "youtube" }
+    { name: "YouTube",   handle: "The School of Raya", url: "#", icon: "youtube" }
   ];
 
   /* ======================================================================

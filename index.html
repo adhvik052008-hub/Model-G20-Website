@@ -32,13 +32,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>School of Raya Model G20 2026</title>
-<meta name="description" content="School of Raya Model G20 2026 — two days of rigorous diplomacy, debate and decision-making. 8th – 9th October 2026 at The School of Raya, Bengaluru.">
+<title>The School of Raya Model G20 2026</title>
+<meta name="description" content="The School of Raya Model G20 2026 — two days of rigorous diplomacy, debate and decision-making. 8th – 9th October 2026 at The School of Raya, Bengaluru.">
 <meta name="theme-color" content="#EFDDC6">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="School of Raya Model G20 2026">
+<meta property="og:title" content="The School of Raya Model G20 2026">
 <meta property="og:description" content="Two days of rigorous diplomacy, debate and decision-making. 8th – 9th October 2026, The School of Raya.">
 <meta property="og:image" content="assets/img/og.svg">
 <meta name="twitter:card" content="summary_large_image">
@@ -183,9 +183,15 @@
   .brand__mark.is-real svg{opacity:0}
   .brand svg{color:var(--oxblood)}
   .brand:hover .brand__mark{transform:rotate(-10deg) scale(1.06)}
+  .brand__type{display:grid;gap:.18rem;line-height:1}
   .brand__name{
     font-family:var(--display);font-size:1.02rem;font-weight:500;
     letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;line-height:1;
+  }
+  .brand__sub{
+    font-family:var(--display);font-size:.56rem;font-weight:500;
+    letter-spacing:.24em;text-transform:uppercase;white-space:nowrap;
+    color:var(--oxblood);opacity:.72;
   }
   .brand__name em{font-style:italic;font-weight:400;color:var(--oxblood);letter-spacing:.04em}
 
@@ -351,6 +357,7 @@
   }
   .sechead{display:grid;gap:.9rem;justify-items:center;text-align:center;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
   .sechead p.lede{max-width:52ch;opacity:.78}
+  .kicker--head{font-weight:600}
 
   /* Tracks are capped at 360px and the row is centred, so one partner sits as
      a neat single card rather than stretching across the whole page. Add more
@@ -398,24 +405,67 @@
   }
   .logo-slot.is-real .logo-slot__real{opacity:1}
   .logo-slot.is-real .logo-slot__stand-in{opacity:0}
-  .partner__role{
-    font-family:var(--display);font-size:.62rem;
-    letter-spacing:.26em;text-transform:uppercase;text-indent:.26em;color:var(--oxblood);
+  .partner h3{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.15rem,2.2vw,1.45rem);letter-spacing:.02em;
   }
-  .partner h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);letter-spacing:.02em}
-  .partner p{font-size:.98rem;opacity:.78;max-width:38ch}
-  .partner .link{
-    font-family:var(--display);font-size:.66rem;letter-spacing:.22em;
-    text-transform:uppercase;text-indent:.22em;color:var(--oxblood);
-    border-bottom:1px solid rgba(96,8,8,.4);padding-bottom:2px;
-  }
-  .partner .link:hover{border-bottom-color:var(--oxblood)}
 
-  .partner-note{
-    margin-top:clamp(2rem,4vw,3rem);text-align:center;
-    font-size:.92rem;opacity:.7;
+  /* ══════════════════════════════════════════════════════════════════════
+     LETTERS FROM SECRETARIAT
+     ══════════════════════════════════════════════════════════════════════ */
+  .letter-grid{
+    display:grid;gap:clamp(1.2rem,2.6vw,2rem);
+    grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+    max-width:1080px;margin-inline:auto;
   }
-  .partner-note a{color:var(--oxblood);border-bottom:1px solid rgba(96,8,8,.35)}
+  .letter{
+    display:grid;align-content:start;gap:1.2rem;
+    padding:clamp(1.8rem,4vw,2.8rem);
+    background:#fff;
+    border:1px solid rgba(96,8,8,.14);
+    transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease,border-color .3s ease;
+  }
+  .letter:hover{
+    transform:translateY(-4px);
+    border-color:rgba(96,8,8,.3);
+    box-shadow:0 22px 44px -28px rgba(96,8,8,.45);
+  }
+  .letter__head{display:flex;align-items:center;gap:1rem}
+  .letter__portrait{
+    width:58px;height:58px;flex:none;border-radius:50%;
+    display:grid;place-items:center;overflow:hidden;
+    background:rgba(96,8,8,.07);
+    border:1px solid rgba(96,8,8,.16);
+  }
+  .letter__portrait img{width:100%;height:100%;object-fit:cover}
+  .letter__plate{
+    font-family:var(--display);font-weight:600;
+    font-size:1.05rem;letter-spacing:.06em;color:var(--oxblood);opacity:.82;
+  }
+  .letter__from{
+    font-family:var(--display);font-size:.68rem;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--oxblood);
+  }
+  .letter__body{
+    display:grid;gap:.9rem;
+    padding-left:1.1rem;border-left:2px solid rgba(96,8,8,.18);
+  }
+  .letter__body p{font-size:1rem;line-height:1.65;opacity:.86}
+  .letter__pending{font-style:italic;opacity:.6}
+  .letter__sign{
+    display:grid;gap:.15rem;
+    padding-top:1rem;border-top:1px solid rgba(0,0,0,.1);
+  }
+  .letter__name{
+    font-family:var(--display);font-weight:600;
+    font-size:1.06rem;letter-spacing:.01em;
+  }
+  .letter__role{font-size:.9rem;opacity:.75}
+  .letter__org{
+    font-family:var(--display);font-size:.66rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--oxblood);
+    margin-top:.15rem;
+  }
 
   /* ══════════════════════════════════════════════════════════════════════
      CONTACT
@@ -614,7 +664,7 @@
          match the name). Nothing else needs changing: the moment the file
          exists it replaces the drawn globe below. Until then the drawn globe
          shows, so the page is never broken. -->
-    <a class="brand" href="index.html" aria-label="School of Raya Model G20 2026 — home">
+    <a class="brand" href="index.html" aria-label="The School of Raya Model G20 2026 — home">
       <span class="brand__mark">
       <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
         <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.4"/>
@@ -627,7 +677,10 @@
       <img src="assets/img/logo-modelg20.png" alt="" width="36" height="36"
            onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
       </span>
-      <span class="brand__name">Model G20 <em>2026</em></span>
+      <span class="brand__type">
+        <span class="brand__name">Model G20 <em>2026</em></span>
+        <span class="brand__sub">The School of Raya</span>
+      </span>
     </a>
 
     <!-- EDIT 3 — the navigation links. To add one, copy a line and change the
@@ -670,7 +723,7 @@
        EDIT 5 — the headline, dates and venue.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="cover" id="cover">
-    <h1><span class="host">School of Raya</span>Model G20<span class="year">2026</span></h1>
+    <h1><span class="host">The School of Raya</span>Model G20<span class="year">2026</span></h1>
 
     <div class="rule"></div>
 
@@ -701,8 +754,8 @@
         <p class="kicker">Our Partners</p>
         <h2>In association with</h2>
         <p class="lede">
-          School of Raya Model G20 2026 is convened by The School of Raya in
-          partnership with Flame University and One Young India.
+          Convened by The School of Raya, in partnership with Flame University
+          and One Young India.
         </p>
       </div>
 
@@ -720,13 +773,7 @@
                    onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
             </span>
           </div>
-          <p class="partner__role">Academic Partner</p>
           <h3>Flame University</h3>
-          <p>
-            Academic guidance on the agendas, the Chair's bench and the standard
-            of debate the conference is run to.
-          </p>
-          <a class="link" href="#">Visit website</a>
         </article>
 
         <article class="partner">
@@ -739,73 +786,89 @@
                    onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
             </span>
           </div>
-          <p class="partner__role">Programme Partner</p>
           <h3>One Young India</h3>
-          <p>
-            Programme support across the two days, from delegate materials to
-            the running of the conference floor.
-          </p>
-          <a class="link" href="#">Visit website</a>
         </article>
 
         <!-- ── COPY FROM HERE to add another partner ──────────────────────
         <article class="partner">
           <div class="partner__mark">
-            <b>NAME</b>
-            <span>Descriptor</span>
+            <span class="logo-slot">
+              <img class="logo-slot__stand-in" src="assets/img/partners/their-logo.svg" alt="Partner Name" width="260" height="96">
+            </span>
           </div>
-          <p class="partner__role">Partner Category</p>
           <h3>Partner Name</h3>
-          <p>One or two sentences on what they contribute to the conference.</p>
-          <a class="link" href="#">Visit website</a>
         </article>
         ── COPY TO HERE ─────────────────────────────────────────────────── -->
 
       </div>
 
-      <p class="partner-note">
-        Interested in partnering with School of Raya Model G20 2026?
-        <a href="contact.html">Write to our Outreach desk</a>.
-      </p>
     </div>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
        LETTERS FROM SECRETARIAT
-       EDIT 9 — four cards. For each, change the initials, the name and the
-       office. To use a photograph later, replace the
-       <span class="face__plate">…</span> line with:
-           <img src="assets/img/team/their-photo.jpg" alt="Their Name">
-       Put the image in assets/img/team/ and crop it square.
+       EDIT 9 — two letters.
+
+       TO ADD THE REAL LETTER: replace the paragraphs inside
+       <div class="letter__body"> with the letter itself. One <p>…</p> per
+       paragraph. Everything else — the portrait, the signature block — stays
+       as it is.
+
+       The signature is Name / Position / The School of Raya, Model G20 2026.
+       Change the name and position in <div class="letter__sign">.
+
+       To use a photograph, replace the <span class="letter__plate">…</span>
+       line with <img src="assets/img/team/their-photo.jpg" alt="Their Name">
+       and put the file in assets/img/team/, cropped square.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="core-sec" id="secretariat">
     <div class="wrap">
       <div class="sechead">
-        <p class="kicker">Letters from Secretariat</p>
-        <h2>The people convening it</h2>
+        <h2 class="kicker kicker--head">Letters from Secretariat</h2>
       </div>
 
-      <div class="face-grid face-grid--4">
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AB</span></div>
-          <h3 class="face__name">Aadya Banka</h3>
-          <p class="face__office">Secretary General</p>
+      <div class="letter-grid">
+
+        <article class="letter">
+          <header class="letter__head">
+            <span class="letter__portrait"><span class="letter__plate" aria-hidden="true">AB</span></span>
+            <p class="letter__from">From the Secretary General</p>
+          </header>
+
+          <div class="letter__body">
+            <!-- ↓ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↓ -->
+            <p class="letter__pending">The Secretary General's letter to delegates
+              will be published here shortly.</p>
+            <!-- ↑ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↑ -->
+          </div>
+
+          <div class="letter__sign">
+            <p class="letter__name">Aadya Banka</p>
+            <p class="letter__role">Secretary General</p>
+            <p class="letter__org">The School of Raya, Model G20 2026</p>
+          </div>
         </article>
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DA</span></div>
-          <h3 class="face__name">Deetya Aradhya</h3>
-          <p class="face__office">Director General</p>
+
+        <article class="letter">
+          <header class="letter__head">
+            <span class="letter__portrait"><span class="letter__plate" aria-hidden="true">DA</span></span>
+            <p class="letter__from">From the Director General</p>
+          </header>
+
+          <div class="letter__body">
+            <!-- ↓ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↓ -->
+            <p class="letter__pending">The Director General's letter to delegates
+              will be published here shortly.</p>
+            <!-- ↑ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↑ -->
+          </div>
+
+          <div class="letter__sign">
+            <p class="letter__name">Deetya Aradhya</p>
+            <p class="letter__role">Director General</p>
+            <p class="letter__org">The School of Raya, Model G20 2026</p>
+          </div>
         </article>
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">DM</span></div>
-          <h3 class="face__name">Dakshil Mathuria</h3>
-          <p class="face__office">Director General</p>
-        </article>
-        <article class="face">
-          <div class="face__portrait"><span class="face__plate" aria-hidden="true">SW</span></div>
-          <h3 class="face__name">Samir Wajid</h3>
-          <p class="face__office">Director General</p>
-        </article>
+
       </div>
     </div>
   </section>
@@ -887,12 +950,6 @@
           </div>
 
           <div class="cblock">
-            <dt>Telephone</dt>
-            <dd><a href="tel:+918040001234">+91 80 4000 1234</a></dd>
-            <dd><small>Weekdays 09:00 – 17:00 IST.</small></dd>
-          </div>
-
-          <div class="cblock">
             <dt>Address</dt>
             <dd>
               The School of Raya<br>
@@ -948,7 +1005,7 @@
       </div>
 
       <div class="colophon">
-        <span>© 2026 School of Raya Model G20. All rights reserved.</span>
+        <span>© 2026 The School of Raya Model G20. All rights reserved.</span>
         <nav aria-label="Footer">
           <a href="about.html">About</a>
           <a href="committees.html">Committees</a>
