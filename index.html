@@ -660,10 +660,17 @@
     <!-- EDIT 2 — the logo / home link.
 
          DROP THE OFFICIAL LOGO IN AT:  assets/img/logo-modelg20.png
-         (that exact path and filename — a .png, .jpg or .svg all work if you
-         match the name). Nothing else needs changing: the moment the file
-         exists it replaces the drawn globe below. Until then the drawn globe
-         shows, so the page is never broken. -->
+
+         It must be a real PNG with that exact name. Export it with a
+         TRANSPARENT background — the top bar is beige, so a white box
+         behind the logo would show as a white square.
+
+         Nothing else needs changing: the moment the file exists it replaces
+         the drawn globe below. Until then the drawn globe shows, so the page
+         is never broken.
+
+         Got an SVG or a JPG instead? Change the .png on the <img src=...>
+         line below to match your file, and you are done. -->
     <a class="brand" href="index.html" aria-label="The School of Raya Model G20 2026 — home">
       <span class="brand__mark">
       <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
