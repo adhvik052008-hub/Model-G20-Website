@@ -178,7 +178,7 @@
   --container-wide: 1420px;
   --container-text: 74ch;
   --gutter: clamp(1.25rem, 0.6rem + 3.2vw, 3.5rem);
-  --nav-h: 76px;
+  --nav-h: 88px;
 
   /* ---------------------------------------------------------------------
      6. RADII

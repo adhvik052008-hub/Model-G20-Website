@@ -1661,3 +1661,98 @@ a.contact-card__value:hover { color: var(--maroon-600); text-decoration: underli
 .cta-band .btn--ghost:hover,
 .cta-band .btn--ghost:focus-visible { color: var(--maroon-600); border-color: var(--ivory); }
 .cta-band .eyebrow--invert::before { background: var(--a-ivory-45); }
+
+/* --------------------------------------------------------------------------
+   K. THE OFFICIAL LOCKUP
+   The logo already reads "The School of Raya · Model G20", so it stands on
+   its own in the bar — no wordmark text beside it.
+   -------------------------------------------------------------------------- */
+.crest__logo {
+  display: block;
+  height: 62px;
+  width: auto;
+  background: var(--ivory);
+  padding: 6px 12px;
+  border-radius: var(--r-xs);
+  box-shadow: 0 2px 14px -8px rgba(96, 8, 8, 0.45);
+}
+.crest { gap: 0; }
+.crest:hover .crest__logo { transform: scale(1.04); }
+.crest__logo { transition: transform var(--d-base) var(--e-out); }
+@media (max-width: 900px) { .crest__logo { height: 52px; } }
+@media (max-width: 520px) { .crest__logo { height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .crest__logo { transition: none; } }
+
+/* --------------------------------------------------------------------------
+   L. ITINERARY
+   -------------------------------------------------------------------------- */
+.day + .day { margin-top: clamp(2.4rem, 6vw, 4rem); }
+.day__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-4);
+  padding-bottom: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--line-strong);
+}
+.day__index {
+  font-family: var(--font-display);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semi);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--maroon-600);
+}
+.day__date {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+}
+.slots { display: grid; gap: 2px; }
+.slot {
+  display: grid;
+  grid-template-columns: minmax(118px, 150px) 1fr;
+  gap: var(--sp-3) var(--sp-5);
+  align-items: baseline;
+  padding: clamp(0.85rem, 2vw, 1.15rem) clamp(0.9rem, 2vw, 1.4rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  transition: border-color var(--d-base) var(--e-out), transform var(--d-base) var(--e-out);
+}
+.slot:hover { border-color: var(--line-accent); transform: translateX(3px); }
+.slot--break { background: var(--a-ink-04); border-style: dashed; }
+.slot--key { border-left: 3px solid var(--maroon-600); }
+.slot__time {
+  display: grid;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--maroon-600);
+  line-height: 1.5;
+}
+.slot__time i {
+  font-style: normal;
+  color: var(--text-faint);
+}
+.slot__time i::before { content: "until "; }
+.slot__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+}
+.slot--break .slot__title { font-weight: var(--fw-book); color: var(--text-muted); }
+.slot__note {
+  grid-column: 2;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-top: calc(var(--sp-2) * -1);
+}
+@media (max-width: 560px) {
+  .slot { grid-template-columns: 1fr; gap: var(--sp-1); }
+  .slot__time { display: flex; gap: 0.4em; }
+  .slot__note { grid-column: 1; margin-top: var(--sp-1); }
+}
+@media (prefers-reduced-motion: reduce) { .slot { transition: none; } }

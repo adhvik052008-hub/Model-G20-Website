@@ -23,11 +23,11 @@
     edition: "Inaugural Edition",
     tagline: "Two days of rigorous diplomacy, debate and decision-making.",
 
-    /* Conference opens 8 October 2026, 09:00 IST */
-    startISO: "2026-10-08T09:00:00+05:30",
-    endISO: "2026-10-09T17:30:00+05:30",
-    datesLabel: "8th – 9th October 2026",
-    daysLabel: "Thursday – Friday",
+    /* Conference opens 10 October 2026, 09:00 IST */
+    startISO: "2026-10-10T09:00:00+05:30",
+    endISO: "2026-10-11T16:00:00+05:30",
+    datesLabel: "10th – 11th October 2026",
+    daysLabel: "Saturday – Sunday",
 
     venue: "The School of Raya",
     venueLine1: "The School of Raya",
@@ -139,10 +139,10 @@
      Without one, the card draws an initials plate.
      ====================================================================== */
   var SECRETARIAT = [
-    { name: "Aadya Banka",     initials: "AB", office: "Secretary General" },
-    { name: "Deetya Aradhya",  initials: "DA", office: "Director General" },
-    { name: "Dakshil Mathuria", initials: "DM", office: "Director General" },
-    { name: "Samir Wajid",     initials: "SW", office: "Director General" }
+    { name: "Aadya Banka",     initials: "AB", office: "Presidency Coordinator" },
+    { name: "Deetya Aradhya",  initials: "DA", office: "Deputy Coordinator" },
+    { name: "Dakshil Mathuria", initials: "DM", office: "Deputy Coordinator" },
+    { name: "Samir Wajid",     initials: "SW", office: "Deputy Coordinator" }
   ];
 
   /* ======================================================================
@@ -164,11 +164,10 @@
      PLACEHOLDER — point each `url` at the real account.
      ====================================================================== */
   var SOCIALS = [
-    { name: "Instagram", handle: "@modelg20raya", url: "#", icon: "instagram" },
-    { name: "LinkedIn",  handle: "The School of Raya Model G20", url: "#", icon: "linkedin" },
-    { name: "X",         handle: "@modelg20raya", url: "#", icon: "x" },
-    { name: "YouTube",   handle: "The School of Raya", url: "#", icon: "youtube" }
+    { name: "Instagram", handle: "@raya_modelg20", icon: "instagram",
+      url: "https://www.instagram.com/raya_modelg20" }
   ];
+
 
   /* ======================================================================
      EXPORT

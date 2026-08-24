@@ -34,11 +34,10 @@
   };
 
   var SOCIAL_ICON = {
-    instagram: '<rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/>',
-    linkedin:  '<rect x="3.5" y="3.5" width="17" height="17" rx="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 10.5V17M8 7.4v.1M12 17v-3.6a2 2 0 0 1 4 0V17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
-    x:         '<path d="m4 4 16 16M20 4 4 20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
-    youtube:   '<rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.4"/><path d="m10.5 9.5 4.5 2.5-4.5 2.5v-5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>'
+    instagram: '<rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/>'
   };
+
+
 
   function svg(inner, cls) {
     return '<svg class="' + (cls || "") + '" viewBox="0 0 24 24" fill="none" aria-hidden="true">' + inner + "</svg>";
@@ -112,7 +111,8 @@
   function socials() {
     $$("[data-socials]").forEach(function (mount) {
       mount.innerHTML = D.SOCIALS.map(function (s) {
-        return '<a class="social" href="' + esc(s.url) + '" aria-label="' + esc(s.name) + '">' +
+        var ext = /^https?:/.test(s.url) ? ' target="_blank" rel="noopener"' : "";
+        return '<a class="social" href="' + esc(s.url) + '"' + ext + ' aria-label="' + esc(s.name) + '">' +
           svg(SOCIAL_ICON[s.icon] || SOCIAL_ICON.x) +
           "<span>" + esc(s.handle) + "</span>" +
         "</a>";

@@ -131,7 +131,7 @@
   function countdown() {
     var boxes = $$("[data-countdown]");
     if (!boxes.length) return;
-    var target = new Date((window.MG20 && MG20.EVENT.startISO) || "2026-10-08T09:00:00+05:30").getTime();
+    var target = new Date((window.MG20 && MG20.EVENT.startISO) || "2026-10-10T09:00:00+05:30").getTime();
 
     var UNITS = [
       { k: "days", label: "Days", ms: 864e5 },
