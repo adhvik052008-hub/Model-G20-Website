@@ -1,0 +1,50 @@
+DEPLOYING TO NETLIFY
+====================
+
+FIRST TIME
+----------
+ 1. Go to  https://app.netlify.com/drop
+ 2. Drag this ZIP file onto the dashed box. Do not unzip it first.
+ 3. Wait about 20 seconds. Netlify gives you a URL like
+    https://curious-pastry-4f2a91.netlify.app  — that is your live site.
+ 4. To rename it: Site configuration -> Change site name.
+    You get https://your-chosen-name.netlify.app
+
+UPDATING IT LATER  (this is the part people get wrong)
+-----------------------------------------------------
+Do NOT go back to /drop. That creates a brand new site with a new URL
+every time. Instead:
+
+ 1. Open  https://app.netlify.com  and click your existing site.
+ 2. Click the "Deploys" tab along the top.
+ 3. Scroll to the bottom. There is a dashed box that says
+    "Need to update your site? Drag and drop your site output folder here".
+ 4. Drag the new ZIP onto that box.
+ 5. Wait for "Published". The same URL now shows the new version.
+
+If you do not see the drop area on the Deploys tab, the site is linked to
+GitHub instead. In that case pushing to the repository deploys it, and
+drag-and-drop is disabled.
+
+TROUBLESHOOTING
+---------------
+ - Old version still showing? Hard refresh: Ctrl+Shift+R, or Cmd+Shift+R
+   on a Mac. Netlify caches assets for a year on purpose.
+ - Page not found on a link? Check the deploy log under Deploys for a red
+   error line.
+
+
+WHAT TO UPLOAD
+==============
+Netlify serves this folder as-is. You can drop the whole project on it —
+the src/ folder and build.py are harmless extra files that are simply never
+requested by a browser. If you would rather upload only what is served,
+that is: the .html files, assets/, netlify.toml, robots.txt, sitemap.xml
+and site.webmanifest.
+
+Remember to run  python3 build.py  after editing anything in src/, so the
+generated pages match your changes before you upload.
+
+
+For what still needs filling in, and how to edit anything, see
+START-HERE.txt and EDITING.md.

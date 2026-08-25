@@ -1,0 +1,11 @@
+# Netlify configuration. Serves the styled 404 page, and caches the assets
+# hard because their filenames do not change between deploys.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

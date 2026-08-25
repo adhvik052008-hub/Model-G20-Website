@@ -5,7 +5,7 @@
 # School of Raya Model G20 2026
 
 **Two days of rigorous diplomacy, debate and decision-making**
-The School of Raya, Bengaluru · 8th – 9th October 2026
+The School of Raya, Bengaluru · 10th – 11th October 2026
 
 [**View the live site →**][live]
 
@@ -45,15 +45,15 @@ is committed, so any static host serves it straight from the repository root.
 <table>
 <tr>
 <td width="50%"><img src="docs/preview/committees.jpg" alt="Eight committee cards in one grid, each with an icon, difficulty badge and full agenda"><br><b>Committees</b><br><sub>Eight committees in a single grid — no tracks, no classifications. Each card carries an icon, a difficulty badge and the agenda in full.</sub></td>
-<td width="50%"><img src="docs/preview/timeline.jpg" alt="Key dates timeline from registration opening to the conference"><br><b>Conference timeline</b><br><sub>Five milestones from registration opening to the opening gavel, rendered on the homepage in one row.</sub></td>
+<td width="50%"><img src="docs/preview/schedule.jpg" alt="The two-day itinerary, session by session"><br><b>Schedule</b><br><sub>The full itinerary for both days. Meals read differently from sessions, and the ceremonies, crisis and drafting sessions carry a maroon rule.</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/preview/about-compare.jpg" alt="Side-by-side comparison of a traditional MUN against Model G20"><br><b>Why a G20, not a MUN</b><br><sub>The About page answers three questions with cards, a numbered reason list and this comparison — which collapses to stacked pairs on a phone.</sub></td>
-<td width="50%"><img src="docs/preview/register.jpg" alt="Registration hero banner with the key facts panel"><br><b>Registration</b><br><sub>Its own page, with a hero banner, three-step instructions and an eight-field form wired to Netlify Forms out of the box.</sub></td>
+<td width="50%"><img src="docs/preview/letters.jpg" alt="Two signed letters from the Secretariat"><br><b>Letters from Secretariat</b><br><sub>One from the Presidency Coordinator, one from the Deputy Coordinator, each signed off with name, position and conference.</sub></td>
+<td width="50%"><img src="docs/preview/partners.jpg" alt="Flame University and One Young India logos on white cards"><br><b>Partners</b><br><sub>Logo and name, nothing else. The official artwork sits directly on the card.</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/preview/contact.jpg" alt="Contact cards for email, telephone, venue and social media"><br><b>Contact</b><br><sub>Email, telephone, the venue address, an embedded Google Map and a contact form — the map needs no API key.</sub></td>
-<td width="50%" align="center"><img src="docs/preview/mobile-cover.jpg" width="47%" alt="The homepage on a phone"><br><b>Responsive</b><br><sub>Fluid rather than stepped: type and spacing scale with <code>clamp()</code>, and the navigation collapses to a full-screen sheet below 900px.</sub></td>
+<td width="50%"><img src="docs/preview/register.jpg" alt="Registration hero banner with the key facts panel"><br><b>Registration</b><br><sub>Its own page, with a hero banner and an eight-field form wired to Netlify Forms out of the box.</sub></td>
+<td width="50%" align="center"><img src="docs/preview/mobile-cover.jpg" width="47%" alt="The home page on a phone"><br><b>Responsive</b><br><sub>Fluid rather than stepped: type and spacing scale with <code>clamp()</code>, and the navigation collapses to a full-screen sheet below 900px.</sub></td>
 </tr>
 </table>
 
@@ -195,7 +195,10 @@ assets/js/render.js         Turns the data into DOM
 assets/js/app.js            Nav, reveals, countdown, forms
 
 assets/img/favicon.svg      The seal
-assets/img/og.svg           Social card — see "Before launch"
+assets/img/og.png           Link-preview card (1200x630)
+assets/img/favicon.png      Browser tab icon, cut from the official mark
+assets/img/icon-192.png     App icon
+assets/img/icon-512.png     App icon
 assets/img/partners/        Partner logos (placeholders as shipped)
 docs/preview/               The screenshots used in this README
 ```
@@ -265,9 +268,10 @@ four-colour palette by design; a logo is not repainted to match a site.
 
 Everything below ships as a placeholder:
 
-1. **Phone number** — `EVENT.phone` (`+91 80 4000 1234`) in `assets/js/data.js`,
-   and the same number written into the home page's contact section. The email
-   address, `modelg20@theschoolofraya.com`, is real.
+1. **The two letters** — the Presidency Coordinator's and Deputy Coordinator's
+   letters on the home page are placeholders. In `src/pages/index.html`, search
+   for `REPLACE THESE PARAGRAPHS` and swap the paragraph for the real letter,
+   one `<p>…</p>` per paragraph. The signature block below stays as it is.
 2. **Team portraits** — every card draws an initials plate. Add
    `photo: "assets/img/team/their-file.jpg"` to any entry in `SECRETARIAT` or
    `ORGANISING` in `data.js` for a real portrait, cropped square. The home
@@ -278,9 +282,8 @@ Everything below ships as a placeholder:
 6. **Map pin** — the embed points at the postal address. If the pin lands
    slightly off, change `EVENT.mapQuery` in `data.js` and the `q=` value in the
    home page's map iframe.
-7. **Social card** — export `assets/img/og.svg` to a 1200×630 **PNG** and update
-   the `og:image` path in `src/partials/head.html`; several platforms will not
-   render an SVG preview.
+7. **Live URL** — the link at the top of this file points at a placeholder.
+   Change the one `[live]:` line at the very bottom once the site is deployed.
 
 ---
 

@@ -63,9 +63,9 @@ press `Ctrl+C` when you're done.
 Open **`assets/js/data.js`**. Near the top:
 
 ```js
-startISO: "2026-10-08T09:00:00+05:30",
-endISO:   "2026-10-09T17:30:00+05:30",
-datesLabel: "8th – 9th October 2026",
+startISO: "2026-10-10T09:00:00+05:30",
+endISO:   "2026-10-11T16:00:00+05:30",
+datesLabel: "10th – 11th October 2026",
 ```
 
 `startISO` drives every countdown on the site. The format is
@@ -73,7 +73,7 @@ datesLabel: "8th – 9th October 2026",
 
 The dates are also written out in plain text in three places, so the pages read
 correctly even if the data file is ever removed. Search for
-`8th – 9th October 2026` in `src/pages/index.html`, `src/pages/schedule.html`
+`10th – 11th October 2026` in `src/pages/index.html`, `src/pages/schedule.html`
 and `src/partials/footer.html` and change all of them.
 
 Then run `python3 build.py`.
@@ -273,8 +273,8 @@ These ship as placeholders and should be replaced before launch:
 3. **Logos** — see job 5 above.
 4. **Partner website links** — the two "Visit website" links point at `#`.
 5. **Social media links** — the four handles in `SOCIALS` point at `#`.
-6. **Social card image** — export `assets/img/og.svg` to a 1200×630 PNG and
-   point `og:image` in `src/partials/head.html` at it.
+6. **The two letters** — see the note at the top of the Letters section in
+   `src/pages/index.html`.
 
 ---
 

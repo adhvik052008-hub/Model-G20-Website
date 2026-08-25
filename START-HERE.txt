@@ -1,0 +1,84 @@
+THE SCHOOL OF RAYA MODEL G20 2026 — COMPLETE PROJECT
+====================================================
+10th – 11th October 2026 · The School of Raya, Bengaluru
+
+This archive is the whole project: the finished website, the source it is
+built from, the build script, the images and the documentation. Nothing is
+missing and nothing needs installing.
+
+
+I JUST WANT IT LIVE
+-------------------
+Zip this folder and drag it onto  https://app.netlify.com/drop
+Full instructions, including how to UPDATE a site without creating a new
+one each time, are in  HOW-TO-DEPLOY.txt
+
+
+I WANT TO SEE IT ON MY OWN MACHINE FIRST
+----------------------------------------
+Open a terminal in this folder and run:
+
+    python3 -m http.server 8000
+
+Then visit  http://localhost:8000
+Press Ctrl+C when you are done.
+
+(Double-clicking index.html mostly works, but the committee cards and team
+cards stay blank — browsers block those scripts on local files.)
+
+
+I WANT TO CHANGE SOMETHING
+--------------------------
+Read  EDITING.md  — it is written for someone who has never opened this
+project before and assumes no prior knowledge.
+
+The one rule: edit the files inside  src/  , never the .html files sitting
+in this top folder. Those are generated. After editing, run:
+
+    python3 build.py
+
+That rebuilds the pages in about a second. If you forget and edit a
+generated file by mistake, the build notices and refuses to overwrite your
+work rather than silently losing it.
+
+
+WHAT IS IN HERE
+---------------
+  index.html, about.html, ...   The finished site. Upload these.
+  assets/                       Styles, scripts, logos, icons
+  src/pages/                    Page content — EDIT THESE
+  src/partials/                 Shared nav bar, footer and <head>
+  build.py                      Assembles src/ into the pages above
+  netlify.toml                  Serves the styled 404 page, caches assets
+  docs/preview/                 Screenshots used by README.md
+
+  README.md                     Technical overview of how it all works
+  EDITING.md                    Plain-English guide to changing things
+  HOW-TO-DEPLOY.txt             Netlify, step by step
+  LICENSE
+
+
+THREE THINGS STILL WAITING ON YOU
+---------------------------------
+ 1. THE TWO LETTERS on the home page are placeholders. In
+    src/pages/index.html search for "REPLACE THESE PARAGRAPHS".
+ 2. TEAM PORTRAITS — every card draws the person's initials instead of a
+    photograph. EDITING.md job 4 explains how to add real ones.
+ 3. PARTNER WEBSITE LINKS still point at "#".
+
+
+A NOTE ON COLOUR
+----------------
+The site uses exactly four colours and no others:
+
+    #EFDDC6  beige, the page ground
+    #600808  deep maroon, the accent
+    #FFFFFF  white, card surfaces
+    #000000  black, type
+
+Every tint, rule and shadow is one of those four at reduced opacity. If you
+add anything, keep to them. The partner logos carry their own brand colours,
+which is correct — a logo is never repainted to match a site.
+
+Do not swap in white versions of the logos. The background is beige and the
+cards are white, so white artwork disappears.
