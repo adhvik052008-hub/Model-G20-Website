@@ -44,22 +44,23 @@
   }
 
   /* ======================================================================
-     COMMITTEES — one grid, no tracks
+     COMMITTEES — full-bleed alternating bands, torn edge between each
      ====================================================================== */
   function committees() {
     var mount = $("[data-committees]");
     if (!mount) return;
 
     mount.innerHTML = D.COMMITTEES.map(function (c, i) {
-      return '<article class="cmte" id="' + esc(c.id) + '" data-reveal style="--i:' + (i % 3) + '">' +
-        '<div class="cmte__top">' +
-          '<span class="cmte__icon">' + svg(ICON[c.icon] || ICON.chart) + "</span>" +
-          '<span class="badge badge--' + c.level.toLowerCase() + '">' + esc(c.level) + "</span>" +
+      var dark = i % 2 === 0;                    // first band is maroon
+      return '<section class="band band--' + (dark ? "dark" : "light") + '" id="' + esc(c.id) + '">' +
+        '<div class="band__inner" data-reveal>' +
+          '<div class="band__head">' +
+            '<h3 class="band__name">' + esc(c.name) + "</h3>" +
+            '<span class="band__level">' + esc(c.level) + "</span>" +
+          "</div>" +
+          '<p class="band__agenda">' + esc(c.agenda) + "</p>" +
         "</div>" +
-        '<h3 class="cmte__name">' + esc(c.name) + "</h3>" +
-        '<p class="cmte__label">Agenda</p>' +
-        '<p class="cmte__agenda">' + esc(c.agenda) + "</p>" +
-      "</article>";
+      "</section>";
     }).join("");
   }
 

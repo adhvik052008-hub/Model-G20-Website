@@ -910,76 +910,11 @@ body::after { display: none; }
 .nav-link--cta::after { background: var(--maroon-600); }
 
 /* --------------------------------------------------------------------------
-   C. COMMITTEES — one grid, no tracks
+   C. DIFFICULTY BADGES + LEGEND
    -------------------------------------------------------------------------- */
-.cmte-grid {
-  display: grid;
-  gap: clamp(1rem, 2.2vw, 1.6rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-}
-.cmte {
-  display: grid;
-  align-content: start;
-  gap: var(--sp-2);
-  padding: clamp(1.5rem, 3vw, 2.2rem);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  transition: transform var(--d-base) var(--e-out),
-              box-shadow var(--d-base) var(--e-out),
-              border-color var(--d-base) var(--e-out);
-}
-.cmte:hover {
-  transform: translateY(-6px);
-  border-color: var(--line-accent);
-  box-shadow: var(--sh-lg);
-}
-.cmte__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-3);
-  margin-bottom: var(--sp-2);
-}
-.cmte__icon {
-  display: grid;
-  place-items: center;
-  width: 46px; height: 46px;
-  flex: none;
-  border-radius: var(--r-md);
-  background: var(--a-maroon-06);
-  color: var(--maroon-600);
-  transition: background var(--d-base) var(--e-out), transform var(--d-base) var(--e-out);
-}
-.cmte__icon svg { width: 24px; height: 24px; }
-.cmte:hover .cmte__icon { background: var(--a-maroon-16); transform: scale(1.06); }
-.cmte__name {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-tight);
-}
-.cmte__label {
-  font-family: var(--font-display);
-  font-size: var(--fs-micro);
-  font-weight: var(--fw-semi);
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: var(--maroon-600);
-  margin-top: var(--sp-2);
-}
-.cmte__agenda {
-  font-size: var(--fs-sm);
-  line-height: var(--lh-relaxed);
-  color: var(--text-body);
-  border-left: 2px solid var(--a-maroon-16);
-  padding-left: var(--sp-3);
-}
-
 .badge--beginner     { color: var(--maroon-600); border-color: var(--a-maroon-28); }
 .badge--intermediate { color: var(--maroon-700); border-color: var(--a-maroon-28); background: var(--a-maroon-06); }
 .badge--advanced     { background: var(--maroon-600); border-color: var(--maroon-600); color: var(--parchment-100); }
-
 .level-legend {
   display: grid;
   gap: var(--sp-2);
@@ -1756,3 +1691,120 @@ a.contact-card__value:hover { color: var(--maroon-600); text-decoration: underli
   .slot__note { grid-column: 1; margin-top: var(--sp-1); }
 }
 @media (prefers-reduced-motion: reduce) { .slot { transition: none; } }
+
+/* --------------------------------------------------------------------------
+   M. COMMITTEE BANDS
+   Full-bleed alternating bands, torn-paper edge between each. The edge is one
+   seamless SVG tile — its left and right ends sit at the same height, so it
+   repeats across any width without a visible seam. Regenerate it by changing
+   the seed in the note in README; there is no image file to manage.
+   -------------------------------------------------------------------------- */
+.cmte-intro {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--sp-5);
+  padding-block: clamp(3rem, 9vw, 7rem) clamp(3rem, 9vw, 6rem);
+}
+.cmte-intro__pill {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  background: var(--maroon-600);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semi);
+  letter-spacing: var(--ls-eyebrow);
+  text-indent: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+.cmte-intro__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+}
+.cmte-intro__title em {
+  font-style: italic;
+  color: var(--maroon-600);
+}
+
+.bands { display: block; }
+
+.band {
+  position: relative;
+  padding-block: clamp(4rem, 11vw, 8rem);
+  /* pull the band out to the full viewport width, whatever container it is in */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.band::before {
+  content: "";
+  position: absolute;
+  top: -45px;              /* overhang into the band above, 1px of overlap */
+  left: 0;
+  width: 100%;
+  height: 46px;
+  background-repeat: repeat-x;
+  background-size: 1200px 46px;
+  pointer-events: none;
+}
+.band--dark { background: var(--maroon-600); }
+.band--dark::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271200%27%20height%3D%2746%27%20viewBox%3D%270%200%201200%2046%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C46%20L0%2C26%20L36%2C19.1%20L52%2C32.1%20L82%2C21.6%20L116%2C22.3%20L141%2C17.3%20L184%2C13.1%20L230%2C20.7%20L272%2C28.7%20L296%2C18.0%20L328%2C20.8%20L347%2C30.7%20L366%2C19.9%20L405%2C20.7%20L422%2C24.8%20L444%2C34.9%20L483%2C27.6%20L499%2C27.2%20L524%2C34.5%20L551%2C33.5%20L586%2C33.3%20L619%2C28.8%20L659%2C26.5%20L698%2C24.2%20L732%2C13.3%20L777%2C27.1%20L808%2C17.2%20L827%2C23.7%20L868%2C32.0%20L899%2C27.3%20L924%2C23.7%20L957%2C22.0%20L975%2C34.3%20L1006%2C30.6%20L1023%2C38.1%20L1046%2C18.9%20L1076%2C30.6%20L1090%2C18.6%20L1111%2C30.4%20L1127%2C26.5%20L1152%2C18.8%20L1191%2C16.4%20L1200%2C26%20L1200%2C46%20Z%27%20fill%3D%27rgb%2896%2C8%2C8%29%27%2F%3E%3C%2Fsvg%3E"); }
+.band--light { background: var(--parchment-300); }
+.band--light::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271200%27%20height%3D%2746%27%20viewBox%3D%270%200%201200%2046%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C46%20L0%2C26%20L36%2C19.1%20L52%2C32.1%20L82%2C21.6%20L116%2C22.3%20L141%2C17.3%20L184%2C13.1%20L230%2C20.7%20L272%2C28.7%20L296%2C18.0%20L328%2C20.8%20L347%2C30.7%20L366%2C19.9%20L405%2C20.7%20L422%2C24.8%20L444%2C34.9%20L483%2C27.6%20L499%2C27.2%20L524%2C34.5%20L551%2C33.5%20L586%2C33.3%20L619%2C28.8%20L659%2C26.5%20L698%2C24.2%20L732%2C13.3%20L777%2C27.1%20L808%2C17.2%20L827%2C23.7%20L868%2C32.0%20L899%2C27.3%20L924%2C23.7%20L957%2C22.0%20L975%2C34.3%20L1006%2C30.6%20L1023%2C38.1%20L1046%2C18.9%20L1076%2C30.6%20L1090%2C18.6%20L1111%2C30.4%20L1127%2C26.5%20L1152%2C18.8%20L1191%2C16.4%20L1200%2C26%20L1200%2C46%20Z%27%20fill%3D%27rgb%28239%2C221%2C198%29%27%2F%3E%3C%2Fsvg%3E"); }
+
+.band__inner {
+  width: min(var(--container), calc(100% - var(--gutter) * 2));
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--sp-4);
+}
+.band__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+.band__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4.2vw, 2.9rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  max-width: 14ch;
+}
+.band__level {
+  flex: none;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid currentColor;
+  font-family: var(--font-display);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semi);
+  letter-spacing: var(--ls-eyebrow);
+  text-indent: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+.band__agenda {
+  font-size: clamp(1rem, 1.7vw, 1.16rem);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.band--light .band__name  { color: var(--text); }
+.band--light .band__level { color: var(--maroon-600); }
+.band--light .band__agenda{ color: var(--text-body); }
+.band--dark  .band__name  { color: var(--parchment-300); }
+.band--dark  .band__level { color: var(--parchment-300); }
+.band--dark  .band__agenda{ color: rgba(239, 221, 198, 0.86); }
+
+@media (max-width: 620px) {
+  .band__head { flex-direction: column; gap: var(--sp-3); }
+  .band__name { max-width: 18ch; }
+}

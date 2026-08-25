@@ -304,4 +304,4 @@ the property of The School of Raya.
      THE LIVE SITE ADDRESS — change this one line and every link above
      updates with it.
      ───────────────────────────────────────────────────────────────────────── -->
-[live]: https://YOUR-SITE.netlify.app
+[live]: https://tsormodelg20.netlify.app
