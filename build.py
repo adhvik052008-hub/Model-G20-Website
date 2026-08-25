@@ -32,15 +32,14 @@ PARTIALS = ROOT / "src" / "partials"
 
 # Order matters only for the build log.
 PAGE_ORDER = [
-    "index", "about", "committees", "country-matrix", "secretariat",
-    "schedule", "resources", "gallery", "faqs", "contact", "register",
-    "design-system", "wireframes", "404",
+    "index", "about", "committees", "schedule",
+    "register", "contact", "404",
 ]
 
 # nav key -> the placeholder that receives aria-current="page"
 NAV_KEYS = [
-    "home", "about", "committees", "matrix", "secretariat", "schedule",
-    "resources", "gallery", "faqs", "contact", "register",
+    "home", "about", "committees", "schedule",
+    "register", "contact",
 ]
 
 BASE_URL = "https://adhvik052008-hub.github.io/model-g20-website/"
@@ -105,9 +104,9 @@ def build_nav(html: str, active: str, crest: str) -> str:
 
 
 def build_scripts(meta: dict) -> str:
-    # world.js and data.js are pure data; render.js and map.js populate the DOM;
-    # app.js wires interaction last so its observers see the finished markup.
-    core = ["world.js", "data.js", "render.js", "map.js"]
+    # data.js is the content; render.js turns it into DOM; app.js wires
+    # interaction last so its observers see the finished markup.
+    core = ["data.js", "render.js"]
     extra = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
     ordered = core + extra + ["app.js"]
     return "\n".join(f'<script src="assets/js/{name}" defer></script>' for name in ordered)

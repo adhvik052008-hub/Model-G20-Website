@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 96" role="img" aria-label="Flame University">
+  <!-- PLACEHOLDER LOGO. Replace this file with the official artwork,
+       keeping the same filename, and the site picks it up automatically. -->
+  <rect width="260" height="96" fill="none"/>
+  <g fill="none" stroke="#600808" stroke-width="1.4">
+    <circle cx="46" cy="48" r="25"/>
+    <path d="M46 30c7 8 10 13 10 19a10 10 0 0 1-20 0c0-6 3-11 10-19Z"/>
+  </g>
+  <text x="86" y="45" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="25" font-weight="700" letter-spacing="1.5" fill="#600808">FLAME</text>
+  <text x="86" y="68" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="13" font-weight="400" letter-spacing="4.6" fill="#600808" opacity=".78">UNIVERSITY</text>
+</svg>

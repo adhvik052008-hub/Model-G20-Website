@@ -13,31 +13,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/country-matrix.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/secretariat.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://adhvik052008-hub.github.io/model-g20-website/schedule.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/resources.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/gallery.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/faqs.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/contact.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -45,11 +21,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/design-system.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adhvik052008-hub.github.io/model-g20-website/wireframes.html</loc>
+    <loc>https://adhvik052008-hub.github.io/model-g20-website/contact.html</loc>
     <priority>0.6</priority>
   </url>
 </urlset>

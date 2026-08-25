@@ -20,6 +20,8 @@
     EDIT 6  Our Partners
     EDIT 7  Contact details
     EDIT 8  The countdown date
+    EDIT 9  Letters from Secretariat
+    EDIT 10 The Organising Committee
 
   A note on the rest of the site: the interior pages (Committees, Secretariat,
   About, and so on) share one navigation bar and footer, so they are assembled
@@ -30,18 +32,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Model G20 2026 — The School of Raya</title>
-<meta name="description" content="Model G20 2026 — an international summit simulation convened by The School of Raya at FLAME University, Pune. 8–9 October 2026.">
+<title>The School of Raya Model G20 2026</title>
+<meta name="description" content="The School of Raya Model G20 2026 — two days of rigorous diplomacy, debate and decision-making. 10th – 11th October 2026 at The School of Raya, Bengaluru.">
 <meta name="theme-color" content="#EFDDC6">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Model G20 2026 — The School of Raya">
-<meta property="og:description" content="An international summit simulation. 8–9 October 2026, FLAME University, Pune.">
-<meta property="og:image" content="assets/img/og.svg">
+<meta property="og:title" content="The School of Raya Model G20 2026">
+<meta property="og:description" content="Two days of rigorous diplomacy, debate and decision-making. 10th – 11th October 2026, The School of Raya.">
+<meta property="og:image" content="assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon.png" sizes="64x64" type="image/png">
+<link rel="icon" href="assets/img/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
 <link rel="manifest" href="site.webmanifest">
 
 <!-- Typeface: Helvetica, with Arial and Liberation Sans as stand-ins where
@@ -54,16 +60,21 @@
      Change a value here and it updates everywhere on this page at once.
      ══════════════════════════════════════════════════════════════════════ */
   :root{
-    --paper:#EFDDC6;      /* the beige ground                    */
-    --paper-light:#F7EDE0;/* a lighter beige, used for panels    */
-    --ink:#140A08;        /* near-black text                     */
-    --oxblood:#600808;    /* the maroon accent                   */
-    --oxblood-deep:#3A0404;
+    /* Only four colours exist on this site. Everything that looks like a
+       fifth is one of these four at reduced opacity, showing the ground
+       through it. */
+    --paper:#EFDDC6;      /* the beige ground        */
+    --oxblood:#600808;    /* the maroon accent       */
+    --white:#FFFFFF;      /* card surfaces           */
+    --ink:#000000;        /* type                    */
+
+    --paper-light:rgba(255,255,255,.5);  /* white veil over the beige */
+    --oxblood-deep:#600808;              /* one dark surface, exactly */
 
     --serif:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;   /* body text     */
     --display:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif; /* headings, UI  */
 
-    --bar-h:74px;         /* height of the top navigation bar    */
+    --bar-h:92px;         /* height of the top navigation bar    */
     --gutter:clamp(1.25rem,5vw,4rem);
   }
 
@@ -130,7 +141,7 @@
     line-height:1;cursor:pointer;white-space:nowrap;
     transition:background .28s ease,color .28s ease,transform .28s ease,box-shadow .28s ease;
   }
-  .btn:hover{background:var(--paper);color:var(--oxblood);transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(58,4,4,.65)}
+  .btn:hover{background:var(--paper);color:var(--oxblood);transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(96, 8, 8,.65)}
   .btn--line{background:transparent;color:var(--oxblood)}
   .btn--line:hover{background:var(--oxblood);color:var(--paper)}
   .btn--lg{padding:1.05rem 2.2rem;font-size:clamp(.72rem,1.05vw,.84rem)}
@@ -149,11 +160,11 @@
   }
   /* Frosts over once you scroll past the cover */
   .topbar.is-stuck{
-    background:rgba(247,237,224,.82);
+    background:rgba(239, 221, 198,.82);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
-    border-bottom-color:rgba(20,10,8,.1);
-    box-shadow:0 10px 30px -24px rgba(58,4,4,.6);
+    border-bottom-color:rgba(0, 0, 0,.1);
+    box-shadow:0 10px 30px -24px rgba(96, 8, 8,.6);
   }
   .topbar__inner{
     width:100%;max-width:1400px;margin-inline:auto;padding-inline:var(--gutter);
@@ -161,14 +172,19 @@
   }
 
   /* — Logo / home link — EDIT 2 is inside the markup below — */
-  .brand{display:flex;align-items:center;gap:.7rem;flex:none}
-  .brand svg{width:34px;height:34px;color:var(--oxblood);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
-  .brand:hover svg{transform:rotate(-10deg) scale(1.06)}
-  .brand__name{
-    font-family:var(--display);font-size:1.02rem;font-weight:500;
-    letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;line-height:1;
+  .brand{display:flex;align-items:center;flex:none}
+  /* The lockup's "20" is beige, drawn for a white ground — on the beige bar
+     it would disappear, so the mark sits on its own white plate. */
+  .brand__logo{
+    display:block;height:66px;width:auto;
+    background:var(--white);
+    padding:6px 12px;border-radius:3px;
+    box-shadow:0 2px 14px -8px rgba(96,8,8,.45);
+    transition:transform .5s cubic-bezier(.34,1.56,.64,1);
   }
-  .brand__name em{font-style:italic;font-weight:400;color:var(--oxblood);letter-spacing:.04em}
+  .brand:hover .brand__logo{transform:scale(1.04)}
+  @media (max-width:900px){ .brand__logo{height:54px} }
+  @media (max-width:520px){ .brand__logo{height:46px} }
 
   .topnav{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2.2rem)}
   .topnav a{
@@ -198,7 +214,7 @@
   .burger{
     display:none;width:42px;height:42px;
     flex-direction:column;align-items:center;justify-content:center;gap:4px;
-    border:1px solid rgba(20,10,8,.22);background:rgba(247,237,224,.6);
+    border:1px solid rgba(0, 0, 0,.22);background:rgba(239, 221, 198,.6);
     cursor:pointer;transition:border-color .25s,background .25s;
   }
   .burger:hover{border-color:var(--oxblood)}
@@ -278,9 +294,9 @@
   h1 .year{display:block;font-weight:300;letter-spacing:-.01em;color:var(--oxblood)}
   .rule{width:min(42ch,68vw);height:1px;background:var(--ink);opacity:.45}
   .theme{
-    font-style:italic;font-weight:300;
-    font-size:clamp(1rem,1.75vw,1.32rem);
-    max-width:40ch;line-height:1.4;opacity:.86;
+    font-weight:400;
+    font-size:clamp(1.02rem,1.9vw,1.38rem);
+    max-width:34ch;line-height:1.4;opacity:.82;
   }
   .clock{
     display:flex;align-items:flex-start;
@@ -302,16 +318,21 @@
     color:var(--paper);opacity:.72;
   }
   .whenwhere{
-    font-family:var(--display);font-weight:500;
-    font-size:clamp(.68rem,1.1vw,.82rem);
-    letter-spacing:.24em;text-transform:uppercase;text-indent:.24em;
-    color:var(--oxblood);
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1rem,2.1vw,1.5rem);
+    letter-spacing:.16em;text-transform:uppercase;text-indent:.16em;
+    color:var(--oxblood);line-height:1.2;
   }
-  .cover__cta{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
+  .whenwhere--venue{
+    font-weight:400;
+    font-size:clamp(.72rem,1.25vw,.92rem);
+    letter-spacing:.28em;text-indent:.28em;
+    opacity:.72;margin-top:-.15rem;
+  }
   /* On a phone the wide tracking strands the last word on its own line. */
   @media (max-width:560px){
-    .whenwhere{letter-spacing:.14em;text-indent:.14em;text-wrap:balance}
-    .cover__cta{width:100%;flex-direction:column;align-items:stretch}
+    .whenwhere{letter-spacing:.1em;text-indent:.1em;text-wrap:balance}
+    .whenwhere--venue{letter-spacing:.2em;text-indent:.2em}
   }
 
   /* ══════════════════════════════════════════════════════════════════════
@@ -320,13 +341,14 @@
   .partners{
     position:relative;z-index:1;
     padding:clamp(4rem,10vh,7.5rem) 0;
-    background:rgba(247,237,224,.9);
+    background:rgba(239, 221, 198,.9);
     -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
-    border-top:1px solid rgba(20,10,8,.12);
+    border-top:1px solid rgba(0, 0, 0,.12);
   }
   .sechead{display:grid;gap:.9rem;justify-items:center;text-align:center;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
   .sechead p.lede{max-width:52ch;opacity:.78}
+  .kicker--head{font-weight:600}
 
   /* Tracks are capped at 360px and the row is centred, so one partner sits as
      a neat single card rather than stretching across the whole page. Add more
@@ -342,17 +364,17 @@
     display:grid;gap:1.1rem;justify-items:center;text-align:center;
     padding:clamp(1.8rem,4vw,2.8rem);
     background:var(--paper);
-    border:1px solid rgba(20,10,8,.14);
+    border:1px solid rgba(0, 0, 0,.14);
     transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease,border-color .3s ease;
   }
-  .partner:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(58,4,4,.5);border-color:rgba(96,8,8,.3)}
+  .partner:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(96, 8, 8,.5);border-color:rgba(96,8,8,.3)}
   /* The plate that holds a partner's logo. Swap the text for an <img>. */
   .partner__mark{
     width:100%;min-height:110px;
     display:grid;place-content:center;gap:.35rem;
     padding:1.2rem;
     border:1px solid rgba(96,8,8,.18);
-    background:linear-gradient(150deg,#F7EDE0,#E7D2B6);
+    background:var(--paper);
   }
   .partner__mark b{
     font-family:var(--display);font-weight:500;
@@ -363,25 +385,78 @@
     font-family:var(--display);font-size:.6rem;
     letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;opacity:.65;
   }
-  .partner__mark img{width:100%;height:auto;max-height:96px;object-fit:contain}
-  .partner__role{
-    font-family:var(--display);font-size:.62rem;
-    letter-spacing:.26em;text-transform:uppercase;text-indent:.26em;color:var(--oxblood);
+  /* The stand-in stays in the flow even when invisible, so it is what gives
+     the slot its size — the real logo is laid over the top of it. */
+  .logo-slot{position:relative;display:block}
+  .logo-slot__stand-in{
+    display:block;width:100%;max-width:260px;height:96px;object-fit:contain;
   }
-  .partner h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);letter-spacing:.02em}
-  .partner p{font-size:.98rem;opacity:.78;max-width:38ch}
-  .partner .link{
-    font-family:var(--display);font-size:.66rem;letter-spacing:.22em;
-    text-transform:uppercase;text-indent:.22em;color:var(--oxblood);
-    border-bottom:1px solid rgba(96,8,8,.4);padding-bottom:2px;
+  .logo-slot__real{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;
   }
-  .partner .link:hover{border-bottom-color:var(--oxblood)}
+  .logo-slot.is-real .logo-slot__real{opacity:1}
+  .logo-slot.is-real .logo-slot__stand-in{opacity:0}
+  .partner h3{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.15rem,2.2vw,1.45rem);letter-spacing:.02em;
+  }
 
-  .partner-note{
-    margin-top:clamp(2rem,4vw,3rem);text-align:center;
-    font-size:.92rem;opacity:.7;
+  /* ══════════════════════════════════════════════════════════════════════
+     LETTERS FROM SECRETARIAT
+     ══════════════════════════════════════════════════════════════════════ */
+  .letter-grid{
+    display:grid;gap:clamp(1.2rem,2.6vw,2rem);
+    grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+    max-width:1080px;margin-inline:auto;
   }
-  .partner-note a{color:var(--oxblood);border-bottom:1px solid rgba(96,8,8,.35)}
+  .letter{
+    display:grid;align-content:start;gap:1.2rem;
+    padding:clamp(1.8rem,4vw,2.8rem);
+    background:#fff;
+    border:1px solid rgba(96,8,8,.14);
+    transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease,border-color .3s ease;
+  }
+  .letter:hover{
+    transform:translateY(-4px);
+    border-color:rgba(96,8,8,.3);
+    box-shadow:0 22px 44px -28px rgba(96,8,8,.45);
+  }
+  .letter__head{display:flex;align-items:center;gap:1rem}
+  .letter__portrait{
+    width:58px;height:58px;flex:none;border-radius:50%;
+    display:grid;place-items:center;overflow:hidden;
+    background:rgba(96,8,8,.07);
+    border:1px solid rgba(96,8,8,.16);
+  }
+  .letter__portrait img{width:100%;height:100%;object-fit:cover}
+  .letter__plate{
+    font-family:var(--display);font-weight:600;
+    font-size:1.05rem;letter-spacing:.06em;color:var(--oxblood);opacity:.82;
+  }
+  .letter__from{
+    font-family:var(--display);font-size:.68rem;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--oxblood);
+  }
+  .letter__body{
+    display:grid;gap:.9rem;
+    padding-left:1.1rem;border-left:2px solid rgba(96,8,8,.18);
+  }
+  .letter__body p{font-size:1rem;line-height:1.65;opacity:.86}
+  .letter__pending{font-style:italic;opacity:.6}
+  .letter__sign{
+    display:grid;gap:.15rem;
+    padding-top:1rem;border-top:1px solid rgba(0,0,0,.1);
+  }
+  .letter__name{
+    font-family:var(--display);font-weight:600;
+    font-size:1.06rem;letter-spacing:.01em;
+  }
+  .letter__role{font-size:.9rem;opacity:.75}
+  .letter__org{
+    font-family:var(--display);font-size:.66rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--oxblood);
+    margin-top:.15rem;
+  }
 
   /* ══════════════════════════════════════════════════════════════════════
      CONTACT
@@ -403,6 +478,7 @@
   .contact h2{color:var(--paper)}
 
   .contact-grid{
+    align-content:start;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
     gap:clamp(1.6rem,3.5vw,2.8rem);
@@ -421,12 +497,17 @@
 
   .socials{display:flex;gap:.7rem;flex-wrap:wrap}
   .socials a{
-    width:40px;height:40px;display:grid;place-items:center;
+    display:inline-flex;align-items:center;gap:.55rem;
+    height:40px;padding-inline:.9rem;border-radius:999px;
     border:1px solid rgba(239,221,198,.28);
     transition:background .3s,color .3s,transform .3s,border-color .3s;
   }
   .socials a:hover{background:var(--paper);color:var(--oxblood-deep);border-color:var(--paper);transform:translateY(-3px)}
-  .socials svg{width:17px;height:17px}
+  .socials svg{width:17px;height:17px;flex:none}
+  .socials a span{
+    font-family:var(--display);font-size:.72rem;font-weight:500;
+    letter-spacing:.1em;white-space:nowrap;
+  }
 
   .contact-cta{
     display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
@@ -451,6 +532,113 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{transition-duration:.001ms !important;animation-duration:.001ms !important}
   }
+  /* ══════════════════════════════════════════════════════════════════════
+     COVER — the host line above the wordmark
+     ══════════════════════════════════════════════════════════════════════ */
+  h1 .host{
+    display:block;font-weight:400;
+    font-size:.42em;letter-spacing:.01em;line-height:1.15;
+    margin-bottom:.12em;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     THE TEAM — Letters from Secretariat, then the Organising Committee
+     Both bands are opaque so the wave field stays behind the cover only.
+     ══════════════════════════════════════════════════════════════════════ */
+  .core-sec,.oc-sec{
+    position:relative;z-index:1;
+    padding:clamp(3.6rem,8vw,6.8rem) 0;
+    border-top:1px solid rgba(96,8,8,.12);
+  }
+  .core-sec{                       /* beige, with a white veil over it   */
+    background-color:var(--paper);
+    background-image:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45));
+  }
+  .oc-sec{background:var(--paper)}
+  .face-grid--4{
+    grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));
+    max-width:960px;
+  }
+  /* Eight people read as two ranks of four, never five-and-three. */
+  @media (min-width:1000px){ .oc-sec .face-grid{grid-template-columns:repeat(4,1fr)} }
+  .face-grid{
+    display:grid;gap:clamp(1.1rem,2.4vw,1.7rem);
+    grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));
+    max-width:1140px;margin-inline:auto;
+  }
+  .face{
+    display:grid;gap:.3rem;justify-items:center;text-align:center;
+    padding:clamp(1.3rem,2.6vw,1.9rem) 1rem;
+    background:#fff;
+    border:1px solid rgba(96,8,8,.12);
+    border-radius:2px;
+    transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s,border-color .4s;
+  }
+  .face:hover{
+    transform:translateY(-4px);
+    border-color:rgba(96,8,8,.3);
+    box-shadow:0 16px 34px -22px rgba(96, 8, 8,.5);
+  }
+  .face__portrait{
+    width:clamp(74px,9vw,92px);aspect-ratio:1;margin-bottom:.7rem;
+    border-radius:50%;overflow:hidden;
+    display:grid;place-items:center;
+    background:rgba(96,8,8,.07);
+    border:1px solid rgba(96,8,8,.16);
+  }
+  .face__portrait img{width:100%;height:100%;object-fit:cover}
+  .face__plate{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.05rem,2vw,1.3rem);letter-spacing:.06em;
+    color:var(--oxblood);opacity:.82;
+  }
+  .face__name{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.02rem,1.8vw,1.2rem);letter-spacing:.005em;
+    margin-top:.15rem;
+  }
+  .face__office{
+    font-family:var(--display);font-size:.68rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--oxblood);opacity:.82;margin-top:.15rem;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     CONTACT — split with the map
+     ══════════════════════════════════════════════════════════════════════ */
+  .sechead--left{justify-items:start;text-align:left;margin-bottom:clamp(2rem,4vw,3rem)}
+  .contact-split{
+    display:grid;gap:clamp(1.8rem,4vw,3rem);
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    align-items:start;
+  }
+  .cblock--wide{grid-column:1 / -1}
+  .map-card{
+    display:grid;gap:.7rem;
+    border:1px solid rgba(239,221,198,.24);
+    border-radius:2px;padding:.55rem .55rem .75rem;
+    background:rgba(239,221,198,.06);
+  }
+  .map-card iframe{
+    width:100%;aspect-ratio:4 / 3;min-height:260px;
+    border:0;display:block;
+    filter:grayscale(1) contrast(1.05);
+    transition:filter .5s;
+  }
+  .map-card:hover iframe{filter:grayscale(0)}
+  .map-card__link{
+    justify-self:start;padding-inline:.4rem;
+    font-family:var(--display);font-size:.68rem;font-weight:500;
+    letter-spacing:.2em;text-transform:uppercase;
+    border-bottom:1px solid rgba(239,221,198,.34);
+  }
+  .map-card__link:hover{border-bottom-color:var(--paper)}
+
+  @media (max-width:860px){
+    .contact-split{grid-template-columns:1fr}
+    .map-card iframe{aspect-ratio:16 / 10;min-height:0}
+  }
+
 </style>
 </head>
 
@@ -465,18 +653,12 @@
 <header class="topbar" id="topbar">
   <div class="topbar__inner">
 
-    <!-- EDIT 2 — the logo / home link. Change the words, or replace the <svg>
-         with <img src="assets/img/your-logo.svg" alt="Model G20" width="34">. -->
-    <a class="brand" href="index.html" aria-label="Model G20 2026 — home">
-      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <circle cx="32" cy="32" r="30.2" stroke="currentColor" stroke-width="1.4"/>
-        <circle cx="32" cy="32" r="27.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.001 8.60708"/>
-        <circle cx="32" cy="32" r="15.6" stroke="currentColor" stroke-width="1.3"/>
-        <ellipse cx="32" cy="32" rx="6.5" ry="15.6" stroke="currentColor" stroke-width="1" opacity=".7"/>
-        <path d="M16.4 32h31.2" stroke="currentColor" stroke-width="1" opacity=".7"/>
-        <path d="M18.7 24.2h26.6M18.7 39.8h26.6" stroke="currentColor" stroke-width=".9" opacity=".45"/>
-      </svg>
-      <span class="brand__name">Model G20 <em>2026</em></span>
+    <!-- EDIT 2 — the logo / home link. The official lockup already reads
+         "The School of Raya · Model G20", so it stands alone here. To swap it,
+         replace assets/img/logo-modelg20.png with your file. -->
+    <a class="brand" href="index.html" aria-label="The School of Raya Model G20 2026 — home">
+      <img class="brand__logo" src="assets/img/logo-modelg20.png"
+           alt="The School of Raya Model G20 2026" width="560" height="352">
     </a>
 
     <!-- EDIT 3 — the navigation links. To add one, copy a line and change the
@@ -484,14 +666,15 @@
          in the mobile menu further down so the two agree. -->
     <nav class="topnav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="committees.html">Committees</a>
-      <a href="secretariat.html">Secretariat</a>
       <a href="about.html">About</a>
+      <a href="committees.html">Committees</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <div class="topbar__actions">
       <!-- EDIT 4 — the Register button. -->
-      <a class="btn" href="register.html">Register</a>
+      <a class="btn" href="register.html">Registration</a>
 
       <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
         <i></i><i></i><i></i>
@@ -503,12 +686,12 @@
 <!-- Mobile menu — mirrors the links above -->
 <div class="sheet" id="sheet" aria-hidden="true">
   <a href="index.html">Home <span>01</span></a>
-  <a href="committees.html">Committees <span>02</span></a>
-  <a href="secretariat.html">Secretariat <span>03</span></a>
-  <a href="about.html">About <span>04</span></a>
-  <a href="#partners">Partners <span>05</span></a>
-  <a href="#contact">Contact <span>06</span></a>
-  <a class="btn btn--pale" href="register.html">Register</a>
+  <a href="about.html">About <span>02</span></a>
+  <a href="committees.html">Committees <span>03</span></a>
+  <a href="schedule.html">Schedule <span>04</span></a>
+  <a href="register.html">Registration <span>05</span></a>
+  <a href="contact.html">Contact <span>06</span></a>
+  <a class="btn btn--pale" href="register.html">Register now</a>
 </div>
 
 <main>
@@ -518,15 +701,11 @@
        EDIT 5 — the headline, dates and venue.
        ════════════════════════════════════════════════════════════════════ -->
   <section class="cover" id="cover">
-    <p class="eyebrow">The School of Raya</p>
-
-    <h1>Model G20<span class="year">2026</span></h1>
+    <h1><span class="host">The School of Raya</span>Model G20<span class="year">2026</span></h1>
 
     <div class="rule"></div>
 
-    <!-- A tagline can sit here if you ever want one. Delete the arrows at
-         each end of the next line to switch it back on, then edit the words. -->
-    <!-- <p class="theme">Your tagline here.</p> -->
+    <p class="theme">Two days of rigorous diplomacy, debate and decision-making.</p>
 
     <div class="clock" id="clock" role="timer" aria-live="off">
       <div class="unit"><b id="d">00</b><span>Days</span></div>
@@ -535,12 +714,8 @@
       <div class="unit"><b id="s">00</b><span>Seconds</span></div>
     </div>
 
-    <p class="whenwhere">8 – 9 October 2026 · FLAME University, Pune</p>
-
-    <div class="cover__cta">
-      <a class="btn btn--lg" href="register.html">Register as a delegate</a>
-      <a class="btn btn--line btn--lg" href="committees.html">Explore the committees</a>
-    </div>
+    <p class="whenwhere">10th – 11th October 2026</p>
+    <p class="whenwhere whenwhere--venue">The School of Raya</p>
 
   </section>
 
@@ -557,8 +732,8 @@
         <p class="kicker">Our Partners</p>
         <h2>In association with</h2>
         <p class="lede">
-          Model G20 2026 is convened by The School of Raya and hosted on the
-          campus of FLAME University, Pune.
+          Convened by The School of Raya, in partnership with Flame University
+          and One Young India.
         </p>
       </div>
 
@@ -566,41 +741,169 @@
 
         <article class="partner">
           <div class="partner__mark">
-            <!-- To use the official logo, replace the two lines below with:
-                 <img src="assets/img/partners/flame-university.png" alt="FLAME University"> -->
-            <b>FLAME</b>
-            <span>University</span>
+            <!-- DROP THE OFFICIAL LOGO IN AT:
+                 assets/img/partners/flame-university.png
+                 The moment that file exists it replaces the typographic
+                 stand-in below. Nothing else to change. -->
+            <span class="logo-slot">
+              <img class="logo-slot__stand-in" src="assets/img/partners/flame-university.svg" alt="Flame University" width="260" height="96">
+              <img class="logo-slot__real" src="assets/img/partners/flame-university.png" alt="" width="260" height="96"
+                   onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
+            </span>
           </div>
-          <p class="partner__role">Host Institution</p>
-          <h3>FLAME University</h3>
-          <p>
-            Ten committee rooms, a plenary auditorium, a dedicated press centre
-            and on-campus accommodation, all inside a single walkable campus at
-            Lavale, Pune.
-          </p>
-          <!-- Point this at the partner's website when you have the link. -->
-          <a class="link" href="#">Visit website</a>
+          <h3>Flame University</h3>
+        </article>
+
+        <article class="partner">
+          <div class="partner__mark">
+            <!-- DROP THE OFFICIAL LOGO IN AT:
+                 assets/img/partners/one-young-india.png -->
+            <span class="logo-slot">
+              <img class="logo-slot__stand-in" src="assets/img/partners/one-young-india.svg" alt="One Young India" width="260" height="96">
+              <img class="logo-slot__real" src="assets/img/partners/one-young-india.png" alt="" width="260" height="96"
+                   onload="this.parentNode.classList.add('is-real')" onerror="this.remove()">
+            </span>
+          </div>
+          <h3>One Young India</h3>
         </article>
 
         <!-- ── COPY FROM HERE to add another partner ──────────────────────
         <article class="partner">
           <div class="partner__mark">
-            <b>NAME</b>
-            <span>Descriptor</span>
+            <span class="logo-slot">
+              <img class="logo-slot__stand-in" src="assets/img/partners/their-logo.svg" alt="Partner Name" width="260" height="96">
+            </span>
           </div>
-          <p class="partner__role">Partner Category</p>
           <h3>Partner Name</h3>
-          <p>One or two sentences on what they contribute to the conference.</p>
-          <a class="link" href="#">Visit website</a>
         </article>
         ── COPY TO HERE ─────────────────────────────────────────────────── -->
 
       </div>
 
-      <p class="partner-note">
-        Interested in partnering with Model G20 2026?
-        <a href="#contact">Write to our Outreach desk</a>.
-      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       LETTERS FROM SECRETARIAT
+       EDIT 9 — two letters.
+
+       TO ADD THE REAL LETTER: replace the paragraphs inside
+       <div class="letter__body"> with the letter itself. One <p>…</p> per
+       paragraph. Everything else — the portrait, the signature block — stays
+       as it is.
+
+       The signature is Name / Position / The School of Raya, Model G20 2026.
+       Change the name and position in <div class="letter__sign">.
+
+       To use a photograph, replace the <span class="letter__plate">…</span>
+       line with <img src="assets/img/team/their-photo.jpg" alt="Their Name">
+       and put the file in assets/img/team/, cropped square.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="core-sec" id="secretariat">
+    <div class="wrap">
+      <div class="sechead">
+        <h2 class="kicker kicker--head">Letters from Secretariat</h2>
+      </div>
+
+      <div class="letter-grid">
+
+        <article class="letter">
+          <header class="letter__head">
+            <span class="letter__portrait"><span class="letter__plate" aria-hidden="true">AB</span></span>
+            <p class="letter__from">From the Presidency Coordinator</p>
+          </header>
+
+          <div class="letter__body">
+            <!-- ↓ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↓ -->
+            <p class="letter__pending">The Presidency Coordinator's letter to delegates
+              will be published here shortly.</p>
+            <!-- ↑ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↑ -->
+          </div>
+
+          <div class="letter__sign">
+            <p class="letter__name">Aadya Banka</p>
+            <p class="letter__role">Presidency Coordinator</p>
+            <p class="letter__org">The School of Raya, Model G20 2026</p>
+          </div>
+        </article>
+
+        <article class="letter">
+          <header class="letter__head">
+            <span class="letter__portrait"><span class="letter__plate" aria-hidden="true">DA</span></span>
+            <p class="letter__from">From the Deputy Coordinator</p>
+          </header>
+
+          <div class="letter__body">
+            <!-- ↓ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↓ -->
+            <p class="letter__pending">The Deputy Coordinator's letter to delegates
+              will be published here shortly.</p>
+            <!-- ↑ REPLACE THESE PARAGRAPHS WITH THE REAL LETTER ↑ -->
+          </div>
+
+          <div class="letter__sign">
+            <p class="letter__name">Deetya Aradhya</p>
+            <p class="letter__role">Deputy Coordinator</p>
+            <p class="letter__org">The School of Raya, Model G20 2026</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       ORGANISING COMMITTEE
+       EDIT 10 — same card as above. Copy one to add a person.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="oc-sec" id="organising">
+    <div class="wrap">
+      <div class="sechead">
+        <p class="kicker">Organising Committee</p>
+        <h2>The people running it</h2>
+      </div>
+
+      <div class="face-grid">
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AV</span></div>
+          <h3 class="face__name">Abinaya Vijaybhaskar</h3>
+          <p class="face__office">Organising Committee Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">MB</span></div>
+          <h3 class="face__name">Medha Shashi Bhaskara</h3>
+          <p class="face__office">Organising Committee Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AC</span></div>
+          <h3 class="face__name">Aanya Chauhan</h3>
+          <p class="face__office">Communication Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">CB</span></div>
+          <h3 class="face__name">Chaitanya Ballari</h3>
+          <p class="face__office">Website Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">AK</span></div>
+          <h3 class="face__name">Adhvik Kaarthikeya</h3>
+          <p class="face__office">Website Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">HL</span></div>
+          <h3 class="face__name">Hari Lokesh</h3>
+          <p class="face__office">Finance Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">SS</span></div>
+          <h3 class="face__name">Siddharth Sajith</h3>
+          <p class="face__office">Logistics Head</p>
+        </article>
+        <article class="face">
+          <div class="face__portrait"><span class="face__plate" aria-hidden="true">SG</span></div>
+          <h3 class="face__name">Sia Grover</h3>
+          <p class="face__office">Head of Delegate Affairs</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -611,81 +914,74 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="sechead" style="justify-items:start;text-align:left;margin-bottom:clamp(2rem,4vw,3rem)">
+      <div class="sechead sechead--left">
         <p class="kicker">Contact Us</p>
-        <h2>Write to the Secretariat</h2>
+        <h2>Write to our team</h2>
       </div>
 
-      <dl class="contact-grid">
-        <div class="cblock">
-          <dt>Delegates &amp; allotment</dt>
-          <dd><a href="mailto:delegates@modelg20.example">delegates@modelg20.example</a></dd>
-          <dd><small>Registration, allotment, substitutions and refunds.</small></dd>
-        </div>
+      <div class="contact-split">
+        <dl class="contact-grid">
+          <div class="cblock">
+            <dt>Email</dt>
+            <dd><a href="mailto:modelg20@theschoolofraya.com">modelg20@theschoolofraya.com</a></dd>
+            <dd><small>Registration, committees, press and partnerships.</small></dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Press &amp; media</dt>
-          <dd><a href="mailto:press@modelg20.example">press@modelg20.example</a></dd>
-          <dd><small>Accreditation, imagery and interview requests.</small></dd>
-        </div>
+          <div class="cblock">
+            <dt>Address</dt>
+            <dd>
+              The School of Raya<br>
+              Hennur Bagalur Road, Dasanayakanahalli<br>
+              Bengaluru, Karnataka 562149<br>
+              India
+            </dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Partnerships</dt>
-          <dd><a href="mailto:secretariat@modelg20.example">secretariat@modelg20.example</a></dd>
-          <dd><small>Sponsorship and institutional delegations.</small></dd>
-        </div>
+          <div class="cblock">
+            <dt>Conference dates</dt>
+            <dd>10th – 11th October 2026</dd>
+            <dd><small>Two days. Doors open 08:00 IST on the first morning.</small></dd>
+          </div>
 
-        <div class="cblock">
-          <dt>Telephone</dt>
-          <dd><a href="tel:+910000000000">+91 00000 00000</a></dd>
-          <dd><small>Weekdays 10:00 – 18:00 IST.</small></dd>
-        </div>
+          <div class="cblock cblock--wide">
+            <dt>Follow the conference</dt>
+            <dd>
+              <div class="socials">
+                <a href="https://www.instagram.com/raya_modelg20" target="_blank" rel="noopener" aria-label="Model G20 on Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+                  <span>@raya_modelg20</span>
+                </a>
+              </div>
+Placeholder links — point each one at the real account.</small>
+            </dd>
+          </div>
+        </dl>
 
-        <div class="cblock">
-          <dt>Venue</dt>
-          <dd>
-            FLAME University<br>
-            Lavale, Off Pune–Bangalore Highway<br>
-            Pune, Maharashtra 412115, India
-          </dd>
+        <!-- The map needs no API key. To move the pin, change the q= address. -->
+        <div class="map-card">
+          <iframe
+            src="https://maps.google.com/maps?q=The%20School%20of%20Raya%2C%20Hennur%20Bagalur%20Road%2C%20Dasanayakanahalli%2C%20Bengaluru%2C%20Karnataka%20562149&amp;z=14&amp;output=embed"
+            title="Map showing The School of Raya, Bengaluru"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <a class="map-card__link" href="https://maps.google.com/maps?q=The+School+of+Raya%2C+Hennur+Bagalur+Road%2C+Dasanayakanahalli%2C+Bengaluru%2C+Karnataka+562149" target="_blank" rel="noopener">Open in Google Maps</a>
         </div>
-
-        <div class="cblock">
-          <dt>Follow the summit</dt>
-          <dd>
-            <div class="socials">
-              <a href="#" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.5V17M7.5 7.4v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              </a>
-              <a href="#" aria-label="X">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              </a>
-              <a href="#" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5l4.5 2.5-4.5 2.5v-5Z" fill="currentColor"/></svg>
-              </a>
-            </div>
-          </dd>
-        </div>
-      </dl>
+      </div>
 
       <div class="contact-cta">
-        <p>Registration is open. Allotments are released on a rolling basis.</p>
-        <a class="btn btn--pale btn--lg" href="register.html">Register as a delegate</a>
+        <p>Registration is open to delegates from any school.</p>
+        <a class="btn btn--pale btn--lg" href="register.html">Go to registration</a>
       </div>
 
       <div class="colophon">
-        <span>© 2026 Model G20 · The School of Raya</span>
+        <span>© 2026 The School of Raya Model G20. All rights reserved.</span>
         <nav aria-label="Footer">
-          <a href="committees.html">Committees</a>
-          <a href="secretariat.html">Secretariat</a>
           <a href="about.html">About</a>
-          <a href="country-matrix.html">Country Matrix</a>
+          <a href="committees.html">Committees</a>
           <a href="schedule.html">Schedule</a>
-          <a href="resources.html">Resources</a>
-          <a href="faqs.html">FAQs</a>
+          <a href="register.html">Registration</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
     </div>
@@ -710,7 +1006,7 @@
      To change it here, edit the line marked FALLBACK. Format is
      YYYY-MM-DDTHH:MM:SS+05:30  (the +05:30 is India Standard Time).
      ════════════════════════════════════════════════════════════════════ */
-  const FALLBACK = "2026-10-08T09:00:00+05:30";
+  const FALLBACK = "2026-10-10T09:00:00+05:30";
   const opens = (window.MG20 && window.MG20.EVENT && window.MG20.EVENT.startISO) || FALLBACK;
   const target = new Date(opens).getTime();
 

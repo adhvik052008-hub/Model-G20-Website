@@ -11,45 +11,54 @@
      · #FFFFFF (Ivory) · #000000 (Ink)
      Ramps are tonal derivations of the two brand hues only. No new hues.
      --------------------------------------------------------------------- */
-  --parchment-50:  #FDFAF5;
-  --parchment-100: #F9F2E8;
-  --parchment-200: #F4E9DA;
-  --parchment-300: #EFDDC6; /* ◆ BRAND PRIMARY — page ground */
-  --parchment-400: #E3CBAE;
-  --parchment-500: #D5B896;
-  --parchment-600: #BFA07C;
+  /* Every value below is one of the four brand colours or a transparent
+     version of one. There are no other hex literals in this stylesheet.
+     Lighter tints are white at low alpha; darker tints are black at low
+     alpha; both composite against whatever ground they sit on. */
 
-  --maroon-100: #F2DEDE;
-  --maroon-200: #DDAFAF;
-  --maroon-300: #B96B6B;
-  --maroon-400: #96302B;
-  --maroon-500: #7A1010;
-  --maroon-600: #600808; /* ◆ BRAND ACCENT — signature */
-  --maroon-700: #4C0606;
-  --maroon-800: #380404;
-  --maroon-900: #240303;
-  --maroon-950: #170202;
+  --parchment-300: #EFDDC6; /* ◆ BRAND PRIMARY — page ground   */
+  --maroon-600:    #600808; /* ◆ BRAND ACCENT  — signature     */
+  --ivory:         #FFFFFF; /* ◆ BRAND         — card surfaces */
+  --ink:           #000000; /* ◆ BRAND         — type          */
 
-  --ivory: #FFFFFF;
-  --ink:   #000000;
+  /* Parchment ramp — white or black laid over the beige ground */
+  --parchment-50:  rgba(255, 255, 255, 0.82);
+  --parchment-100: rgba(255, 255, 255, 0.58);
+  --parchment-200: rgba(255, 255, 255, 0.34);
+  --parchment-400: rgba(0, 0, 0, 0.07);
+  --parchment-500: rgba(0, 0, 0, 0.15);
+  --parchment-600: rgba(0, 0, 0, 0.26);
 
-  /* Warm neutrals — black tinted toward the parchment ground so type never
-     reads cold or "web default" against the beige. */
-  --ink-900: #120C0A;
-  --ink-800: #1F1613;
-  --ink-700: #33251F;
-  --ink-600: #4A3830;
-  --ink-500: #6A544A;
-  --ink-400: #8C7466;
-  --ink-300: #B3A08F;
+  /* Maroon ramp — the accent at reduced strength. Anything that needs to
+     read *darker* than the accent uses the accent itself; the site has one
+     dark surface colour and it is #600808 exactly. */
+  --maroon-100: rgba(96, 8, 8, 0.08);
+  --maroon-200: rgba(96, 8, 8, 0.18);
+  --maroon-300: rgba(96, 8, 8, 0.38);
+  --maroon-400: rgba(96, 8, 8, 0.62);
+  --maroon-500: rgba(96, 8, 8, 0.82);
+  --maroon-700: #600808;
+  --maroon-800: #600808;
+  --maroon-900: #600808;
+  --maroon-950: #600808;
 
-  /* Alpha channels for glass, rules and scrims */
-  --a-ink-04: rgba(18, 12, 10, 0.04);
-  --a-ink-08: rgba(18, 12, 10, 0.08);
-  --a-ink-12: rgba(18, 12, 10, 0.12);
-  --a-ink-20: rgba(18, 12, 10, 0.20);
-  --a-ink-40: rgba(18, 12, 10, 0.40);
-  --a-ink-70: rgba(18, 12, 10, 0.70);
+  /* Type ramp — black at descending strength. Reads warm because the
+     parchment beneath it shows through. */
+  --ink-900: rgba(0, 0, 0, 0.92);
+  --ink-800: rgba(0, 0, 0, 0.86);
+  --ink-700: rgba(0, 0, 0, 0.78);
+  --ink-600: rgba(0, 0, 0, 0.68);
+  --ink-500: rgba(0, 0, 0, 0.56);
+  --ink-400: rgba(0, 0, 0, 0.44);
+  --ink-300: rgba(0, 0, 0, 0.28);
+
+  /* Alpha channels for rules, scrims and glass */
+  --a-ink-04: rgba(0, 0, 0, 0.04);
+  --a-ink-08: rgba(0, 0, 0, 0.08);
+  --a-ink-12: rgba(0, 0, 0, 0.12);
+  --a-ink-20: rgba(0, 0, 0, 0.18);
+  --a-ink-40: rgba(0, 0, 0, 0.40);
+  --a-ink-70: rgba(0, 0, 0, 0.70);
 
   --a-maroon-06: rgba(96, 8, 8, 0.06);
   --a-maroon-10: rgba(96, 8, 8, 0.10);
@@ -81,12 +90,12 @@
   --text-body:     var(--ink-700);
   --text-muted:    var(--ink-500);
   --text-faint:    var(--ink-400);
-  --text-invert:   var(--parchment-200);
+  --text-invert:   var(--ivory);
 
   --accent:        var(--maroon-600);
-  --accent-hover:  var(--maroon-500);
-  --accent-deep:   var(--maroon-800);
-  --accent-ink:    var(--parchment-100); /* text on maroon */
+  --accent-hover:  rgba(96, 8, 8, 0.86);
+  --accent-deep:   var(--maroon-600);
+  --accent-ink:    var(--ivory); /* text on maroon */
 
   --line:          var(--a-ink-12);
   --line-strong:   var(--a-ink-20);
@@ -169,7 +178,7 @@
   --container-wide: 1420px;
   --container-text: 74ch;
   --gutter: clamp(1.25rem, 0.6rem + 3.2vw, 3.5rem);
-  --nav-h: 76px;
+  --nav-h: 88px;
 
   /* ---------------------------------------------------------------------
      6. RADII
@@ -185,12 +194,12 @@
   /* ---------------------------------------------------------------------
      7. ELEVATION — warm-tinted, never neutral grey
      --------------------------------------------------------------------- */
-  --sh-xs: 0 1px 2px rgba(56, 4, 4, 0.06);
-  --sh-sm: 0 2px 6px rgba(56, 4, 4, 0.07), 0 1px 2px rgba(56, 4, 4, 0.05);
-  --sh-md: 0 10px 26px -8px rgba(56, 4, 4, 0.16), 0 2px 6px rgba(56, 4, 4, 0.05);
-  --sh-lg: 0 26px 56px -18px rgba(56, 4, 4, 0.24), 0 6px 14px rgba(56, 4, 4, 0.06);
-  --sh-xl: 0 48px 96px -30px rgba(56, 4, 4, 0.32), 0 10px 24px rgba(56, 4, 4, 0.07);
-  --sh-glass: 0 20px 60px -24px rgba(36, 3, 3, 0.34);
+  --sh-xs: 0 1px 2px rgba(96, 8, 8, 0.06);
+  --sh-sm: 0 2px 6px rgba(96, 8, 8, 0.07), 0 1px 2px rgba(96, 8, 8, 0.05);
+  --sh-md: 0 10px 26px -8px rgba(96, 8, 8, 0.16), 0 2px 6px rgba(96, 8, 8, 0.05);
+  --sh-lg: 0 26px 56px -18px rgba(96, 8, 8, 0.24), 0 6px 14px rgba(96, 8, 8, 0.06);
+  --sh-xl: 0 48px 96px -30px rgba(96, 8, 8, 0.32), 0 10px 24px rgba(96, 8, 8, 0.07);
+  --sh-glass: 0 20px 60px -24px rgba(96, 8, 8, 0.34);
   --sh-inset-hair: inset 0 1px 0 var(--a-ivory-45);
 
   /* ---------------------------------------------------------------------
@@ -234,9 +243,9 @@
   --surface-muted: rgba(255, 255, 255, 0.03);
 
   --text:          var(--parchment-100);
-  --text-body:     rgba(244, 233, 218, 0.82);
-  --text-muted:    rgba(244, 233, 218, 0.62);
-  --text-faint:    rgba(244, 233, 218, 0.42);
+  --text-body:     rgba(239, 221, 198, 0.82);
+  --text-muted:    rgba(239, 221, 198, 0.62);
+  --text-faint:    rgba(239, 221, 198, 0.42);
   --text-invert:   var(--maroon-800);
 
   --accent:        var(--parchment-300);
