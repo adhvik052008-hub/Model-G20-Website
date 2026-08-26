@@ -149,7 +149,7 @@
      ORGANISING COMMITTEE — same shape as above.
      ====================================================================== */
   var ORGANISING = [
-    { name: "Abinaya Vijaybhaskar",  initials: "AV", office: "Organising Committee Head" },
+    { name: "Abinaya Vijayabaskar",  initials: "AV", office: "Organising Committee Head" },
     { name: "Medha Shashi Bhaskara", initials: "MB", office: "Organising Committee Head" },
     { name: "Aanya Chauhan",         initials: "AC", office: "Communication Head" },
     { name: "Chaitanya Ballari",     initials: "CB", office: "Website Head" },
